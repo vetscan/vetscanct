@@ -1,0 +1,199 @@
+﻿.section {
+  padding: 0 0 5rem 0;
+  background: var(--color-gray-50, #f1f5fa);
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.title {
+  margin-top: 10rem;
+  margin-bottom: 6rem;
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .title {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 80rem) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Звичайна карточка */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--surface-1, #ffffff);
+  border: 1px solid var(--border, #d9e2ec);
+  border-radius: var(--radius-2xl, 1.5rem);
+  padding: 1.5rem;
+  height: 8rem;
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.arrow {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.arrowCircle {
+  width: 2rem;
+  height: 2rem;
+  background: var(--surface-2, #f7f9fc);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.card:hover .arrowCircle {
+  background: var(--accent, #14b8a6);
+}
+
+.arrowCircle svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-primary, #0b1220);
+  transition: all 0.3s;
+}
+
+.card:hover .arrowCircle svg {
+  color: var(--color-white, #ffffff);
+}
+
+.cardContent {
+  margin-top: auto;
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  transition: color 0.3s;
+}
+
+.card:hover .cardTitle {
+  color: var(--accent);
+}
+
+/* Спеціальна карточка */
+.specialCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #14b8a6 0%, #5eead4 100%);
+  border: none;
+  border-radius: var(--radius-2xl, 1.5rem);
+  padding: 1.5rem;
+  height: 8rem;
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.specialCard:hover {
+  box-shadow: var(--shadow-xl, 0 20px 25px -5px rgb(0 0 0 / 0.1));
+}
+
+.arrowCircleWhite {
+  width: 2rem;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.specialCard:hover .arrowCircleWhite {
+  background: var(--surface-1);
+}
+
+.arrowCircleWhite svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-white);
+  transition: all 0.3s;
+}
+
+.specialCard:hover .arrowCircleWhite svg {
+  color: var(--color-brand-700);
+}
+
+.specialCardContent {
+  margin-top: auto;
+  color: var(--color-white);
+}
+
+.specialCardTitle {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.specialCardTitleBold {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+
+

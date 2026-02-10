@@ -1,0 +1,123 @@
+﻿.hero {
+  background: var(--color-gray-50, #f1f5fa);
+  padding: 12rem 0 8rem 0;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.content {
+  background: var(--hero-surface, linear-gradient(135deg, #0f766e 0%, #2dd4bf 100%));
+  color: var(--hero-text, #ffffff);
+  text-align: center;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border, #d9e2ec);
+  box-shadow: var(--shadow-glow, 0 4px 10px rgba(16, 185, 129, 0.08));
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 48rem) {
+  .content {
+    border-radius: var(--radius-4xl, 2.5rem);
+    padding: 4rem 2.5rem;
+  }
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+@media (min-width: 48rem) {
+  .title {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+}
+
+.subtitle {
+  margin-bottom: 2rem;
+}
+
+.subtitle p {
+  color: var(--hero-text, #ffffff);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 48rem) {
+  .subtitle p {
+    font-size: 1.125rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 40rem) {
+  .buttons {
+    flex-direction: row;
+  }
+}
+
+.appointmentBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: var(--accent, #14b8a6);
+  color: var(--color-white, #ffffff);
+  border: none;
+  border-radius: var(--radius-md, 0.5rem);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+  white-space: nowrap;
+  height: 2.5rem;
+}
+
+.appointmentBtn:hover {
+  background: var(--accent-strong, #0f766e);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.appointmentBtn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 48rem) {
+  .appointmentBtn {
+    height: 2.5rem;
+    padding: 0.625rem 1.5rem;
+  }
+}
+
+

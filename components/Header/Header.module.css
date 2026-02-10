@@ -1,0 +1,316 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  background: rgba(241, 245, 250, 0.85);
+  border-bottom: 1px solid var(--border, #d9e2ec);
+  padding: 0.5rem 0;
+  backdrop-filter: blur(10px);
+}
+
+:root[data-theme='dark'] .header {
+  background: rgba(15, 23, 34, 0.85);
+}
+
+.container {
+  max-width: 80rem; /* 1280px */
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+}
+
+/* Логотип */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.logoImage {
+  width: 7.5rem;
+  height: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logoSubtitle {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--color-gray-900);
+}
+
+/* Адреса */
+.address {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-gray-900);
+}
+
+.addressIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-gray-400);
+  flex-shrink: 0;
+}
+
+.addressLine1 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.addressLine2 {
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+/* Мова */
+.language {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.languageIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-gray-400, #94a3b8);
+  flex-shrink: 0;
+}
+
+/* Кастомний дропдаун */
+.languageDropdown {
+  position: relative;
+}
+
+.languageButton {
+  width: 130px;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--border, #d9e2ec);
+  border-radius: var(--radius-md, 0.5rem);
+  background: var(--surface-1, #ffffff);
+  color: var(--text-primary, #0b1220);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.languageButton:hover {
+  border-color: var(--color-brand-600, #0d9488);
+}
+
+.languageButton:focus {
+  border-color: var(--color-brand-700, #0f766e);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+}
+
+.languageArrow {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-gray-400, #94a3b8);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.languageArrowOpen {
+  transform: rotate(180deg);
+}
+
+.languageMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: 100%;
+  background: var(--surface-1, #ffffff);
+  border: 1px solid var(--border, #d9e2ec);
+  border-radius: var(--radius-md, 0.5rem);
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
+  overflow: hidden;
+  z-index: 1000;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.languageOption {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary, #0b1220);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  display: block;
+}
+
+.languageOption:hover {
+  background: var(--surface-2, #f7f9fc);
+  color: var(--color-brand-600, #0d9488);
+}
+
+.languageOptionActive {
+  background: var(--color-brand-50, #f0fdfa);
+  color: var(--color-brand-700, #0f766e);
+  font-weight: 500;
+}
+
+.languageOptionActive:hover {
+  background: var(--color-brand-100, #ccfbf1);
+}
+
+/* Телефон */
+.phone {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.phoneIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-gray-400);
+  flex-shrink: 0;
+}
+
+.phoneLabel {
+  font-size: 0.875rem;
+  color: var(--color-gray-900);
+  line-height: 1.2;
+}
+
+.phoneNumber {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.phoneStatus {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--color-green-500, #10b981);
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+
+/* Первая точка моргает с задержкой 0s */
+.phoneNumber:first-of-type .phoneStatus {
+  animation-delay: 0s;
+}
+
+/* Вторая точка моргает с задержкой 1s */
+.phoneNumber:last-of-type .phoneStatus {
+  animation-delay: 1s;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--color-green-500, #10b981);
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: none;
+  }
+}
+
+.phoneNumber a {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+}
+
+/* Мобільне меню */
+.mobileMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  color: var(--color-gray-900);
+  padding: 0;
+}
+
+.mobileMenu svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Десктоп */
+@media (min-width: 64rem) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .logoImage {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .logoSubtitle {
+    font-size: 0.875rem;
+  }
+
+  .address {
+    display: flex;
+  }
+
+  .language {
+    display: flex;
+  }
+
+  .phone {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+}

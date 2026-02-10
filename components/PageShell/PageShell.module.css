@@ -1,0 +1,33 @@
+﻿.main {
+  background: var(--color-gray-50);
+  color: var(--color-gray-900);
+}
+
+.hero {
+  padding: 3.5rem 0 2rem;
+  background-color: var(--page-bg);
+  background-image: var(--page-bg-gradient);
+}
+
+.section {
+  padding: 3rem 0 5rem;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 720px;
+}
+
