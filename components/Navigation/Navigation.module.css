@@ -9,6 +9,10 @@
   background: transparent;
 }
 
+:root[data-theme='light'] .nav {
+  background: transparent;
+}
+
 .container {
   max-width: 80rem;
   margin: 0 auto;
