@@ -22,6 +22,7 @@
 }
 
 .content {
+  position: relative;
   background: var(--hero-surface, linear-gradient(135deg, #0f766e 0%, #2dd4bf 100%));
   color: var(--hero-text, #ffffff);
   text-align: center;
@@ -30,6 +31,24 @@
   border: 1px solid var(--border, #d9e2ec);
   box-shadow: var(--shadow-glow, 0 4px 10px rgba(16, 185, 129, 0.08));
   backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+/* Видео фон */
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Контент поверх видео */
+.contentOverlay {
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 48rem) {

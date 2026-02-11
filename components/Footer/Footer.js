@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Footer.module.css';
 import content from '@/data/siteContent.json';
 
@@ -13,10 +14,15 @@ export default function Footer() {
           <div className={styles.column}>
             <div className={styles.logoSection}>
               <div className={styles.logoCircle}>
-                <span className={styles.logoIcon}>🏥</span>
+                <Image 
+                  src="/Logo.png" 
+                  alt="Logo" 
+                  width={60} 
+                  height={60}
+                  className={styles.logoImage}
+                />
               </div>
               <div className={styles.logoText}>
-                <p className={styles.logoTitle}>{footer.logoTitle}</p>
                 <p className={styles.logoSubtitle}>{footer.logoSubtitle}</p>
               </div>
             </div>

@@ -141,18 +141,19 @@
 }
 
 .logoCircle {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  width: 3.75rem;
+  height: 3.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
-.logoIcon {
-  font-size: 1.75rem;
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .logoText {

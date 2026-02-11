@@ -9,6 +9,8 @@ import Team from '@/components/Team/Team';
 import Testimonials from '@/components/Testimonials/Testimonials';
 import ContactForm from '@/components/ContactForm/ContactForm';
 import Footer from '@/components/Footer/Footer';
+import Image from 'next/image';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
@@ -26,6 +28,29 @@ export default function Home() {
         <ContactForm />
       </main>
       <Footer />
+      
+      {/* Водяные знаки */}
+      {/* Кот - справа сверху */}
+      <div className={styles.watermarkTop}>
+        <Image 
+          src="/cat.png" 
+          alt="Watermark Cat" 
+          width={200} 
+          height={200}
+          priority
+        />
+      </div>
+      
+      {/* Собака - справа снизу */}
+      <div className={styles.watermarkBottom}>
+        <Image 
+          src="/dog.png" 
+          alt="Watermark Dog" 
+          width={200} 
+          height={200}
+          priority
+        />
+      </div>
     </>
   );
 }

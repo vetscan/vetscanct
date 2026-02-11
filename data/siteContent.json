@@ -22,7 +22,7 @@
     "items": [
       { "label": "Головна", "href": "/", "showArrow": true },
       { "label": "КТ", "href": "/ct", "showArrow": true },
-      { "label": "Методи лікування", "href": "/treatment", "showArrow": true },
+      { "label": "Хирургия / Онкохирургия", "href": "/treatment", "showArrow": true },
       { "label": "Вартість послуг", "href": "/prices", "showArrow": false },
       { "label": "Контакти", "href": "/contacts", "showArrow": false }
     ],

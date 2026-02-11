@@ -1,112 +1,94 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './AppointmentModal.module.css';
-import content from '@/data/siteContent.json';
 
 export default function AppointmentModal({ isOpen, onClose }) {
-  const { appointmentModal } = content;
-  const [mounted, setMounted] = useState(false);
-
-  // Проверяем, что компонент смонтирован на клиенте
+  // Блокируем скролл при открытии модалки
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Закрытие по Escape и блокировка скролла
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      // Блокируем скролл безопасным способом
       document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
-    
     return () => {
-      document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = '';
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  if (!isOpen || !mounted) return null;
+  if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Здесь будет логика отправки формы
-    console.log('Форма отправлена');
-    onClose();
+  // Закрытие при клике на overlay
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
   };
 
   const modalContent = (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose} aria-label="Закрити">
+    <div className={styles.overlay} onClick={handleOverlayClick}>
+      <div className={styles.modal}>
+        {/* Кнопка закрытия */}
+        <button className={styles.closeButton} onClick={onClose}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M18 6 6 18"></path>
             <path d="m6 6 12 12"></path>
           </svg>
         </button>
 
-        <h2 className={styles.title}>{appointmentModal.title}</h2>
+        {/* Заголовок */}
+        <h2 className={styles.title}>Записатися на прийом</h2>
         <p className={styles.subtitle}>
-          {appointmentModal.subtitle}
+          Залиште форму нижче і ми зв'яжемося з вами для підтвердження запису
         </p>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        {/* Форма */}
+        <form className={styles.form}>
           <div className={styles.field}>
-            <label htmlFor="name" className={styles.label}>
-              {appointmentModal.fields.name.label}
+            <label className={styles.label}>
+              Прізвище та ім'я <span className={styles.required}>*</span>
             </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
+            <input 
+              type="text" 
               className={styles.input}
-              placeholder={appointmentModal.fields.name.placeholder}
+              placeholder="Введіть прізвище та ім'я"
               required
             />
           </div>
 
           <div className={styles.field}>
-            <label htmlFor="phone" className={styles.label}>
-              {appointmentModal.fields.phone.label}
+            <label className={styles.label}>
+              Номер телефону <span className={styles.required}>*</span>
             </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
+            <input 
+              type="tel" 
               className={styles.input}
-              placeholder={appointmentModal.fields.phone.placeholder}
+              placeholder="Введіть номер телефону"
               required
             />
           </div>
 
           <div className={styles.field}>
-            <label htmlFor="reason" className={styles.label}>
-              {appointmentModal.fields.reason.label}
+            <label className={styles.label}>
+              Причина візиту <span className={styles.required}>*</span>
             </label>
-            <textarea
-              id="reason"
-              name="reason"
+            <textarea 
               className={styles.textarea}
-              placeholder={appointmentModal.fields.reason.placeholder}
-              rows="4"
+              placeholder="Я хочу записатися на КТ і дізнатися більше інформації. Будь ласка, зв'яжіться зі мною, коли буде зручно."
+              rows={4}
               required
             />
           </div>
 
           <button type="submit" className={styles.submitButton}>
-            {appointmentModal.submit}
+            Надіслати
           </button>
         </form>
       </div>
     </div>
   );
 
-  // Рендерим модалку через портал в body
+  // Рендерим через Portal в body
   return createPortal(modalContent, document.body);
 }
