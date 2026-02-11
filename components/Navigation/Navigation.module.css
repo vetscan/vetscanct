@@ -2,12 +2,11 @@
   display: none;
   margin-top: 12rem;
   padding: 1.25rem 0 5rem 0;
- 
   backdrop-filter: blur(10px);
 }
 
 :root[data-theme='dark'] .nav {
-  background: rgba(15, 23, 34, 0.88);
+  background: transparent;
 }
 
 .container {
