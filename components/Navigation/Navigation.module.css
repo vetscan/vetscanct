@@ -2,15 +2,8 @@
   display: none;
   margin-top: 12rem;
   padding: 1.25rem 0 5rem 0;
+  background: transparent;
   backdrop-filter: blur(10px);
-}
-
-:root[data-theme='dark'] .nav {
-  background: transparent;
-}
-
-:root[data-theme='light'] .nav {
-  background: transparent;
 }
 
 .container {
