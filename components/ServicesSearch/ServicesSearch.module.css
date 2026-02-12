@@ -84,8 +84,53 @@
 
 .arrow {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--color-gray-200, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover .arrow {
+  background: var(--accent, #14b8a6);
+}
+
+.specialCard .arrow {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.specialCard:hover .arrow {
+  background: var(--surface-1);
+}
+
+.pawIcon {
+  width: 2.6rem;
+  height: 2.6rem;
+  transition: all 0.3s;
+  filter: grayscale(0);
+}
+
+.card:hover .pawIcon {
+  transform: scale(1.1);
+  filter: brightness(0) invert(1);
+}
+
+.pawIconWhite {
+  width: 2.6rem;
+  height: 2.6rem;
+  transition: all 0.3s;
+  filter: brightness(0) invert(1);
+}
+
+.specialCard:hover .pawIconWhite {
+  transform: scale(1.1);
+  filter: grayscale(0) brightness(1);
 }
 
 .arrowCircle {
@@ -115,7 +160,8 @@
 }
 
 .cardContent {
-  margin-top: auto;
+  margin-top: 0;
+  text-align: left;
 }
 
 .cardTitle {
@@ -136,7 +182,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(135deg, #14b8a6 0%, #5eead4 100%);
+  background: linear-gradient(135deg, #14b8a560 0%, #5eead58b 100%);
   border: none;
   border-radius: var(--radius-2xl, 1.5rem);
   padding: 1.5rem;
@@ -177,8 +223,9 @@
 }
 
 .specialCardContent {
-  margin-top: auto;
+  margin-top: 0;
   color: var(--color-white);
+  text-align: left;
 }
 
 .specialCardTitle {
@@ -197,3 +244,17 @@
 
 
 
+
+/* Світла тема - ефект прозорого скла */
+:root[data-theme='light'] .card {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme='light'] .card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(148, 163, 184, 0.6);
+  box-shadow: 0 8px 16px rgba(20, 184, 166, 0.15);
+}

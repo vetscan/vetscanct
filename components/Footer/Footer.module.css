@@ -4,6 +4,7 @@
   padding: 2rem 0 1rem;
   position: relative;
   overflow: hidden;
+ 
 }
 
 @media (min-width: 48rem) {
@@ -13,10 +14,7 @@
 }
 
 :root[data-theme='dark'] .footer {
-  background:
-    radial-gradient(800px 420px at 15% -10%, rgba(45, 212, 191, 0.22), transparent 60%),
-    radial-gradient(700px 380px at 85% 10%, rgba(56, 189, 248, 0.14), transparent 60%),
-    linear-gradient(135deg, #0e2f33 0%, #0c4348 45%, #0b5f61 100%);
+  background: linear-gradient(135deg, #0e2f33 0%, #0c4348 45%, #0b5f61 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -26,7 +24,7 @@
   position: absolute;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.6;
+  opacity: 0.7;
   filter: blur(0.5px);
 }
 

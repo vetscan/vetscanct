@@ -27,18 +27,21 @@
   font-weight: 500;
   line-height: 1.5rem;
   color: var(--color-gray-900, #0b1220);
-  background: var(--surface-1, #ffffff);
-  border: 1px solid var(--border, #d9e2ec);
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-xl, 1.25rem);
   transition: all 0.3s;
   white-space: nowrap;
   height: auto;
+  backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .navItem:hover {
-  border-color: var(--accent, #14b8a6);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(148, 163, 184, 0.6);
   color: var(--accent, #14b8a6);
-  box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+  box-shadow: 0 8px 16px rgba(20, 184, 166, 0.15);
 }
 
 .arrow {
@@ -90,4 +93,17 @@
   .nav {
     display: block;
   }
+}
+
+/* Темна тема */
+:root[data-theme='dark'] .navItem {
+  background: var(--surface-1, #1a2634);
+  border: 2px solid var(--border, #d9e2ec);
+  backdrop-filter: none;
+}
+
+:root[data-theme='dark'] .navItem:hover {
+  background: var(--surface-2, #223042);
+  border-color: var(--accent, #14b8a6);
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
 }

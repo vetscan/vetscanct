@@ -14,12 +14,7 @@ export default function ServicesSearch() {
           {servicesSearch.services.map(service => (
             <Link href={service.link} key={service.id} className={styles.card}>
               <div className={styles.arrow}>
-                <div className={styles.arrowCircle}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </div>
+                <img src="/paw.png" alt="paw" className={styles.pawIcon} />
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>{service.title}</h3>
@@ -30,12 +25,7 @@ export default function ServicesSearch() {
           {/* Спеціальна карточка "Не знайшли" */}
           <button className={styles.specialCard}>
             <div className={styles.arrow}>
-              <div className={styles.arrowCircleWhite}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-              </div>
+              <img src="/paw.png" alt="paw" className={styles.pawIconWhite} />
             </div>
             <div className={styles.specialCardContent}>
               <h3 className={styles.specialCardTitle}>{servicesSearch.specialCard.title}</h3>

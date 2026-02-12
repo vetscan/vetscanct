@@ -22,7 +22,7 @@
 }
 
 .title {
-  padding-top: 10rem;
+  padding-top: 3rem;
   margin-bottom: 3rem;
   font-size: 1.875rem;
   line-height: 1.2;
@@ -101,9 +101,29 @@
 }
 
 .dot {
-  color: var(--color-brand-600);
+  color: var(--color-green-500, #10b981);
   font-size: 2rem;
   line-height: 1;
+  animation: blink 2s ease-in-out infinite;
+}
+
+/* Первая точка моргает с задержкой 0s */
+.phone:first-of-type .dot {
+  animation-delay: 0s;
+}
+
+/* Вторая точка моргает с задержкой 1s */
+.phone:last-of-type .dot {
+  animation-delay: 1s;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
 .button {
@@ -112,7 +132,7 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: var(--color-brand-600, #0d9488);
+  background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
   color: var(--color-white, #ffffff);
   border: none;
   border-radius: var(--radius-xl, 1.25rem);
@@ -131,9 +151,9 @@
 }
 
 .button:hover {
-  background: var(--color-brand-700, #0f766e);
+  background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4), var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
 }
 
 .button svg {

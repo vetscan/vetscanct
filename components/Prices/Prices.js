@@ -29,10 +29,7 @@ export default function Prices() {
               <Link href="/prices" className={styles.link}>
                 <span className={styles.linkText}>{prices.linkText}</span>
                 <div className={styles.arrowCircle}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
+                  <img src="/paw.png" alt="paw" className={styles.pawIcon} />
                 </div>
               </Link>
             </div>

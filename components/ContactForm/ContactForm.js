@@ -29,6 +29,10 @@ export default function ContactForm() {
                 <span className={styles.dot}>•</span>
                 {contactForm.phoneNumber}
               </a>
+              <a href={`tel:${contactForm.phoneTel2}`} className={styles.phone}>
+                <span className={styles.dot}>•</span>
+                {contactForm.phoneNumber2}
+              </a>
             </div>
 
             {/* Блок с онлайн записью */}

@@ -60,7 +60,7 @@
   }
 }
 
-/* Р‘С–Р»Р° РєР°СЂС‚РѕС‡РєР° */
+
 .card {
   background: var(--surface-1, #ffffff);
   border: 1px solid var(--border, #d9e2ec);
@@ -101,21 +101,22 @@
 
 .arrow {
   flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
-  background: var(--surface-2, #f7f9fc);
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--color-gray-200, #e5e7eb);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.arrow svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--color-gray-400, #94a3b8);
-  transition: color 0.3s;
+.pawIcon {
+  width: 2.6rem;
+  height: 2.6rem;
+  transition: all 0.3s;
+  filter: grayscale(0);
 }
 
 .card:hover .arrow {
@@ -123,8 +124,9 @@
   transform: translateX(4px);
 }
 
-.card:hover .arrow svg {
-  color: var(--color-white, #ffffff);
+.card:hover .pawIcon {
+  transform: scale(1.1);
+  filter: brightness(0) invert(1);
 }
 
 .cardDescription {
@@ -135,7 +137,7 @@
 
 /* Червона карточка */
 .specialCard {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  background: linear-gradient(135deg, #ef4444b3 0%, #dc262692 100%);
   border: none;
   border-radius: var(--radius-2xl, 1.5rem);
   padding: 1.5rem;
@@ -180,8 +182,8 @@
 
 .arrowWhite {
   flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
@@ -190,16 +192,35 @@
   transition: all 0.3s;
 }
 
+.pawIconWhite {
+  width: 2.6rem;
+  height: 2.6rem;
+  transition: all 0.3s;
+  filter: brightness(0) invert(1);
+}
+
 .specialCard:hover .arrowWhite {
   background: rgba(255, 255, 255, 0.3);
   transform: translateX(4px);
 }
 
-.arrowWhite svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--color-white);
+.specialCard:hover .pawIconWhite {
+  transform: scale(1.1);
 }
 
 
 
+
+/* Світла тема - ефект прозорого скла */
+:root[data-theme='light'] .card {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme='light'] .card:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(148, 163, 184, 0.6);
+  box-shadow: 0 8px 16px rgba(20, 184, 166, 0.15);
+}

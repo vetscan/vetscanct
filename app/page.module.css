@@ -147,7 +147,7 @@ a.secondary {
   left: 2rem;
   top: 10rem;
   z-index: 100;
-  opacity: 0.09;
+  opacity: 0.14;
   pointer-events: none;
   width: 450px;
   height: 450px;
@@ -175,7 +175,7 @@ a.secondary {
   right: 2rem;
   bottom: 2rem;
   z-index: 100;
-  opacity: 0.10;
+  opacity: 0.15;
   pointer-events: none;
   width: 500px;
   height: 500px;
