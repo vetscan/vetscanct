@@ -1,4 +1,5 @@
-﻿.hero {
+﻿/* Hero секція з відео фоном */
+.hero {
   background: transparent;
   padding: 12rem 0 8rem 0;
 }
