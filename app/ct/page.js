@@ -40,6 +40,9 @@ export default function CtPage() {
                 loop
                 muted
                 playsInline
+                preload="auto"
+                disablePictureInPicture
+                disableRemotePlayback
               />
             </div>
 

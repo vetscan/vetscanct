@@ -120,24 +120,24 @@
 }
 
 .indications {
-  margin: 48px 0 40px;
-  padding: 40px 24px;
+  margin: 32px 0 24px;
+  padding: 24px 16px;
   background: #f7f1f9;
-  border-radius: 20px;
+  border-radius: 16px;
   border: 2px solid #e6d8ee;
 }
 
 .indicationsTitle {
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   color: #3a2a4d;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .indicationsLayout {
   display: grid;
-  gap: 24px;
+  gap: 16px;
   align-items: center;
 }
 
@@ -146,31 +146,31 @@
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 16px;
+  gap: 12px;
 }
 
 .indicationItem {
   position: relative;
-  min-height: 72px;
-  padding: 13.6px 17.6px 13.6px 48px;
+  min-height: 56px;
+  padding: 10px 14px 10px 40px;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   border: 2px solid #e9d7f1;
   color: #4c3a63;
-  font-size: 15.2px;
+  font-size: 13px;
   line-height: 1.4;
-  box-shadow: 0 12px 24px rgba(76, 58, 99, 0.08);
+  box-shadow: 0 8px 16px rgba(76, 58, 99, 0.06);
 }
 
 .indicationItem::before {
   content: '';
   position: absolute;
-  left: 14.4px;
+  left: 12px;
   right: auto;
   top: 50%;
   transform: translateY(-50%);
-  width: 21.6px;
-  height: 21.6px;
+  width: 18px;
+  height: 18px;
   background: #f1e6f7;
   border-radius: 50%;
   border: 2px solid #d7c5e6;
@@ -184,32 +184,56 @@
 
 .indicationsImage img {
   width: auto;
-  height: clamp(192px, 30vw, 352px);
+  height: clamp(140px, 25vw, 352px);
 }
 
 .indicationsVideo {
   width: auto;
-  height: clamp(192px, 30vw, 352px);
-  border-radius: 16px;
+  height: clamp(140px, 25vw, 352px);
+  border-radius: 12px;
   display: block;
+  background: transparent;
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
   .indications {
+    margin: 48px 0 40px;
     padding: 48px 40px;
   }
 
   .indicationsTitle {
     font-size: 30.4px;
+    margin-bottom: 32px;
   }
 
   .indicationsLayout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 240px) minmax(0, 1fr);
     min-height: 352px;
+    gap: 24px;
+  }
+
+  .indicationsList {
+    gap: 16px;
   }
 
   .indicationItem {
+    min-height: 72px;
+    padding: 13.6px 17.6px 13.6px 48px;
+    border-radius: 16px;
     font-size: 16px;
+    box-shadow: 0 12px 24px rgba(76, 58, 99, 0.08);
+  }
+
+  .indicationItem::before {
+    left: 14.4px;
+    width: 21.6px;
+    height: 21.6px;
+  }
+
+  .indicationsVideo {
+    height: clamp(192px, 30vw, 352px);
+    border-radius: 16px;
   }
 
   .indicationsList:first-of-type {
