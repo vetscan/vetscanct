@@ -16,13 +16,13 @@
 }
 
 .container {
-  max-width: 80rem; /* 1280px */
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .themeToggle {
@@ -31,7 +31,7 @@
 }
 
 /* Зменшення ThemeToggle на мобільних */
-@media (max-width: 64rem) {
+@media (max-width: 1024px) {
   .themeToggle {
     transform: scale(0.85);
   }
@@ -41,13 +41,13 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   flex-shrink: 0;
 }
 
 .logoImage {
-  width: 4rem;
-  height: 4rem;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,7 +67,7 @@
 }
 
 .logoSubtitle {
-  font-size: 0.625rem;
+  font-size: 10px;
   line-height: 1.2;
   color: var(--color-gray-900);
 }
@@ -76,25 +76,25 @@
 .address {
   display: none;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   color: var(--color-gray-900);
 }
 
 .addressIcon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
   color: var(--color-gray-400);
   flex-shrink: 0;
 }
 
 .addressLine1 {
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
 }
 
 .addressLine2 {
-  font-size: 0.875rem;
+  font-size: 14px;
   line-height: 1.2;
 }
 
@@ -102,13 +102,13 @@
 .language {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   position: relative;
 }
 
 .languageIcon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
   color: var(--color-gray-400, #94a3b8);
   flex-shrink: 0;
   display: none;
@@ -121,11 +121,11 @@
 
 .languageButton {
   width: 90px;
-  height: 2rem;
-  padding: 0 0.5rem;
-  font-size: 0.7rem;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 11.2px;
   border: 1px solid var(--border, #d9e2ec);
-  border-radius: var(--radius-md, 0.5rem);
+  border-radius: var(--radius-md, 8px);
   background: var(--surface-1, #ffffff);
   color: var(--text-primary, #0b1220);
   cursor: pointer;
@@ -134,7 +134,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.2rem;
+  gap: 3.2px;
 }
 
 .languageButton:hover {
@@ -147,8 +147,8 @@
 }
 
 .languageArrow {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 12px;
+  height: 12px;
   color: var(--color-gray-400, #94a3b8);
   transition: transform 0.2s;
   flex-shrink: 0;
@@ -160,12 +160,12 @@
 
 .languageMenu {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + 8px);
   left: 0;
   width: 100%;
   background: var(--surface-1, #ffffff);
   border: 1px solid var(--border, #d9e2ec);
-  border-radius: var(--radius-md, 0.5rem);
+  border-radius: var(--radius-md, 8px);
   box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
   overflow: hidden;
   z-index: 1000;
@@ -185,8 +185,8 @@
 
 .languageOption {
   width: 100%;
-  padding: 0.625rem 0.75rem;
-  font-size: 0.875rem;
+  padding: 10px 12px;
+  font-size: 14px;
   background: transparent;
   border: none;
   color: var(--text-primary, #0b1220);
@@ -215,18 +215,18 @@
 .phone {
   display: none;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .phoneIcon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
   color: var(--color-gray-400);
   flex-shrink: 0;
 }
 
 .phoneLabel {
-  font-size: 0.875rem;
+  font-size: 14px;
   color: var(--color-gray-900);
   line-height: 1.2;
 }
@@ -234,12 +234,12 @@
 .phoneNumber {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 4px;
 }
 
 .phoneStatus {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 8px;
+  height: 8px;
   background: var(--color-green-500, #10b981);
   border-radius: 50%;
   animation: blink 2s ease-in-out infinite;
@@ -267,20 +267,20 @@
 }
 
 .phoneNumber a {
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 700;
   color: var(--color-gray-900);
   white-space: nowrap;
 }
 
 /* Адаптив для телефонів на екранах менше 1200px */
-@media (max-width: 75rem) {
+@media (max-width: 1200px) {
   .phoneNumber a {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 
   .phoneLabel {
-    font-size: 0.75rem;
+    font-size: 12px;
   }
 }
 
@@ -289,8 +289,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   background: none;
   border: none;
   color: var(--color-gray-900);
@@ -298,19 +298,19 @@
 }
 
 .mobileMenu svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
 }
 
 /* Десктоп */
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
   .container {
-    padding: 0 2rem;
+    padding: 0 32px;
   }
 
   .logoImage {
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 120px;
+    height: 120px;
   }
 
   .logoText {
@@ -318,7 +318,7 @@
   }
 
   .logoSubtitle {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 
   .address {
@@ -331,15 +331,15 @@
 
   .languageButton {
     width: 130px;
-    height: 2.25rem;
-    padding: 0 0.75rem;
-    font-size: 0.875rem;
-    gap: 0.5rem;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 14px;
+    gap: 8px;
   }
 
   .languageArrow {
-    width: 1rem;
-    height: 1rem;
+    width: 16px;
+    height: 16px;
   }
 
   .phone {
@@ -352,10 +352,10 @@
 }
 
 /* Планшет */
-@media (min-width: 40rem) and (max-width: 64rem) {
+@media (min-width: 640px) and (max-width: 1024px) {
   .logoImage {
-    width: 5rem;
-    height: 5rem;
+    width: 80px;
+    height: 80px;
   }
 
   .logoText {
@@ -363,7 +363,7 @@
   }
 
   .logoSubtitle {
-    font-size: 0.75rem;
+    font-size: 12px;
   }
 
   .themeToggle {
@@ -376,27 +376,27 @@
 }
 
 /* Великі екрани */
-@media (min-width: 90rem) {
+@media (min-width: 1440px) {
   .container {
-    max-width: 100rem;
+    max-width: 1600px;
   }
 
   .logoImage {
-    width: 8rem;
-    height: 8rem;
+    width: 128px;
+    height: 128px;
   }
 
   .logoSubtitle {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .addressLine1,
   .addressLine2 {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .phoneNumber a {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
 }
 
@@ -405,16 +405,16 @@
 .mobileMenuPanel {
   display: block;
   position: fixed;
-  top: 5.5rem;
-  left: 1rem;
-  right: 1rem;
+  top: 88px;
+  left: 16px;
+  right: 16px;
   background: var(--surface-1, #ffffff);
   border: 1px solid var(--border, #d9e2ec);
-  border-radius: var(--radius-xl, 1.25rem);
+  border-radius: var(--radius-xl, 20px);
   box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
   z-index: 9998;
   animation: slideDown 0.3s ease-out;
-  max-height: calc(100vh - 7rem);
+  max-height: calc(100vh - 112px);
   overflow-y: auto;
 }
 
@@ -423,20 +423,20 @@
 }
 
 .mobileMenuContent {
-  padding: 1rem;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .mobileNavLink {
   display: block;
-  padding: 1rem 1.5rem;
+  padding: 16px 24px;
   background: var(--surface-2, #f7f9fc);
   border: 1px solid var(--border, #d9e2ec);
-  border-radius: var(--radius-lg, 0.75rem);
+  border-radius: var(--radius-lg, 12px);
   color: var(--text-primary, #0b1220);
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 500;
   text-align: center;
   transition: all 0.3s;
@@ -459,7 +459,7 @@
   border-color: var(--accent, #14b8a6);
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
   .mobileMenuPanel {
     display: none;
   }

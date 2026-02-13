@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   z-index: 10000 !important;
-  padding: 1rem;
+  padding: 16px;
   animation: fadeIn 0.2s ease-out;
 }
 
@@ -26,8 +26,8 @@
 /* Модальное окно */
 .modal {
   background: var(--surface-1, #ffffff);
-  border-radius: var(--radius-2xl, 1.5rem);
-  padding: 2rem;
+  border-radius: var(--radius-2xl, 24px);
+  padding: 24px;
   max-width: 500px;
   width: 100%;
   position: relative;
@@ -37,15 +37,27 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
+@media (min-width: 768px) {
+  .modal {
+    padding: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal {
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .modal {
+    padding: 48px;
+  }
+}
+
 :root[data-theme='dark'] .modal {
   background: var(--surface-1, #1a2332) !important;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
-
-@media (min-width: 48rem) {
-  .modal {
-    padding: 2.5rem;
-  }
 }
 
 @keyframes slideUp {
@@ -62,10 +74,10 @@
 /* Кнопка закрытия */
 .closeButton {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -93,39 +105,51 @@
 
 /* Заголовок */
 .title {
-  font-size: 1.5rem;
+  font-size: 20px;
   line-height: 1.2;
   font-weight: 700;
   color: #0b1220;
-  margin-bottom: 0.5rem;
-  padding-right: 2rem;
+  margin-bottom: 8px;
+  padding-right: 32px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .title {
+    font-size: 32px;
+  }
 }
 
 :root[data-theme='dark'] .title {
   color: #f1f5fa !important;
 }
 
-@media (min-width: 48rem) {
-  .title {
-    font-size: 1.75rem;
-  }
-}
-
 /* Подзаголовок */
 .subtitle {
-  font-size: 0.875rem;
+  font-size: 14px;
   line-height: 1.5;
   color: #475569;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 }
 
 :root[data-theme='dark'] .subtitle {
   color: #94a3b8 !important;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .subtitle {
-    font-size: 1rem;
+    font-size: 16px;
   }
 }
 
@@ -133,17 +157,29 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .form {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .form {
+    gap: 28px;
+  }
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .label {
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 500;
   color: #0b1220;
 }
@@ -152,9 +188,9 @@
   color: #f1f5fa !important;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .label {
-    font-size: 1rem;
+    font-size: 16px;
   }
 }
 
@@ -166,10 +202,10 @@
 .input,
 .textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   border: 1px solid #d9e2ec;
-  border-radius: 0.75rem;
-  font-size: 0.875rem;
+  border-radius: 12px;
+  font-size: 14px;
   line-height: 1.5;
   color: #0b1220;
   background: #f7f9fc;
@@ -184,11 +220,11 @@
   color: #f1f5fa !important;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .input,
   .textarea {
-    font-size: 1rem;
-    padding: 1rem 1.25rem;
+    font-size: 16px;
+    padding: 16px 20px;
   }
 }
 
@@ -217,22 +253,22 @@
 /* Кнопка отправки */
 .submitButton {
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 16px 32px;
   background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: var(--color-white, #ffffff);
   border: none;
-  border-radius: var(--radius-lg, 0.75rem);
-  font-size: 1rem;
+  border-radius: var(--radius-lg, 12px);
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
-  margin-top: 0.5rem;
+  margin-top: 8px;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .submitButton {
-    font-size: 1.125rem;
-    padding: 1.25rem 2rem;
+    font-size: 18px;
+    padding: 20px 32px;
   }
 }
 

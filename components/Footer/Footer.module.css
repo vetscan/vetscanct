@@ -1,15 +1,15 @@
 .footer {
   background: var(--footer-bg, linear-gradient(135deg, #0f766e 0%, #2dd4bf 100%));
   color: var(--color-white, #ffffff);
-  padding: 2rem 0 1rem;
+  padding: 32px 0 16px;
   position: relative;
   overflow: hidden;
  
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .footer {
-    padding: 3rem 0 1.5rem;
+    padding: 48px 0 24px;
   }
 }
 
@@ -85,43 +85,50 @@
 }
 
 .container {
-  max-width: 80rem;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
   position: relative;
   z-index: 1;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 640px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 24px;
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
   .container {
-    padding: 0 2rem;
+    padding: 0 32px;
   }
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 40px;
+  margin-bottom: 32px;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .grid {
+    gap: 48px;
   }
 }
 
@@ -130,17 +137,53 @@
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  .column {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .column:first-child {
+    order: 1;
+  }
+  
+  .column:nth-child(2) {
+    order: 2;
+  }
+  
+  .column:nth-child(3) {
+    order: 4;
+  }
+  
+  .column:nth-child(4) {
+    order: 3;
+  }
+}
+
 /* Логотип секція */
 .logoSection {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .logoSection {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logoSection {
+    margin-bottom: 24px;
+  }
 }
 
 .logoCircle {
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,36 +203,63 @@
 }
 
 .logoTitle {
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .logoSubtitle {
-  font-size: 0.85rem;
+  font-size: 13.6px;
   line-height: 1.3;
   opacity: 0.95;
 }
 
 .description {
-  font-size: 0.875rem;
+  font-size: 13px;
   line-height: 1.5;
   opacity: 0.95;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .description {
+    font-size: 15px;
+  }
 }
 
 .appointmentBtn {
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
+  margin-top: 16px;
+  padding: 12px 24px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-md, 0.5rem);
+  border-radius: var(--radius-md, 8px);
   color: var(--color-white, #ffffff);
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
   width: fit-content;
+}
+
+@media (min-width: 768px) {
+  .appointmentBtn {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .appointmentBtn {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
 }
 
 .appointmentBtn:hover {
@@ -198,10 +268,24 @@
 
 /* Заголовки колонок */
 .columnTitle {
-  font-size: 1.125rem;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .columnTitle {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .columnTitle {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
 }
 
 /* Контакти */
@@ -209,33 +293,118 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .contactList {
+    align-items: center;
+  }
 }
 
 .contactItem {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.875rem;
+  gap: 8px;
+  font-size: 14px;
   opacity: 0.95;
   line-height: 1.5;
 }
 
 .contactIcon {
   flex-shrink: 0;
-  margin-top: 0.125rem;
+  margin-top: 2px;
 }
 
 /* Послуги */
+.servicesToggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .servicesToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md, 8px);
+    color: var(--color-white, #ffffff);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 8px;
+  }
+  
+  .servicesToggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.toggleIcon {
+  transition: transform 0.3s;
+}
+
+.toggleIconOpen {
+  transform: rotate(180deg);
+}
+
+.columnTitleDesktop {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .columnTitleDesktop {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .columnTitleDesktop {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .columnTitleDesktop {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+}
+
 .linkList {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .linkList {
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  
+  .linkListOpen {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 8px;
+  }
 }
 
 .linkList a {
-  font-size: 0.875rem;
+  font-size: 14px;
   opacity: 0.95;
   transition: opacity 0.3s;
   line-height: 1.5;
@@ -251,15 +420,28 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .scheduleList {
+    align-items: center;
+  }
 }
 
 .scheduleItem {
   display: flex;
   justify-content: space-between;
-  font-size: 0.875rem;
+  font-size: 14px;
   opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  .scheduleItem {
+    justify-content: center;
+    gap: 8px;
+  }
 }
 
 .scheduleDay {
@@ -273,12 +455,24 @@
 
 /* Нижня частина */
 .bottom {
-  padding-top: 1.5rem;
+  padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }
 
+@media (min-width: 768px) {
+  .bottom {
+    padding-top: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bottom {
+    padding-top: 40px;
+  }
+}
+
 .copyright {
-  font-size: 0.875rem;
+  font-size: 14px;
   opacity: 0.8;
 }

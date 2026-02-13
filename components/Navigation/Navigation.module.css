@@ -1,44 +1,44 @@
 .nav {
   display: none;
-  margin-top: 11rem;
-  margin-bottom: 5rem;
-  padding: 1.25rem 0 2rem 0;
+  margin-top: 176px;
+  margin-bottom: 80px;
+  padding: 20px 0 32px 0;
   background: transparent;
   backdrop-filter: blur(10px);
 }
 
 /* Мобільні екрани */
-@media (max-width: 48rem) {
+@media (max-width: 768px) {
   .nav {
-    margin-top: 10rem;
-    margin-bottom: 2rem;
+    margin-top: 160px;
+    margin-bottom: 32px;
   }
 }
 
 .container {
-  max-width: 80rem;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .navItem {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  font-size: 0.75rem;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 12px;
   font-weight: 500;
-  line-height: 1.5rem;
+  line-height: 24px;
   color: var(--color-gray-900, #0b1220);
   background: rgba(255, 255, 255, 0.15);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-xl, 1.25rem);
+  border-radius: var(--radius-xl, 20px);
   transition: all 0.3s;
   white-space: nowrap;
   height: auto;
@@ -54,8 +54,8 @@
 }
 
 .arrow {
-  width: 1rem;
-  height: 1rem;
+  width: 16px;
+  height: 16px;
   color: var(--color-gray-400);
   transition: transform 0.3s;
 }
@@ -67,15 +67,15 @@
 .appointmentBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  gap: 8px;
+  padding: 12px 16px;
   background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: var(--color-white, #ffffff);
   border: none;
-  border-radius: var(--radius-xl, 1.25rem);
-  font-size: 0.875rem;
+  border-radius: var(--radius-xl, 20px);
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.5rem;
+  line-height: 24px;
   cursor: pointer;
   transition: all 1s;
 }
@@ -86,9 +86,9 @@
 }
 
 .appointmentBtn svg {
-  width: 1rem;
-  height: 1rem;
-  margin-bottom: 0.25rem;
+  width: 16px;
+  height: 16px;
+  margin-bottom: 4px;
   color: var(--color-white);
 }
 
@@ -98,78 +98,78 @@
 }
 
 /* Десктоп */
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
   .nav {
     display: block;
   }
 
   .container {
-    padding: 0 2rem;
+    padding: 0 32px;
     justify-content: space-between;
   }
 
   .navItem {
-    padding: 0.75rem 2rem;
-    font-size: 0.875rem;
+    padding: 12px 32px;
+    font-size: 14px;
   }
 
   .appointmentBtn {
-    padding: 0.875rem 1rem;
-    font-size: 1rem;
+    padding: 14px 16px;
+    font-size: 16px;
   }
 }
 
 /* Планшет */
-@media (min-width: 48rem) and (max-width: 64rem) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .nav {
     display: block;
-    margin-top: 8rem;
+    margin-top: 128px;
   }
 
   .container {
-    padding: 0 1.5rem;
+    padding: 0 24px;
   }
 
   .navItem {
-    padding: 0.625rem 1.5rem;
-    font-size: 0.8rem;
+    padding: 10px 24px;
+    font-size: 12.8px;
   }
 
   .appointmentBtn {
     width: 100%;
     justify-content: center;
-    margin-top: 0.5rem;
+    margin-top: 8px;
   }
 }
 
 /* Адаптив для екранів менше 1100px */
-@media (max-width: 68.75rem) {
+@media (max-width: 1100px) {
   .container {
     justify-content: center;
   }
 
   .appointmentBtn {
     width: 100%;
-    max-width: 20rem;
+    max-width: 320px;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 24px;
   }
 }
 
 /* Великі екрани */
-@media (min-width: 90rem) {
+@media (min-width: 1440px) {
   .container {
-    max-width: 100rem;
+    max-width: 1600px;
   }
 
   .navItem {
-    padding: 0.875rem 2.5rem;
-    font-size: 1rem;
+    padding: 14px 40px;
+    font-size: 16px;
   }
 
   .appointmentBtn {
-    padding: 1rem 1.5rem;
-    font-size: 1.125rem;
+    padding: 16px 24px;
+    font-size: 18px;
   }
 }
 

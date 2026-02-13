@@ -1,59 +1,122 @@
 ﻿.section {
-  padding: 5rem 0;
+  padding: 32px 0;
   background: var(--color-gray-50, #f1f5fa);
 }
 
-.container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 40rem) {
-  .container {
-    padding: 0 1.5rem;
+@media (min-width: 768px) {
+  .section {
+    padding: 48px 0;
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
+  .section {
+    padding: 64px 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    padding: 80px 0;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 640px) {
   .container {
-    padding: 0 2rem;
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 32px;
   }
 }
 
 .title {
-  padding-top: 10rem;
-  margin-bottom: 2rem;
-  font-size: 1.875rem;
+  padding-top: 80px;
+  margin-bottom: 24px;
+  font-size: 24px;
   line-height: 1.2;
   font-weight: 700;
   text-align: center;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .title {
-    font-size: 3.75rem;
-    line-height: 1;
-    margin-bottom: 4rem;
+    padding-top: 32px;
+    font-size: 40px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    padding-top: 48px;
+    font-size: 56px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .title {
+    padding-top: 64px;
+    font-size: 60px;
+    margin-bottom: 48px;
   }
 }
 
 .description {
-  margin-bottom: 2rem;
-  max-width: 64rem;
+  margin-bottom: 24px;
+  max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  padding: 0 16px;
 }
 
 .description p {
-  font-size: 1.125rem;
-  line-height: 1.625;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--color-gray-600);
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
+  .description {
+    margin-bottom: 32px;
+    padding: 0 24px;
+  }
+  
   .description p {
-    font-size: 1.25rem;
+    font-size: 18px;
+    line-height: 1.625;
+  }
+}
+
+@media (min-width: 1024px) {
+  .description {
+    margin-bottom: 40px;
+    padding: 0 32px;
+  }
+  
+  .description p {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .description {
+    margin-bottom: 48px;
+  }
+  
+  .description p {
+    font-size: 22px;
+    line-height: 1.7;
   }
 }

@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Footer.module.css';
@@ -5,6 +8,7 @@ import content from '@/data/siteContent.json';
 
 export default function Footer() {
   const { footer } = content;
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   return (
     <footer className={styles.footer}>
@@ -68,8 +72,27 @@ export default function Footer() {
 
           {/* Колонка 3 - Услуги */}
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Послуги</h4>
-            <ul className={styles.linkList}>
+            <button 
+              className={styles.servicesToggle}
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              aria-expanded={isServicesOpen}
+            >
+              <span>Послуги</span>
+              <svg 
+                className={`${styles.toggleIcon} ${isServicesOpen ? styles.toggleIconOpen : ''}`}
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+              >
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <h4 className={styles.columnTitleDesktop}>Послуги</h4>
+            <ul className={`${styles.linkList} ${isServicesOpen ? styles.linkListOpen : ''}`}>
               {footer.services.map((service) => (
                 <li key={service.href}><Link href={service.href}>{service.label}</Link></li>
               ))}

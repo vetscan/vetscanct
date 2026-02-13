@@ -8,8 +8,58 @@ export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [slidesPerView, setSlidesPerView] = useState(3);
+  const [maxHeight, setMaxHeight] = useState(null);
   const autoPlayRef = useRef(null);
+  const cardsRef = useRef([]);
   const { testimonials } = content;
+
+  // Определяем количество видимых слайдов в зависимости от ширины экрана
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      if (window.innerWidth <= 550) {
+        setSlidesPerView(1); // 1 карточка на очень маленьких экранах
+      } else if (window.innerWidth <= 768) {
+        setSlidesPerView(2); // 2 карточки на мобильных
+      } else if (window.innerWidth <= 1024) {
+        setSlidesPerView(2); // 2 карточки на планшетах
+      } else {
+        setSlidesPerView(3); // 3 карточки на десктопе
+      }
+    };
+
+    updateSlidesPerView();
+    window.addEventListener('resize', updateSlidesPerView);
+    return () => window.removeEventListener('resize', updateSlidesPerView);
+  }, []);
+
+  // Вычисляем максимальную высоту карточек
+  useEffect(() => {
+    const calculateMaxHeight = () => {
+      if (cardsRef.current.length > 0) {
+        // Сбрасываем высоту для правильного измерения
+        cardsRef.current.forEach(card => {
+          if (card) card.style.height = 'auto';
+        });
+        
+        // Небольшая задержка для корректного измерения
+        setTimeout(() => {
+          // Находим максимальную высоту
+          const heights = cardsRef.current
+            .filter(card => card !== null)
+            .map(card => card.offsetHeight);
+          const max = Math.max(...heights);
+          setMaxHeight(max);
+        }, 50);
+      }
+    };
+
+    // Задержка для корректного измерения после рендера
+    setTimeout(calculateMaxHeight, 100);
+    
+    window.addEventListener('resize', calculateMaxHeight);
+    return () => window.removeEventListener('resize', calculateMaxHeight);
+  }, [testimonials, slidesPerView]); // Добавил slidesPerView в зависимости
 
   // Дублируем отзывы для бесшовной прокрутки
   const extendedTestimonials = [...testimonials.items, ...testimonials.items, ...testimonials.items];
@@ -72,13 +122,17 @@ export default function Testimonials() {
             <div 
               className={styles.carouselTrack}
               style={{ 
-                transform: `translateX(calc(-${currentIndex * 100 / 3}% - ${currentIndex * 0.5}rem))`,
+                transform: `translateX(calc(-${currentIndex * 100 / slidesPerView}% - ${currentIndex * (slidesPerView === 3 ? 0.5 : slidesPerView === 2 ? 0.5 : 0)}rem))`,
                 transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none'
               }}
             >
               {extendedTestimonials.map((testimonial, index) => (
                 <div key={`${testimonial.id}-${index}`} className={styles.slide}>
-                  <div className={styles.card}>
+                  <div 
+                    ref={el => cardsRef.current[index] = el}
+                    className={styles.card}
+                    style={{ height: maxHeight ? `${maxHeight}px` : 'auto' }}
+                  >
                     <div className={styles.header}>
                       <h3 className={styles.name}>{testimonial.name}</h3>
                       <div className={styles.rating}>

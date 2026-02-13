@@ -1,98 +1,182 @@
 ﻿.section {
-  padding: 5rem 0;
+  padding: 32px 0;
   background: var(--color-gray-50, #f1f5fa);
 }
 
-.container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 40rem) {
-  .container {
-    padding: 0 1.5rem;
+@media (max-width: 768px) {
+  .section {
+    padding: 32px 0 64px 0;
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 768px) {
+  .section {
+    padding: 48px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 64px 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    padding: 80px 0;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 640px) {
   .container {
-    padding: 0 2rem 5rem 2rem;
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 32px 80px 32px;
   }
 }
 
 .title {
-  padding-top: 3rem;
-  margin-bottom: 3rem;
-  font-size: 1.875rem;
+  padding-top: 16px;
+  margin-bottom: 32px;
+  font-size: 24px;
   line-height: 1.2;
   font-weight: 700;
   text-align: left;
   color: var(--color-gray-900);
 }
 
-@media (min-width: 48rem) {
+@media (max-width: 768px) {
   .title {
-    font-size: 3rem;
-    margin-bottom: 4rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    padding-top: 24px;
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    padding-top: 32px;
+    font-size: 48px;
+    margin-bottom: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .title {
+    padding-top: 40px;
+    font-size: 56px;
+    margin-bottom: 56px;
   }
 }
 
 .content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 24px;
 }
 
-@media (min-width: 48rem) {
+@media (max-width: 768px) {
+  .content {
+    justify-items: center;
+  }
+}
+
+@media (min-width: 768px) {
   .content {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    gap: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .content {
+    gap: 56px;
   }
 }
 
 .block {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .block {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .label {
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--color-gray-500);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .label {
-    font-size: 1.125rem;
+    font-size: 18px;
   }
 }
 
 .arrow {
-  width: 1rem;
-  height: 1rem;
+  width: 16px;
+  height: 16px;
   color: var(--color-gray-400);
 }
 
 .phone {
-  font-size: 1.5rem;
+  font-size: 20px;
   line-height: 1.2;
   font-weight: 600;
   color: var(--color-gray-900);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   transition: color 0.3s;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .phone {
-    font-size: 2rem;
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .phone {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .phone {
+    font-size: 36px;
   }
 }
 
@@ -102,7 +186,7 @@
 
 .dot {
   color: var(--color-green-500, #10b981);
-  font-size: 2rem;
+  font-size: 32px;
   line-height: 1;
   animation: blink 2s ease-in-out infinite;
 }
@@ -130,23 +214,37 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
+  gap: 12px;
+  padding: 14px 28px;
   background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
   color: var(--color-white, #ffffff);
   border: none;
-  border-radius: var(--radius-xl, 1.25rem);
-  font-size: 1rem;
+  border-radius: var(--radius-xl, 20px);
+  font-size: 15.2px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
   width: fit-content;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .button {
-    font-size: 1.125rem;
-    padding: 1.25rem 2.5rem;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .button {
+    font-size: 18px;
+    padding: 20px 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .button {
+    font-size: 20px;
+    padding: 22px 44px;
   }
 }
 
@@ -157,7 +255,7 @@
 }
 
 .button svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
 }
 

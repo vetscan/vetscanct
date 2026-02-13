@@ -1,47 +1,47 @@
 ﻿.section {
-  padding: 0 0 5rem 0;
+  padding: 0 0 80px 0;
   background: var(--color-gray-50, #f1f5fa);
 }
 
 .container {
-  max-width: 80rem;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 640px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 24px;
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
   .container {
-    padding: 0 2rem;
+    padding: 0 32px;
   }
 }
 
 .title {
-  margin-top: 10rem;
-  margin-bottom: 6rem;
-  font-size: 1.875rem;
+  margin-top: 9%;
+  margin-bottom: 7%;
+  font-size: 30px;
   line-height: 1.2;
   font-weight: 700;
   text-align: center;
 }
 
 /* Мобільні екрани */
-@media (max-width: 48rem) {
+@media (max-width: 768px) {
   .title {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    font-size: 1.5rem;
+    margin-top: 32px;
+    margin-bottom: 48px;
+    font-size: 24px;
   }
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
   .title {
-    font-size: 3.75rem;
+    font-size: 60px;
     line-height: 1;
   }
 }
@@ -49,22 +49,22 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 24px;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 80rem) {
+@media (min-width: 1280px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -78,12 +78,26 @@
   justify-content: space-between;
   background: var(--surface-1, #ffffff);
   border: 1px solid var(--border, #d9e2ec);
-  border-radius: var(--radius-2xl, 1.5rem);
-  padding: 1.5rem;
-  height: 8rem;
+  border-radius: var(--radius-2xl, 24px);
+  padding: 20px;
+  height: 112px;
   box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
   transition: all 0.3s;
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 24px;
+    height: 128px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .card {
+    padding: 32px;
+    height: 144px;
+  }
 }
 
 .card:hover {
@@ -93,10 +107,10 @@
 
 .arrow {
   position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  width: 2.4rem;
-  height: 2.4rem;
+  bottom: 8px;
+  right: 8px;
+  width: 38.4px;
+  height: 38.4px;
   border-radius: 50%;
   background: var(--color-gray-200, #e5e7eb);
   display: flex;
@@ -119,8 +133,8 @@
 }
 
 .pawIcon {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 41.6px;
+  height: 41.6px;
   transition: all 0.3s;
   filter: grayscale(0);
 }
@@ -131,8 +145,8 @@
 }
 
 .pawIconWhite {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 41.6px;
+  height: 41.6px;
   transition: all 0.3s;
   filter: brightness(0) invert(1);
 }
@@ -143,8 +157,8 @@
 }
 
 .arrowCircle {
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
   background: var(--surface-2, #f7f9fc);
   border-radius: 50%;
   display: flex;
@@ -158,8 +172,8 @@
 }
 
 .arrowCircle svg {
-  width: 1rem;
-  height: 1rem;
+  width: 16px;
+  height: 16px;
   color: var(--text-primary, #0b1220);
   transition: all 0.3s;
 }
@@ -174,11 +188,23 @@
 }
 
 .cardTitle {
-  font-size: 1.125rem;
+  font-size: 16px;
   line-height: 1.25;
   font-weight: 600;
   color: var(--color-gray-900);
   transition: color 0.3s;
+}
+
+@media (min-width: 768px) {
+  .cardTitle {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .cardTitle {
+    font-size: 20px;
+  }
 }
 
 .card:hover .cardTitle {
@@ -193,12 +219,26 @@
   justify-content: space-between;
   background: linear-gradient(135deg, #14b8a560 0%, #5eead58b 100%);
   border: none;
-  border-radius: var(--radius-2xl, 1.5rem);
-  padding: 1.5rem;
-  height: 8rem;
+  border-radius: var(--radius-2xl, 24px);
+  padding: 20px;
+  height: 112px;
   box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
   transition: all 0.3s;
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .specialCard {
+    padding: 24px;
+    height: 128px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .specialCard {
+    padding: 32px;
+    height: 144px;
+  }
 }
 
 .specialCard:hover {
@@ -206,8 +246,8 @@
 }
 
 .arrowCircleWhite {
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
@@ -221,8 +261,8 @@
 }
 
 .arrowCircleWhite svg {
-  width: 1rem;
-  height: 1rem;
+  width: 16px;
+  height: 16px;
   color: var(--color-white);
   transition: all 0.3s;
 }
@@ -238,14 +278,14 @@
 }
 
 .specialCardTitle {
-  font-size: 1.125rem;
+  font-size: 18px;
   line-height: 1.25;
   font-weight: 600;
   transition: color 0.3s;
 }
 
 .specialCardTitleBold {
-  font-size: 1.125rem;
+  font-size: 18px;
   line-height: 1.25;
   font-weight: 700;
   transition: color 0.3s;
