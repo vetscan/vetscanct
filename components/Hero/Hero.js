@@ -13,17 +13,55 @@ export default function Hero() {
   // Принудительный запуск видео на мобильных
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      // Попытка запустить видео
-      const playPromise = video.play();
+    if (!video) return;
+
+    // Функция для запуска видео
+    const playVideo = () => {
+      video.muted = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
       
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          // Автозапуск заблокирован - это нормально для некоторых браузеров
-          console.log('Автозапуск видео заблокирован:', error);
-        });
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise
+          .then(() => {
+            console.log('✅ Видео запущено успешно');
+          })
+          .catch((error) => {
+            console.log('❌ Ошибка запуска видео:', error);
+            // Попробуем еще раз через секунду
+            setTimeout(() => {
+              video.play().catch(e => console.log('Повторная попытка не удалась:', e));
+            }, 1000);
+          });
       }
+    };
+
+    // Запуск при загрузке
+    if (video.readyState >= 3) {
+      playVideo();
+    } else {
+      video.addEventListener('loadeddata', playVideo, { once: true });
     }
+
+    // Запуск при любом взаимодействии пользователя
+    const events = ['touchstart', 'touchend', 'click', 'scroll'];
+    const handleInteraction = () => {
+      playVideo();
+      events.forEach(event => {
+        document.removeEventListener(event, handleInteraction);
+      });
+    };
+
+    events.forEach(event => {
+      document.addEventListener(event, handleInteraction, { once: true, passive: true });
+    });
+
+    return () => {
+      events.forEach(event => {
+        document.removeEventListener(event, handleInteraction);
+      });
+    };
   }, []);
 
   return (
@@ -39,10 +77,14 @@ export default function Hero() {
               loop
               muted
               playsInline
-              preload="auto"
-              webkit-playsinline="true"
+              preload="metadata"
+              poster="/cat.png"
+              disablePictureInPicture
+              disableRemotePlayback
+              x-webkit-airplay="deny"
             >
               <source src="/logo_video.mp4" type="video/mp4" />
+              Ваш браузер не поддерживает видео.
             </video>
 
             {/* Контент поверх видео */}
