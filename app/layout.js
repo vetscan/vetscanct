@@ -16,6 +16,25 @@ const montserrat = Montserrat({
 export const metadata = {
   title: "Neuroscan - Центр ендоскопічної нейрохірургії",
   description: "Професійна медична допомога з використанням найсучасніших технологій",
+  // Цвет строки браузера (темный, как у сайта)
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#0f1729' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f1729' }
+  ],
+  // Мета-теги для iOS
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Neuroscan'
+  },
+  // Viewport для мобильных
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: 'cover'
+  }
 };
 
 export default function RootLayout({ children }) {

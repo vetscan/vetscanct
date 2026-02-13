@@ -1,13 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './Hero.module.css';
 import content from '@/data/siteContent.json';
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const videoRef = useRef(null);
   const { hero } = content;
+
+  // Принудительный запуск видео на мобильных
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Попытка запустить видео
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          // Автозапуск заблокирован - это нормально для некоторых браузеров
+          console.log('Автозапуск видео заблокирован:', error);
+        });
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -16,11 +33,14 @@ export default function Hero() {
           <div className={styles.content}>
             {/* Видео фон */}
             <video 
+              ref={videoRef}
               className={styles.videoBackground}
-              autoPlay 
-              loop 
-              muted 
+              autoPlay
+              loop
+              muted
               playsInline
+              preload="auto"
+              webkit-playsinline="true"
             >
               <source src="/logo_video.mp4" type="video/mp4" />
             </video>
