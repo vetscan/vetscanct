@@ -78,7 +78,6 @@ export default function Hero() {
               muted
               playsInline
               preload="metadata"
-              poster="/cat.png"
               disablePictureInPicture
               disableRemotePlayback
               x-webkit-airplay="deny"
