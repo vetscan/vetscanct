@@ -166,7 +166,7 @@
 }
 
 .logoSubtitle {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   line-height: 1.3;
   opacity: 0.95;
 }
@@ -268,24 +268,7 @@
 
 .scheduleTime {
   opacity: 0.9;
-}
-
-.doctorInfo {
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.doctorTitle {
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.doctorSchedule,
-.doctorLocation {
-  font-size: 0.875rem;
-  opacity: 0.9;
-  line-height: 1.5;
+  white-space: nowrap;
 }
 
 /* Нижня частина */

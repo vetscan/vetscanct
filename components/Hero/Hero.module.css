@@ -3,7 +3,14 @@
   background: transparent;
   margin-top: 8rem;
   padding: 0 0 4rem 0;
- 
+}
+
+/* Мобільні екрани */
+@media (max-width: 48rem) {
+  .hero {
+    margin-top: 9rem;
+    padding: 0 0 3rem 0;
+  }
 }
 
 .container {
@@ -63,15 +70,28 @@
 
 .title {
   margin-bottom: 1.5rem;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   line-height: 1.2;
   font-weight: 700;
 }
 
 @media (min-width: 48rem) {
   .title {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .title {
     font-size: 4.5rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 90rem) {
+  .title {
+    font-size: 5rem;
   }
 }
 
@@ -81,13 +101,25 @@
 
 .subtitle p {
   color: var(--hero-text, #ffffff);
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 
 @media (min-width: 48rem) {
   .subtitle p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .subtitle p {
     font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 90rem) {
+  .subtitle p {
+    font-size: 1.25rem;
   }
 }
 

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './Prices.module.css';
 import content from '@/data/siteContent.json';
 
@@ -26,12 +25,9 @@ export default function Prices() {
                 ))}
               </ul>
               
-              <Link href="/prices" className={styles.link}>
-                <span className={styles.linkText}>{prices.linkText}</span>
-                <div className={styles.arrowCircle}>
-                  <img src="/paw.png" alt="paw" className={styles.pawIcon} />
-                </div>
-              </Link>
+              <div className={styles.arrowCircle}>
+                <img src="/paw.png" alt="paw" className={styles.pawIcon} />
+              </div>
             </div>
           ))}
         </div>

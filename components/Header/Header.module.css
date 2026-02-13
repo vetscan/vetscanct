@@ -30,6 +30,13 @@
   align-items: center;
 }
 
+/* Зменшення ThemeToggle на мобільних */
+@media (max-width: 64rem) {
+  .themeToggle {
+    transform: scale(0.85);
+  }
+}
+
 /* Логотип */
 .logo {
   display: flex;
@@ -39,8 +46,8 @@
 }
 
 .logoImage {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,13 +61,13 @@
 }
 
 .logoText {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
 }
 
 .logoSubtitle {
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   line-height: 1.2;
   color: var(--color-gray-900);
 }
@@ -93,7 +100,7 @@
 
 /* Мова */
 .language {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;
@@ -104,6 +111,7 @@
   height: 1.25rem;
   color: var(--color-gray-400, #94a3b8);
   flex-shrink: 0;
+  display: none;
 }
 
 /* Кастомний дропдаун */
@@ -112,10 +120,10 @@
 }
 
 .languageButton {
-  width: 130px;
-  height: 2.25rem;
-  padding: 0 0.75rem;
-  font-size: 0.875rem;
+  width: 90px;
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
   border: 1px solid var(--border, #d9e2ec);
   border-radius: var(--radius-md, 0.5rem);
   background: var(--surface-1, #ffffff);
@@ -126,7 +134,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.2rem;
 }
 
 .languageButton:hover {
@@ -139,8 +147,8 @@
 }
 
 .languageArrow {
-  width: 1rem;
-  height: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
   color: var(--color-gray-400, #94a3b8);
   transition: transform 0.2s;
   flex-shrink: 0;
@@ -265,6 +273,17 @@
   white-space: nowrap;
 }
 
+/* Адаптив для телефонів на екранах менше 1200px */
+@media (max-width: 75rem) {
+  .phoneNumber a {
+    font-size: 0.875rem;
+  }
+
+  .phoneLabel {
+    font-size: 0.75rem;
+  }
+}
+
 /* Мобільне меню */
 .mobileMenu {
   display: flex;
@@ -294,6 +313,10 @@
     height: 7.5rem;
   }
 
+  .logoText {
+    display: flex;
+  }
+
   .logoSubtitle {
     font-size: 0.875rem;
   }
@@ -302,8 +325,21 @@
     display: flex;
   }
 
-  .language {
-    display: flex;
+  .languageIcon {
+    display: block;
+  }
+
+  .languageButton {
+    width: 130px;
+    height: 2.25rem;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    gap: 0.5rem;
+  }
+
+  .languageArrow {
+    width: 1rem;
+    height: 1rem;
   }
 
   .phone {
@@ -311,6 +347,120 @@
   }
 
   .mobileMenu {
+    display: none;
+  }
+}
+
+/* Планшет */
+@media (min-width: 40rem) and (max-width: 64rem) {
+  .logoImage {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .logoText {
+    display: flex;
+  }
+
+  .logoSubtitle {
+    font-size: 0.75rem;
+  }
+
+  .themeToggle {
+    order: 1;
+  }
+
+  .mobileMenu {
+    order: 2;
+  }
+}
+
+/* Великі екрани */
+@media (min-width: 90rem) {
+  .container {
+    max-width: 100rem;
+  }
+
+  .logoImage {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .logoSubtitle {
+    font-size: 1rem;
+  }
+
+  .addressLine1,
+  .addressLine2 {
+    font-size: 1rem;
+  }
+
+  .phoneNumber a {
+    font-size: 1.25rem;
+  }
+}
+
+
+/* Мобільне меню панель */
+.mobileMenuPanel {
+  display: block;
+  position: fixed;
+  top: 5.5rem;
+  left: 1rem;
+  right: 1rem;
+  background: var(--surface-1, #ffffff);
+  border: 1px solid var(--border, #d9e2ec);
+  border-radius: var(--radius-xl, 1.25rem);
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
+  z-index: 9998;
+  animation: slideDown 0.3s ease-out;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+}
+
+:root[data-theme='dark'] .mobileMenuPanel {
+  background: var(--surface-1, #1a2634);
+}
+
+.mobileMenuContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 1rem 1.5rem;
+  background: var(--surface-2, #f7f9fc);
+  border: 1px solid var(--border, #d9e2ec);
+  border-radius: var(--radius-lg, 0.75rem);
+  color: var(--text-primary, #0b1220);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.mobileNavLink:hover {
+  background: var(--accent, #14b8a6);
+  color: var(--color-white, #ffffff);
+  border-color: var(--accent, #14b8a6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+:root[data-theme='dark'] .mobileNavLink {
+  background: var(--surface-2, #223042);
+}
+
+:root[data-theme='dark'] .mobileNavLink:hover {
+  background: var(--accent, #14b8a6);
+  border-color: var(--accent, #14b8a6);
+}
+
+@media (min-width: 64rem) {
+  .mobileMenuPanel {
     display: none;
   }
 }

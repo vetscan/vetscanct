@@ -11,6 +11,7 @@ export default function Header() {
   const { header } = content;
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(header.languageOptions[0]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLanguageSelect = (option) => {
     setSelectedLanguage(option);
@@ -115,15 +116,43 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Мобільне меню */}
-        <button className={styles.mobileMenu}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4 12h16"></path>
-            <path d="M4 18h16"></path>
-            <path d="M4 6h16"></path>
-          </svg>
+        {/* Мобільне меню кнопка */}
+        <button 
+          className={styles.mobileMenu}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 12h16"></path>
+              <path d="M4 18h16"></path>
+              <path d="M4 6h16"></path>
+            </svg>
+          )}
         </button>
       </div>
+
+      {/* Мобільне меню панель */}
+      {isMobileMenuOpen && (
+        <div className={styles.mobileMenuPanel}>
+          <div className={styles.mobileMenuContent}>
+            {content.navigation.items.map((item) => (
+              <Link 
+                key={item.href} 
+                href={item.href} 
+                className={styles.mobileNavLink}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

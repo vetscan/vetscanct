@@ -52,6 +52,7 @@
 }
 
 .card {
+  position: relative;
   background: var(--surface-1, #ffffff);
   border-radius: var(--radius-2xl, 1.5rem);
   padding: 2rem;
@@ -154,6 +155,9 @@
 }
 
 .arrowCircle {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
   width: 2.4rem;
   height: 2.4rem;
   background: var(--color-gray-200, #e5e7eb);
@@ -175,7 +179,6 @@
 
 .card:hover .arrowCircle {
   background: var(--accent, #14b8a6);
-  transform: translateX(4px);
 }
 
 .card:hover .pawIcon {
