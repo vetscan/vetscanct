@@ -193,7 +193,11 @@
   border-radius: 12px;
   display: block;
   background: transparent;
+  background-color: transparent;
   object-fit: contain;
+  /* Фикс для iOS Safari - прозрачный фон */
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 
 @media (min-width: 768px) {

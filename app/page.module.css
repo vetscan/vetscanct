@@ -237,14 +237,16 @@ a.secondary {
   .watermarkTop {
     width: 500px;
     height: 500px;
-    left: 48px;
+    /* Ограничиваем смещение: не дальше чем calc(50% - 800px) от центра */
+    left: max(48px, calc(50% - 800px));
     top: 192px;
   }
   
   .watermarkBottom {
     width: 550px;
     height: 550px;
-    right: 48px;
+    /* Ограничиваем смещение: не дальше чем calc(50% - 800px) от центра */
+    right: max(48px, calc(50% - 800px));
     bottom: 48px;
   }
 }
