@@ -180,7 +180,8 @@
 .indicationsImage {
   display: flex;
   justify-content: center;
-  background: transparent;
+  background: #f7f1f9;
+  border-radius: 12px;
 }
 
 .indicationsImage img {
@@ -194,9 +195,6 @@
   border-radius: 12px;
   display: block;
   object-fit: contain;
-  /* Фикс для iOS Safari - убираем черный фон */
-  mix-blend-mode: multiply;
-  isolation: isolate;
 }
 
 @media (min-width: 768px) {
