@@ -1,12 +1,15 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
 import ContactForm from '@/components/ContactForm/ContactForm';
-import content from '@/data/siteContent.json';
 
 export default function AppointmentPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pageData = t('pages.appointment');
 
   return (
-    <PageShell title={pages.appointment.title} subtitle={pages.appointment.subtitle}>
+    <PageShell title={pageData.title} subtitle={pageData.subtitle}>
       <ContactForm />
     </PageShell>
   );

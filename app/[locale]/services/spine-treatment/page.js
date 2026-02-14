@@ -1,10 +1,13 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
-import content from '@/data/siteContent.json';
 
 export default function ServicesSpineTreatmentPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pageData = t('pages.services.spineTreatment');
 
   return (
-    <PageShell title={pages.services.spineTreatment.title} subtitle={pages.services.spineTreatment.subtitle} />
+    <PageShell title={pageData.title} subtitle={pageData.subtitle} />
   );
 }

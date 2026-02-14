@@ -1,10 +1,13 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
-import content from '@/data/siteContent.json';
 
 export default function ServicesVertebroplastyPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pageData = t('pages.services.vertebroplasty');
 
   return (
-    <PageShell title={pages.services.vertebroplasty.title} subtitle={pages.services.vertebroplasty.subtitle} />
+    <PageShell title={pageData.title} subtitle={pageData.subtitle} />
   );
 }

@@ -57,9 +57,13 @@
   transform: translateX(0);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .title {
     transform: translateX(-50px);
+  }
+  
+  .titleVisible {
+    transform: translateX(0);
   }
 }
 
@@ -94,6 +98,15 @@
   margin-right: auto;
   text-align: center;
   padding: 0 16px;
+  /* Начальное состояние анимации */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
+}
+
+.descriptionVisible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .description p {

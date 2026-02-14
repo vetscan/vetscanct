@@ -41,13 +41,17 @@
 }
 
 /* Мобільні екрани */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .title {
     margin-top: 32px;
     margin-bottom: 48px;
     font-size: 24px;
     /* На мобильных меньше смещение */
     transform: translateX(-50px);
+  }
+  
+  .titleVisible {
+    transform: translateX(0);
   }
 }
 
@@ -96,6 +100,16 @@
   box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
   transition: all 0.3s;
   cursor: pointer;
+  /* Начальное состояние анимации */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Анимация появления */
+.cardVisible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 @media (min-width: 768px) {
@@ -237,6 +251,16 @@
   box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
   transition: all 0.3s;
   cursor: pointer;
+  /* Начальное состояние анимации */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Анимация появления для специальной карточки */
+.specialCard.cardVisible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 @media (min-width: 768px) {

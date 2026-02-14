@@ -1,10 +1,13 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
-import content from '@/data/siteContent.json';
 
 export default function ServicesLaserPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pageData = t('pages.services.laser');
 
   return (
-    <PageShell title={pages.services.laser.title} subtitle={pages.services.laser.subtitle} />
+    <PageShell title={pageData.title} subtitle={pageData.subtitle} />
   );
 }

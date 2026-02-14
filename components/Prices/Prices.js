@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import styles from './Prices.module.css';
-import content from '@/data/siteContent.json';
 
 export default function Prices() {
   const { t } = useLanguage();
@@ -50,7 +49,11 @@ export default function Prices() {
         
         <div className={styles.grid}>
           {Array.isArray(pricesCards) && pricesCards.map((card, index) => (
-            <div key={index} className={styles.card}>
+            <div 
+              key={index} 
+              className={`${styles.card} ${isVisible ? styles.cardVisible : ''}`}
+              style={{ transitionDelay: `${index * 0.15}s` }}
+            >
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>{card.title}</h3>
                 <div className={styles.price}>{card.price}</div>

@@ -1,10 +1,13 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
-import content from '@/data/siteContent.json';
 
 export default function NewsPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pageData = t('pages.news');
 
   return (
-    <PageShell title={pages.news.title} subtitle={pages.news.subtitle} />
+    <PageShell title={pageData.title} subtitle={pageData.subtitle} />
   );
 }

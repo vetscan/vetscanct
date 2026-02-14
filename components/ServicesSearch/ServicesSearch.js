@@ -12,6 +12,7 @@ export default function ServicesSearch() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
+  const cardsRef = useRef(null);
 
   // Проверяем что services это массив
   const servicesArray = Array.isArray(services) ? services : [];
@@ -44,6 +45,41 @@ export default function ServicesSearch() {
     };
   }, []);
 
+  // Анимация карточек
+  useEffect(() => {
+    const cardsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.children;
+            Array.from(cards).forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add(styles.cardVisible);
+              }, index * 100); // Задержка 100мс между карточками
+            });
+          } else {
+            // Сбрасываем анимацию когда уходим из viewport
+            const cards = entry.target.children;
+            Array.from(cards).forEach((card) => {
+              card.classList.remove(styles.cardVisible);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardsRef.current) {
+      cardsObserver.observe(cardsRef.current);
+    }
+
+    return () => {
+      if (cardsRef.current) {
+        cardsObserver.unobserve(cardsRef.current);
+      }
+    };
+  }, [servicesArray]);
+
   return (
     <>
       <section className={styles.section}>
@@ -55,7 +91,7 @@ export default function ServicesSearch() {
             {t('servicesSearch.title')}
           </h2>
           
-          <div className={styles.grid}>
+          <div ref={cardsRef} className={styles.grid}>
             {servicesArray.map(service => (
               <Link href={`/${locale}${service.link}`} key={service.id} className={styles.card}>
                 <div className={styles.arrow}>

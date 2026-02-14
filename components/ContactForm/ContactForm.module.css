@@ -225,6 +225,19 @@
   cursor: pointer;
   transition: all 0.3s;
   width: fit-content;
+  /* Легкая пульсация */
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px 5px rgba(20, 184, 166, 0.3);
+  }
 }
 
 @media (min-width: 768px) {
@@ -250,8 +263,9 @@
 
 .button:hover {
   background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4), var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
+  transform: translateY(-2px) scale(1) !important;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4), var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1)) !important;
+  animation: none;
 }
 
 .button svg {

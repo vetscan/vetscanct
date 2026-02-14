@@ -1,12 +1,15 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
 import OncologyHelp from '@/components/OncologyHelp/OncologyHelp';
-import content from '@/data/siteContent.json';
 
 export default function OncologySupportPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pageData = t('pages.oncologySupport');
 
   return (
-    <PageShell title={pages.oncologySupport.title} subtitle={pages.oncologySupport.subtitle}>
+    <PageShell title={pageData.title} subtitle={pageData.subtitle}>
       <OncologyHelp />
     </PageShell>
   );

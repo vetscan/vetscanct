@@ -4,12 +4,10 @@ import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './ContactForm.module.css';
-import content from '@/data/siteContent.json';
 
 export default function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useLanguage();
-  const { contactForm } = content;
 
   return (
     <>
@@ -27,13 +25,13 @@ export default function ContactForm() {
                   <path d="M17 7v10H7"></path>
                 </svg>
               </p>
-              <a href={`tel:${contactForm.phoneTel}`} className={styles.phone}>
+              <a href={`tel:${t('contactForm.phoneTel')}`} className={styles.phone}>
                 <span className={styles.dot}>•</span>
-                {contactForm.phoneNumber}
+                {t('contactForm.phoneNumber')}
               </a>
-              <a href={`tel:${contactForm.phoneTel2}`} className={styles.phone}>
+              <a href={`tel:${t('contactForm.phoneTel2')}`} className={styles.phone}>
                 <span className={styles.dot}>•</span>
-                {contactForm.phoneNumber2}
+                {t('contactForm.phoneNumber2')}
               </a>
             </div>
 

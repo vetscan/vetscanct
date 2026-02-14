@@ -1,10 +1,13 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
-import content from '@/data/siteContent.json';
 
 export default function ServicesHerniasPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pageData = t('pages.services.hernias');
 
   return (
-    <PageShell title={pages.services.hernias.title} subtitle={pages.services.hernias.subtitle} />
+    <PageShell title={pageData.title} subtitle={pageData.subtitle} />
   );
 }

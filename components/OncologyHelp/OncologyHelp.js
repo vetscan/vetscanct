@@ -3,10 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import styles from './OncologyHelp.module.css';
-import content from '@/data/siteContent.json';
 
 export default function OncologyHelp() {
-  const { oncologyHelp } = content;
   const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
@@ -46,7 +44,7 @@ export default function OncologyHelp() {
           {t('oncologyHelp.title')}
         </h2>
         
-        <div className={styles.description}>
+        <div className={`${styles.description} ${isVisible ? styles.descriptionVisible : ''}`}>
           <p>
             {t('oncologyHelp.description')}
           </p>

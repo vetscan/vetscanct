@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import styles from './Testimonials.module.css';
-import content from '@/data/siteContent.json';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);

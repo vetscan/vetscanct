@@ -63,9 +63,13 @@
   transform: translateX(0);
 }
 
-@media (max-width: 768px) {
-  .title:not(.titleVisible) {
+@media (max-width: 767px) {
+  .title {
     transform: translateX(-50px);
+  }
+  
+  .titleVisible {
+    transform: translateX(0);
   }
 }
 
