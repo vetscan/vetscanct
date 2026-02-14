@@ -18,9 +18,8 @@ export default function Prices() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-          } else {
-            setIsVisible(false);
           }
+          // Убираем сброс при выходе из viewport
         });
       },
       { threshold: 0.1 }
