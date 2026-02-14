@@ -1,10 +1,21 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import PageShell from '@/components/PageShell/PageShell';
 import content from '@/data/siteContent.json';
+import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function CtPage() {
   const { pages } = content;
   const { ct } = pages;
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Определяем iOS устройство
+    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    setIsIOS(iOS);
+  }, []);
 
   return (
     <PageShell title={ct.title} subtitle={ct.subtitle}>
@@ -32,18 +43,29 @@ export default function CtPage() {
             </ul>
 
             <div className={styles.indicationsImage}>
-              <video
-                className={styles.indicationsVideo}
-                src="/cat_video2.webm"
-                aria-label={ct.indications.imageAlt}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                disablePictureInPicture
-                disableRemotePlayback
-              />
+              {isIOS ? (
+                <Image
+                  src="/Cat_2.png"
+                  alt={ct.indications.imageAlt}
+                  width={352}
+                  height={352}
+                  className={styles.indicationsVideo}
+                  priority
+                />
+              ) : (
+                <video
+                  className={styles.indicationsVideo}
+                  src="/cat_video2.webm"
+                  aria-label={ct.indications.imageAlt}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  disablePictureInPicture
+                  disableRemotePlayback
+                />
+              )}
             </div>
 
             <ul className={styles.indicationsList}>

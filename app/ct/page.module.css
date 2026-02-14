@@ -180,8 +180,6 @@
 .indicationsImage {
   display: flex;
   justify-content: center;
-  background: #f7f1f9;
-  border-radius: 12px;
 }
 
 .indicationsImage img {
