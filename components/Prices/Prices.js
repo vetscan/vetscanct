@@ -1,13 +1,17 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import styles from './Prices.module.css';
 import content from '@/data/siteContent.json';
 
 export default function Prices() {
-  const { prices } = content;
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
+  
+  // Получаем переведенные карточки цен
+  const pricesCards = t('prices.cards');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,7 +37,7 @@ export default function Prices() {
       }
     };
   }, []);
-
+  
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -41,20 +45,20 @@ export default function Prices() {
           ref={titleRef}
           className={`${styles.title} ${isVisible ? styles.titleVisible : ''}`}
         >
-          {prices.title}
+          {t('prices.title')}
         </h2>
         
         <div className={styles.grid}>
-          {prices.cards.map(card => (
-            <div key={card.id} className={styles.card}>
+          {Array.isArray(pricesCards) && pricesCards.map((card, index) => (
+            <div key={index} className={styles.card}>
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>{card.title}</h3>
                 <div className={styles.price}>{card.price}</div>
               </div>
               
               <ul className={styles.servicesList}>
-                {card.services.map((service, index) => (
-                  <li key={index} className={styles.serviceItem}>
+                {card.services.map((service, serviceIndex) => (
+                  <li key={serviceIndex} className={styles.serviceItem}>
                     {service}
                   </li>
                 ))}

@@ -1,12 +1,15 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
 import PricesServices from '@/components/PricesServices/PricesServices';
-import content from '@/data/siteContent.json';
 
 export default function PricesPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const pricesData = t('pages.prices');
 
   return (
-    <PageShell title={pages.prices.title} subtitle={pages.prices.subtitle}>
+    <PageShell title={pricesData.title} subtitle={pricesData.subtitle}>
       <PricesServices />
     </PageShell>
   );

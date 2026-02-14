@@ -20,11 +20,11 @@
   },
   "navigation": {
     "items": [
-      { "label": "Головна", "href": "/", "showArrow": true },
-      { "label": "КТ", "href": "/ct", "showArrow": true },
-      { "label": "Хирургия / Онкохирургия", "href": "/treatment", "showArrow": true },
-      { "label": "Вартість послуг", "href": "/prices", "showArrow": false },
-      { "label": "Контакти", "href": "/contacts", "showArrow": false }
+      { "label": "Головна", "href": "/", "showArrow": true, "key": "home" },
+      { "label": "КТ", "href": "/ct", "showArrow": true, "key": "ct" },
+      { "label": "Хирургия / Онкохирургия", "href": "/treatment", "showArrow": true, "key": "treatment" },
+      { "label": "Вартість послуг", "href": "/prices", "showArrow": false, "key": "prices" },
+      { "label": "Контакти", "href": "/contacts", "showArrow": false, "key": "contacts" }
     ],
     "appointmentTitle": "Записатись на прийом"
   },
@@ -282,16 +282,16 @@
 
 
     "services": [
-      { "label": "Комп'ютерна томографія", "href": "/services/ct" },
-      { "label": "Консультація лікаря", "href": "/services/consultation" },
-      { "label": "Вертебропластика", "href": "/services/vertebroplasty" },
-      { "label": "Лікування травм спини та кінцівок ", "href": "/services/treatment" },   
-      { "label": "Допомога при підозрі на онкологію", "href": "/oncology-support" },
-      { "label": "Огляд та діагностика", "href": "/services/diagnostics" }
+      { "label": "Комп'ютерна томографія", "href": "/services/ct", "key": "ct" },
+      { "label": "Консультація лікаря", "href": "/services/consultation", "key": "consultation" },
+      { "label": "Вертебропластика", "href": "/services/vertebroplasty", "key": "vertebroplasty" },
+      { "label": "Лікування травм спини та кінцівок ", "href": "/services/treatment", "key": "treatment" },   
+      { "label": "Допомога при підозрі на онкологію", "href": "/oncology-support", "key": "oncology" },
+      { "label": "Огляд та діагностика", "href": "/services/diagnostics", "key": "diagnostics" }
     ],
     "schedule": [
-      { "day": "Пн - Пт:", "time": "9:00 - 18:00" },
-      { "day": "Сб-Нд", "time": "Вихідний або за записом" }
+      { "day": "Пн - Пт:", "time": "9:00 - 18:00", "key": "weekdays" },
+      { "day": "Сб-Нд", "time": "Вихідний або за записом", "key": "weekend" }
     ],
     
     "copyright": "© 2026  «Центр сучасної діагностики». Всі права захищені"

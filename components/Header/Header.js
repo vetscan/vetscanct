@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.css';
@@ -9,14 +10,16 @@ import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 
 export default function Header() {
   const { header } = content;
+  const { locale, setLocale, t } = useLanguage();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState(header.languageOptions[0]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleLanguageSelect = (option) => {
-    setSelectedLanguage(option);
+  const handleLanguageSelect = (newLocale) => {
+    setLocale(newLocale);
     setIsLanguageOpen(false);
   };
+
+  const selectedLanguage = header.languageOptions.find(opt => opt.value === locale) || header.languageOptions[0];
 
   return (
     <header className={styles.header}>
@@ -33,7 +36,7 @@ export default function Header() {
             />
           </div>
           <div className={styles.logoText}>
-            <p className={styles.logoSubtitle}>{header.logoSubtitle}</p>
+            <p className={styles.logoSubtitle}>{t('header.logoSubtitle')}</p>
           </div>
         </Link>
 
@@ -44,8 +47,8 @@ export default function Header() {
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
           <div>
-            <p className={styles.addressLine1}>{header.address.line1}</p>
-            <p className={styles.addressLine2}>{header.address.line2}</p>
+            <p className={styles.addressLine1}>{t('header.address.line1')}</p>
+            <p className={styles.addressLine2}>{t('header.address.line2')}</p>
           </div>
         </div>
 
@@ -82,8 +85,8 @@ export default function Header() {
                 {header.languageOptions.map((option) => (
                   <button
                     key={option.value}
-                    className={`${styles.languageOption} ${selectedLanguage.value === option.value ? styles.languageOptionActive : ''}`}
-                    onClick={() => handleLanguageSelect(option)}
+                    className={`${styles.languageOption} ${locale === option.value ? styles.languageOptionActive : ''}`}
+                    onClick={() => handleLanguageSelect(option.value)}
                   >
                     {option.label}
                   </button>
@@ -104,7 +107,7 @@ export default function Header() {
             <path d="M21 16v2a4 4 0 0 1-4 4h-5"></path>
           </svg>
           <div>
-            <p className={styles.phoneLabel}>{header.phone.label}</p>
+            <p className={styles.phoneLabel}>{t('header.phone.label')}</p>
             <div className={styles.phoneNumber}>
               <div className={styles.phoneStatus}></div>
               <a href={`tel:${header.phone.tel}`}>{header.phone.number}</a>
@@ -147,7 +150,7 @@ export default function Header() {
                 className={styles.mobileNavLink}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {item.label}
+                {t(`navigation.${item.key}`)}
               </Link>
             ))}
           </div>

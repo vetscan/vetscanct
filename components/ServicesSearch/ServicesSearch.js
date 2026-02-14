@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './ServicesSearch.module.css';
@@ -8,6 +9,7 @@ import content from '@/data/siteContent.json';
 
 export default function ServicesSearch() {
   const { servicesSearch } = content;
+  const { t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
@@ -48,7 +50,7 @@ export default function ServicesSearch() {
             ref={titleRef}
             className={`${styles.title} ${isVisible ? styles.titleVisible : ''}`}
           >
-            {servicesSearch.title}
+            {t('servicesSearch.title')}
           </h2>
           
           <div className={styles.grid}>
@@ -58,7 +60,7 @@ export default function ServicesSearch() {
                   <img src="/paw.png" alt="paw" className={styles.pawIcon} />
                 </div>
                 <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{service.title}</h3>
+                  <h3 className={styles.cardTitle}>{t(`servicesSearch.services.${service.id}`)}</h3>
                 </div>
               </Link>
             ))}
@@ -72,8 +74,8 @@ export default function ServicesSearch() {
                 <img src="/paw.png" alt="paw" className={styles.pawIconWhite} />
               </div>
               <div className={styles.specialCardContent}>
-                <h3 className={styles.specialCardTitle}>{servicesSearch.specialCard.title}</h3>
-                <h3 className={styles.specialCardTitleBold}>{servicesSearch.specialCard.titleBold}</h3>
+                <h3 className={styles.specialCardTitle}>{t('servicesSearch.specialCard.title')}</h3>
+                <h3 className={styles.specialCardTitleBold}>{t('servicesSearch.specialCard.titleBold')}</h3>
               </div>
             </button>
           </div>

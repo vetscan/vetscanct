@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './Hero.module.css';
-import content from '@/data/siteContent.json';
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useLanguage();
   const videoRef = useRef(null);
-  const { hero } = content;
 
   // Принудительный запуск видео на мобильных
   useEffect(() => {
@@ -89,12 +89,11 @@ export default function Hero() {
             {/* Контент поверх видео */}
             <div className={styles.contentOverlay}>
               <h1 className={styles.title}>
-                {hero.title}
+                {t('hero.title')}
               </h1>
               <div className={styles.subtitle}>
-                {hero.subtitleLines.map((line, index) => (
-                  <p key={`${line}-${index}`}>{line}</p>
-                ))}
+                <p>{t('hero.subtitle1')}</p>
+                <p>{t('hero.subtitle2')}</p>
               </div>
               <div className={styles.buttons}>
                 <button 
@@ -107,7 +106,7 @@ export default function Hero() {
                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
                     <path d="M3 10h18"></path>
                   </svg>
-                  {hero.appointmentButton}
+                  {t('hero.appointmentButton')}
                 </button>
               </div>
             </div>

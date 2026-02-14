@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import styles from './Testimonials.module.css';
 import content from '@/data/siteContent.json';
 
@@ -14,7 +15,10 @@ export default function Testimonials() {
   const autoPlayRef = useRef(null);
   const cardsRef = useRef([]);
   const titleRef = useRef(null);
-  const { testimonials } = content;
+  const { t } = useLanguage();
+  
+  // Получаем переведенные отзывы
+  const testimonialsItems = t('testimonials.items');
 
   // Анимация заголовка при скролле
   useEffect(() => {
@@ -87,10 +91,7 @@ export default function Testimonials() {
     
     window.addEventListener('resize', calculateMaxHeight);
     return () => window.removeEventListener('resize', calculateMaxHeight);
-  }, [testimonials, slidesPerView]); // Добавил slidesPerView в зависимости
-
-  // Дублируем отзывы для бесшовной прокрутки
-  const extendedTestimonials = [...testimonials.items, ...testimonials.items, ...testimonials.items];
+  }, [testimonialsItems, slidesPerView]); // Добавил slidesPerView в зависимости
 
   // Автоматическая прокрутка влево (по одной карточке)
   useEffect(() => {
@@ -109,24 +110,31 @@ export default function Testimonials() {
 
   // Бесшовный переход
   useEffect(() => {
-    if (currentIndex === testimonials.items.length * 2) {
+    if (!Array.isArray(testimonialsItems) || testimonialsItems.length === 0) return;
+    
+    if (currentIndex === testimonialsItems.length * 2) {
       setTimeout(() => {
         setIsTransitioning(false);
-        setCurrentIndex(testimonials.items.length);
+        setCurrentIndex(testimonialsItems.length);
       }, 500);
       setTimeout(() => {
         setIsTransitioning(true);
       }, 550);
-    } else if (currentIndex === testimonials.items.length - 1) {
+    } else if (currentIndex === testimonialsItems.length - 1) {
       setTimeout(() => {
         setIsTransitioning(false);
-        setCurrentIndex(testimonials.items.length * 2 - 1);
+        setCurrentIndex(testimonialsItems.length * 2 - 1);
       }, 500);
       setTimeout(() => {
         setIsTransitioning(true);
       }, 550);
     }
-  }, [currentIndex, testimonials.items.length]);
+  }, [currentIndex, testimonialsItems]);
+
+  // Дублируем отзывы для бесшовной прокрутки (с проверкой на массив)
+  const extendedTestimonials = Array.isArray(testimonialsItems) 
+    ? [...testimonialsItems, ...testimonialsItems, ...testimonialsItems]
+    : [];
 
   const goToPrevious = () => {
     setIsAutoPlaying(false);
@@ -147,7 +155,7 @@ export default function Testimonials() {
           ref={titleRef}
           className={`${styles.title} ${isVisible ? styles.titleVisible : ''}`}
         >
-          {testimonials.title}
+          {t('testimonials.title')}
         </h2>
         
         <div className={styles.carouselWrapper}>
@@ -160,7 +168,7 @@ export default function Testimonials() {
               }}
             >
               {extendedTestimonials.map((testimonial, index) => (
-                <div key={`${testimonial.id}-${index}`} className={styles.slide}>
+                <div key={index} className={styles.slide}>
                   <div 
                     ref={el => cardsRef.current[index] = el}
                     className={styles.card}
@@ -206,13 +214,13 @@ export default function Testimonials() {
 
         {/* Индикаторы */}
         <div className={styles.indicators}>
-          {testimonials.items.map((_, index) => (
+          {testimonialsItems.map((_, index) => (
             <button
               key={index}
-              className={`${styles.indicator} ${index === (currentIndex % testimonials.items.length) ? styles.indicatorActive : ''}`}
+              className={`${styles.indicator} ${index === (currentIndex % testimonialsItems.length) ? styles.indicatorActive : ''}`}
               onClick={() => {
                 setIsAutoPlaying(false);
-                setCurrentIndex(testimonials.items.length + index);
+                setCurrentIndex(testimonialsItems.length + index);
                 setTimeout(() => setIsAutoPlaying(true), 5000);
               }}
               aria-label={`Перейти до відгуку ${index + 1}`}

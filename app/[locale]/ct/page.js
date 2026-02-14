@@ -1,15 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
-import content from '@/data/siteContent.json';
 import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function CtPage() {
-  const { pages } = content;
-  const { ct } = pages;
+  const { t } = useLanguage();
   const [isIOS, setIsIOS] = useState(false);
+  
+  // Получаем переведенные данные
+  const ctData = t('pages.ct');
+  const types = t('pages.ct.types');
+  const indications = t('pages.ct.indications');
 
   useEffect(() => {
     // Определяем iOS устройство
@@ -18,12 +22,12 @@ export default function CtPage() {
   }, []);
 
   return (
-    <PageShell title={ct.title} subtitle={ct.subtitle}>
+    <PageShell title={ctData.title} subtitle={ctData.subtitle}>
       <div className={styles.content}>
-        <h2 className={styles.sectionTitle}>{ct.sectionTitle}</h2>
+        <h2 className={styles.sectionTitle}>{ctData.sectionTitle}</h2>
 
         <div className={styles.ctTypes}>
-          {ct.types.map((item, index) => (
+          {Array.isArray(types) && types.map((item, index) => (
             <div className={styles.ctType} key={`${item.title}-${index}`}>
               <h3 className={styles.ctTypeTitle}>{item.title}</h3>
               <p className={styles.ctTypeDescription}>{item.description}</p>
@@ -32,10 +36,10 @@ export default function CtPage() {
         </div>
 
         <section className={styles.indications}>
-          <h3 className={styles.indicationsTitle}>{ct.indications.title}</h3>
+          <h3 className={styles.indicationsTitle}>{indications.title}</h3>
           <div className={styles.indicationsLayout}>
             <ul className={styles.indicationsList}>
-              {ct.indications.leftItems.map((item, index) => (
+              {Array.isArray(indications.leftItems) && indications.leftItems.map((item, index) => (
                 <li className={styles.indicationItem} key={`left-${index}`}>
                   {item}
                 </li>
@@ -46,7 +50,7 @@ export default function CtPage() {
               {isIOS ? (
                 <Image
                   src="/Cat_2.png"
-                  alt={ct.indications.imageAlt}
+                  alt={indications.imageAlt}
                   width={352}
                   height={352}
                   className={styles.indicationsVideo}
@@ -56,7 +60,7 @@ export default function CtPage() {
                 <video
                   className={styles.indicationsVideo}
                   src="/cat_video2.webm"
-                  aria-label={ct.indications.imageAlt}
+                  aria-label={indications.imageAlt}
                   autoPlay
                   loop
                   muted
@@ -69,7 +73,7 @@ export default function CtPage() {
             </div>
 
             <ul className={styles.indicationsList}>
-              {ct.indications.rightItems.map((item, index) => (
+              {Array.isArray(indications.rightItems) && indications.rightItems.map((item, index) => (
                 <li className={styles.indicationItem} key={`right-${index}`}>
                   {item}
                 </li>
@@ -78,7 +82,7 @@ export default function CtPage() {
           </div>
         </section>
 
-        <p className={styles.conclusion}>{ct.conclusion}</p>
+        <p className={styles.conclusion}>{ctData.conclusion}</p>
       </div>
     </PageShell>
   );

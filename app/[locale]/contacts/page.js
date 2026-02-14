@@ -1,13 +1,16 @@
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
 import MapSection from '@/components/MapSection/MapSection';
 import ContactForm from '@/components/ContactForm/ContactForm';
-import content from '@/data/siteContent.json';
 
 export default function ContactsPage() {
-  const { pages } = content;
+  const { t } = useLanguage();
+  const contactsData = t('pages.contacts');
 
   return (
-    <PageShell title={pages.contacts.title} subtitle={pages.contacts.subtitle}>
+    <PageShell title={contactsData.title} subtitle={contactsData.subtitle}>
       <MapSection />
       <ContactForm />
     </PageShell>

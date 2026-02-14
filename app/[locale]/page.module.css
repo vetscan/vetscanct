@@ -144,7 +144,7 @@ a.secondary {
 /* Кот - слева сверху */
 .watermarkTop {
   position: fixed;
-  left: 32px;
+  left: 4px;
   top: 160px;
   z-index: 100;
   opacity: 0.14;
@@ -172,7 +172,7 @@ a.secondary {
 /* Собака - справа снизу */
 .watermarkBottom {
   position: fixed;
-  right: 32px;
+  right: 4px;
   bottom: 32px;
   z-index: 100;
   opacity: 0.15;
@@ -223,12 +223,12 @@ a.secondary {
   }
   
   .watermarkTop {
-    left: 24px;
+    left: 3px;
     top: 128px;
   }
   
   .watermarkBottom {
-    right: 24px;
+    right: 3px;
     bottom: 24px;
   }
 }
@@ -237,16 +237,16 @@ a.secondary {
   .watermarkTop {
     width: 500px;
     height: 500px;
-    /* Ограничиваем смещение: не дальше чем calc(50% - 800px) от центра */
-    left: max(48px, calc(50% - 800px));
+    /* Остаются у края, но не дальше чем 1200px от центра */
+    left: min(4px, calc(50% - 1200px));
     top: 192px;
   }
   
   .watermarkBottom {
     width: 550px;
     height: 550px;
-    /* Ограничиваем смещение: не дальше чем calc(50% - 800px) от центра */
-    right: max(48px, calc(50% - 800px));
+    /* Остаются у края, но не дальше чем 1200px от центра */
+    right: min(4px, calc(50% - 1200px));
     bottom: 48px;
   }
 }

@@ -2,9 +2,12 @@
 
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 import styles from './AppointmentModal.module.css';
 
 export default function AppointmentModal({ isOpen, onClose }) {
+  const { t } = useLanguage();
+  
   // Блокируем скролл при открытии модалки
   useEffect(() => {
     if (isOpen) {
@@ -38,51 +41,51 @@ export default function AppointmentModal({ isOpen, onClose }) {
         </button>
 
         {/* Заголовок */}
-        <h2 className={styles.title}>Записатися на прийом</h2>
+        <h2 className={styles.title}>{t('appointmentModal.title')}</h2>
         <p className={styles.subtitle}>
-          Залиште форму нижче і ми зв'яжемося з вами для підтвердження запису
+          {t('appointmentModal.subtitle')}
         </p>
 
         {/* Форма */}
         <form className={styles.form}>
           <div className={styles.field}>
             <label className={styles.label}>
-              Прізвище та ім'я <span className={styles.required}>*</span>
+              {t('appointmentModal.fields.name.label')} <span className={styles.required}>*</span>
             </label>
             <input 
               type="text" 
               className={styles.input}
-              placeholder="Введіть прізвище та ім'я"
+              placeholder={t('appointmentModal.fields.name.placeholder')}
               required
             />
           </div>
 
           <div className={styles.field}>
             <label className={styles.label}>
-              Номер телефону <span className={styles.required}>*</span>
+              {t('appointmentModal.fields.phone.label')} <span className={styles.required}>*</span>
             </label>
             <input 
               type="tel" 
               className={styles.input}
-              placeholder="Введіть номер телефону"
+              placeholder={t('appointmentModal.fields.phone.placeholder')}
               required
             />
           </div>
 
           <div className={styles.field}>
             <label className={styles.label}>
-              Причина візиту <span className={styles.required}>*</span>
+              {t('appointmentModal.fields.reason.label')} <span className={styles.required}>*</span>
             </label>
             <textarea 
               className={styles.textarea}
-              placeholder="Я хочу записатися на КТ і дізнатися більше інформації. Будь ласка, зв'яжіться зі мною, коли буде зручно."
+              placeholder={t('appointmentModal.fields.reason.placeholder')}
               rows={4}
               required
             />
           </div>
 
           <button type="submit" className={styles.submitButton}>
-            Надіслати
+            {t('appointmentModal.submitButton')}
           </button>
         </form>
       </div>

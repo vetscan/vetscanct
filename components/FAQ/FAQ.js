@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import styles from './FAQ.module.css';
 import content from '@/data/siteContent.json';
 
@@ -8,6 +9,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
+  const { t } = useLanguage();
   const { faq } = content;
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function FAQ() {
           ref={titleRef}
           className={`${styles.title} ${isVisible ? styles.titleVisible : ''}`}
         >
-          {faq.title}
+          {t('faq.title')}
         </h2>
         
         <div className={styles.faqList}>
@@ -57,7 +59,7 @@ export default function FAQ() {
                 onClick={() => toggleFAQ(index)}
               >
                 <span className={styles.number}>{faqItem.number}</span>
-                <span className={styles.questionText}>{faqItem.question}</span>
+                <span className={styles.questionText}>{t(`faq.items.${index}.question`)}</span>
                 <span className={`${styles.icon} ${openIndex === index ? styles.iconOpen : ''}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="m6 9 6 6 6-6"></path>
@@ -66,7 +68,7 @@ export default function FAQ() {
               </button>
               {openIndex === index && (
                 <div className={styles.answer}>
-                  {faqItem.answer}
+                  {t(`faq.items.${index}.answer`)}
                 </div>
               )}
             </div>

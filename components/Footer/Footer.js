@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
@@ -9,6 +10,7 @@ import content from '@/data/siteContent.json';
 
 export default function Footer() {
   const { footer } = content;
+  const { t } = useLanguage();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -30,25 +32,26 @@ export default function Footer() {
                   />
                 </div>
                 <div className={styles.logoText}>
-                  <p className={styles.logoSubtitle}>{footer.logoSubtitle}</p>
+                  <p className={styles.logoSubtitle}>{t('footer.logoSubtitle')}</p>
                 </div>
               </div>
-              {footer.descriptionLines.map((line, index) => (
-                <p key={`${line}-${index}`} className={styles.description}>
-                  {line}
-                </p>
-              ))}
+              <p className={styles.description}>
+                {t('footer.description.line1')}
+              </p>
+              <p className={styles.description}>
+                {t('footer.description.line2')}
+              </p>
               <button 
                 className={styles.appointmentBtn}
                 onClick={() => setIsModalOpen(true)}
               >
-                {footer.appointmentButton}
+                {t('footer.appointmentButton')}
               </button>
             </div>
 
           {/* Колонка 2 - Контакты */}
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Контакти</h4>
+            <h4 className={styles.columnTitle}>{t('footer.contacts')}</h4>
             <ul className={styles.contactList}>
               {footer.contacts.phones.map((phone) => (
                 <li key={phone} className={styles.contactItem}>
@@ -63,7 +66,7 @@ export default function Footer() {
                   <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span>{footer.contacts.address1}</span>
+                <span>{t('footer.address')}</span>
               </li>
              
               <li className={styles.contactItem}>
@@ -83,7 +86,7 @@ export default function Footer() {
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               aria-expanded={isServicesOpen}
             >
-              <span>Послуги</span>
+              <span>{t('footer.services')}</span>
               <svg 
                 className={`${styles.toggleIcon} ${isServicesOpen ? styles.toggleIconOpen : ''}`}
                 xmlns="http://www.w3.org/2000/svg" 
@@ -97,22 +100,22 @@ export default function Footer() {
                 <path d="m6 9 6 6 6-6"/>
               </svg>
             </button>
-            <h4 className={styles.columnTitleDesktop}>Послуги</h4>
+            <h4 className={styles.columnTitleDesktop}>{t('footer.services')}</h4>
             <ul className={`${styles.linkList} ${isServicesOpen ? styles.linkListOpen : ''}`}>
               {footer.services.map((service) => (
-                <li key={service.href}><Link href={service.href}>{service.label}</Link></li>
+                <li key={service.href}><Link href={service.href}>{t(`footer.servicesList.${service.key}`)}</Link></li>
               ))}
             </ul>
           </div>
 
           {/* Колонка 4 - Часы работы */}
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Час роботи</h4>
+            <h4 className={styles.columnTitle}>{t('footer.schedule')}</h4>
             <ul className={styles.scheduleList}>
               {footer.schedule.map((item) => (
-                <li key={item.day} className={styles.scheduleItem}>
-                  <span className={styles.scheduleDay}>{item.day}</span>
-                  <span className={styles.scheduleTime}>{item.time}</span>
+                <li key={item.key} className={styles.scheduleItem}>
+                  <span className={styles.scheduleDay}>{t(`footer.scheduleItems.${item.key}`)}</span>
+                  <span className={styles.scheduleTime}>{t(`footer.scheduleItems.${item.key}Time`)}</span>
                 </li>
               ))}
             </ul>
@@ -122,7 +125,7 @@ export default function Footer() {
         {/* Нижняя часть */}
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            {footer.copyright}
+            {t('footer.copyright')}
           </p>
         </div>
       </div>
