@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Manrope, Montserrat } from "next/font/google";
+import IOSOverscrollFix from "@/components/IOSOverscrollFix";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${manrope.variable} ${montserrat.variable}`}>
+        <IOSOverscrollFix />
         {children}
       </body>
     </html>
