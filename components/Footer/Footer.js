@@ -3,42 +3,48 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './Footer.module.css';
 import content from '@/data/siteContent.json';
 
 export default function Footer() {
   const { footer } = content;
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.grid}>
-          {/* Колонка 1 - Логотип и описание */}
-          <div className={styles.column}>
-            <div className={styles.logoSection}>
-              <div className={styles.logoCircle}>
-                <Image 
-                  src="/Logo.png" 
-                  alt="Logo" 
-                  width={60} 
-                  height={60}
-                  className={styles.logoImage}
-                />
+    <>
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <div className={styles.grid}>
+            {/* Колонка 1 - Логотип и описание */}
+            <div className={styles.column}>
+              <div className={styles.logoSection}>
+                <div className={styles.logoCircle}>
+                  <Image 
+                    src="/Logo.png" 
+                    alt="Logo" 
+                    width={60} 
+                    height={60}
+                    className={styles.logoImage}
+                  />
+                </div>
+                <div className={styles.logoText}>
+                  <p className={styles.logoSubtitle}>{footer.logoSubtitle}</p>
+                </div>
               </div>
-              <div className={styles.logoText}>
-                <p className={styles.logoSubtitle}>{footer.logoSubtitle}</p>
-              </div>
+              {footer.descriptionLines.map((line, index) => (
+                <p key={`${line}-${index}`} className={styles.description}>
+                  {line}
+                </p>
+              ))}
+              <button 
+                className={styles.appointmentBtn}
+                onClick={() => setIsModalOpen(true)}
+              >
+                {footer.appointmentButton}
+              </button>
             </div>
-            {footer.descriptionLines.map((line, index) => (
-              <p key={`${line}-${index}`} className={styles.description}>
-                {line}
-              </p>
-            ))}
-            <button className={styles.appointmentBtn}>
-              {footer.appointmentButton}
-            </button>
-          </div>
 
           {/* Колонка 2 - Контакты */}
           <div className={styles.column}>
@@ -121,5 +127,11 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+
+    <AppointmentModal 
+      isOpen={isModalOpen} 
+      onClose={() => setIsModalOpen(false)} 
+    />
+  </>
   );
 }

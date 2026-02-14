@@ -10,9 +10,37 @@ export default function Testimonials() {
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [slidesPerView, setSlidesPerView] = useState(3);
   const [maxHeight, setMaxHeight] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
   const autoPlayRef = useRef(null);
   const cardsRef = useRef([]);
+  const titleRef = useRef(null);
   const { testimonials } = content;
+
+  // Анимация заголовка при скролле
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
 
   // Определяем количество видимых слайдов в зависимости от ширины экрана
   useEffect(() => {
@@ -115,7 +143,12 @@ export default function Testimonials() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>{testimonials.title}</h2>
+        <h2 
+          ref={titleRef}
+          className={`${styles.title} ${isVisible ? styles.titleVisible : ''}`}
+        >
+          {testimonials.title}
+        </h2>
         
         <div className={styles.carouselWrapper}>
           <div className={styles.carousel}>

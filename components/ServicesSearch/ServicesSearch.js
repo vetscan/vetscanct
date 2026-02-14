@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './ServicesSearch.module.css';
@@ -9,12 +9,47 @@ import content from '@/data/siteContent.json';
 export default function ServicesSearch() {
   const { servicesSearch } = content;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            // Сбрасываем анимацию когда элемент уходит из viewport
+            setIsVisible(false);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Запускаем когда 10% элемента видно
+      }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
       <section className={styles.section}>
         <div className={styles.container}>
-          <h2 className={styles.title}>{servicesSearch.title}</h2>
+          <h2 
+            ref={titleRef}
+            className={`${styles.title} ${isVisible ? styles.titleVisible : ''}`}
+          >
+            {servicesSearch.title}
+          </h2>
           
           <div className={styles.grid}>
             {servicesSearch.services.map(service => (

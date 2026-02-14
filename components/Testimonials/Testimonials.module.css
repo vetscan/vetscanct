@@ -47,6 +47,26 @@
   font-weight: 700;
   text-align: left;
   color: var(--color-gray-900);
+  /* Анимация */
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.title:not(.titleVisible) {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.titleVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .title:not(.titleVisible) {
+    transform: translateX(-50px);
+  }
 }
 
 @media (min-width: 768px) {

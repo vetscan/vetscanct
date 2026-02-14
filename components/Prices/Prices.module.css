@@ -47,6 +47,21 @@
   font-weight: 700;
   text-align: left;
   color: var(--color-gray-900);
+  /* Анимация */
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.titleVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .title {
+    transform: translateX(-50px);
+  }
 }
 
 @media (min-width: 768px) {

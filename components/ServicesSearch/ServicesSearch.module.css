@@ -28,6 +28,16 @@
   line-height: 1.2;
   font-weight: 700;
   text-align: center;
+  /* Начальное состояние анимации */
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Анимация при появлении */
+.titleVisible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Мобільні екрани */
@@ -36,6 +46,8 @@
     margin-top: 32px;
     margin-bottom: 48px;
     font-size: 24px;
+    /* На мобильных меньше смещение */
+    transform: translateX(-50px);
   }
 }
 

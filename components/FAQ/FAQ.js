@@ -1,12 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './FAQ.module.css';
 import content from '@/data/siteContent.json';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
   const { faq } = content;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -15,7 +42,12 @@ export default function FAQ() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>{faq.title}</h2>
+        <h2 
+          ref={titleRef}
+          className={`${styles.title} ${isVisible ? styles.titleVisible : ''}`}
+        >
+          {faq.title}
+        </h2>
         
         <div className={styles.faqList}>
           {faq.items.map((faqItem, index) => (
