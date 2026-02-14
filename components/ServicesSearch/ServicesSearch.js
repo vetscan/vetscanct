@@ -5,14 +5,16 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './ServicesSearch.module.css';
-import content from '@/data/siteContent.json';
 
 export default function ServicesSearch() {
-  const { servicesSearch } = content;
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const services = t('servicesSearch.services');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
+
+  // Проверяем что services это массив
+  const servicesArray = Array.isArray(services) ? services : [];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -54,13 +56,13 @@ export default function ServicesSearch() {
           </h2>
           
           <div className={styles.grid}>
-            {servicesSearch.services.map(service => (
-              <Link href={service.link} key={service.id} className={styles.card}>
+            {servicesArray.map(service => (
+              <Link href={`/${locale}${service.link}`} key={service.id} className={styles.card}>
                 <div className={styles.arrow}>
                   <img src="/paw.png" alt="paw" className={styles.pawIcon} />
                 </div>
                 <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{t(`servicesSearch.services.${service.id}`)}</h3>
+                  <h3 className={styles.cardTitle}>{service.title}</h3>
                 </div>
               </Link>
             ))}

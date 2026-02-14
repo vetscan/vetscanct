@@ -5,11 +5,9 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.css';
-import content from '@/data/siteContent.json';
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 
 export default function Header() {
-  const { header } = content;
   const { locale, setLocale, t } = useLanguage();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,7 +17,8 @@ export default function Header() {
     setIsLanguageOpen(false);
   };
 
-  const selectedLanguage = header.languageOptions.find(opt => opt.value === locale) || header.languageOptions[0];
+  const languageOptions = t('header.languageOptions');
+  const selectedLanguage = languageOptions.find(opt => opt.value === locale) || languageOptions[0];
 
   return (
     <header className={styles.header}>
@@ -29,7 +28,7 @@ export default function Header() {
           <div className={styles.logoImage}>
             <Image 
               src="/Logo.png" 
-              alt={header.logoAlt} 
+              alt={t('header.logoAlt')} 
               width={120} 
               height={120}
               className={styles.logoImg}
@@ -82,7 +81,7 @@ export default function Header() {
             </button>
             {isLanguageOpen && (
               <div className={styles.languageMenu}>
-                {header.languageOptions.map((option) => (
+                {languageOptions.map((option) => (
                   <button
                     key={option.value}
                     className={`${styles.languageOption} ${locale === option.value ? styles.languageOptionActive : ''}`}
@@ -110,11 +109,11 @@ export default function Header() {
             <p className={styles.phoneLabel}>{t('header.phone.label')}</p>
             <div className={styles.phoneNumber}>
               <div className={styles.phoneStatus}></div>
-              <a href={`tel:${header.phone.tel}`}>{header.phone.number}</a>
+              <a href={`tel:${t('header.phone.tel')}`}>{t('header.phone.number')}</a>
             </div>
             <div className={styles.phoneNumber}>
               <div className={styles.phoneStatus}></div>
-              <a href={`tel:${header.phone.tel2}`}>{header.phone.number2}</a>
+              <a href={`tel:${t('header.phone.tel2')}`}>{t('header.phone.number2')}</a>
             </div>
           </div>
         </div>
@@ -143,10 +142,10 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className={styles.mobileMenuPanel}>
           <div className={styles.mobileMenuContent}>
-            {content.navigation.items.map((item) => (
+            {t('navigation.items').map((item) => (
               <Link 
                 key={item.href} 
-                href={item.href} 
+                href={`/${locale}${item.href}`}
                 className={styles.mobileNavLink}
                 onClick={() => setIsMobileMenuOpen(false)}
               >

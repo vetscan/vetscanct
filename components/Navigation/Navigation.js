@@ -5,18 +5,17 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './Navigation.module.css';
-import content from '@/data/siteContent.json';
 
 export default function Navigation() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t, locale } = useLanguage();
-  const { navigation } = content;
+  const navigationItems = t('navigation.items');
 
   return (
     <>
       <nav className={styles.nav}>
         <div className={styles.container}>
-          {navigation.items.map((item) => (
+          {Array.isArray(navigationItems) && navigationItems.map((item) => (
             <Link key={item.href} href={`/${locale}${item.href}`} className={styles.navItem}>
               {t(`navigation.${item.key}`)}
             </Link>

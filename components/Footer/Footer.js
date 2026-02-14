@@ -6,11 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './Footer.module.css';
-import content from '@/data/siteContent.json';
 
 export default function Footer() {
-  const { footer } = content;
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -53,7 +51,7 @@ export default function Footer() {
           <div className={styles.column}>
             <h4 className={styles.columnTitle}>{t('footer.contacts')}</h4>
             <ul className={styles.contactList}>
-              {footer.contacts.phones.map((phone) => (
+              {t('footer.contactsList.phones').map((phone) => (
                 <li key={phone} className={styles.contactItem}>
                   <svg className={styles.contactIcon} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -74,7 +72,7 @@ export default function Footer() {
                   <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
-                <span>{footer.contacts.email}</span>
+                <span>{t('footer.contactsList.email')}</span>
               </li>
             </ul>
           </div>
@@ -102,8 +100,8 @@ export default function Footer() {
             </button>
             <h4 className={styles.columnTitleDesktop}>{t('footer.services')}</h4>
             <ul className={`${styles.linkList} ${isServicesOpen ? styles.linkListOpen : ''}`}>
-              {footer.services.map((service) => (
-                <li key={service.href}><Link href={service.href}>{t(`footer.servicesList.${service.key}`)}</Link></li>
+              {t('footer.servicesLinks').map((service) => (
+                <li key={service.href}><Link href={`/${locale}${service.href}`}>{t(`footer.servicesList.${service.key}`)}</Link></li>
               ))}
             </ul>
           </div>
@@ -112,7 +110,7 @@ export default function Footer() {
           <div className={styles.column}>
             <h4 className={styles.columnTitle}>{t('footer.schedule')}</h4>
             <ul className={styles.scheduleList}>
-              {footer.schedule.map((item) => (
+              {t('footer.scheduleLinks').map((item) => (
                 <li key={item.key} className={styles.scheduleItem}>
                   <span className={styles.scheduleDay}>{t(`footer.scheduleItems.${item.key}`)}</span>
                   <span className={styles.scheduleTime}>{t(`footer.scheduleItems.${item.key}Time`)}</span>

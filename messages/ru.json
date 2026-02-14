@@ -1,12 +1,21 @@
 {
   "header": {
+    "logoAlt": "Neyromed Logo",
     "logoSubtitle": "Центр современной диагностики",
     "address": {
       "line1": "г.Подгородное",
       "line2": "ул.Шоссейная 164В"
     },
+    "languageOptions": [
+      { "value": "uk", "label": "Українська" },
+      { "value": "ru", "label": "Русский" }
+    ],
     "phone": {
-      "label": "Телефон для записи"
+      "label": "Телефон для записи",
+      "number": "+380 (96) 800 54 45",
+      "tel": "+380968005445",
+      "number2": "+380 (95) 800 54 45",
+      "tel2": "+380958005445"
     }
   },
   "navigation": {
@@ -15,7 +24,14 @@
     "treatment": "Хирургия / Онкохирургия",
     "prices": "Стоимость услуг",
     "contacts": "Контакты",
-    "appointment": "Записаться на прием"
+    "appointment": "Записаться на прием",
+    "items": [
+      { "href": "", "key": "home" },
+      { "href": "/ct", "key": "ct" },
+      { "href": "/treatment", "key": "treatment" },
+      { "href": "/prices", "key": "prices" },
+      { "href": "/contacts", "key": "contacts" }
+    ]
   },
   "hero": {
     "title": "Центр современной диагностики",
@@ -25,12 +41,12 @@
   },
   "servicesSearch": {
     "title": "Найдите свою услугу",
-    "services": {
-      "1": "Компьютерная томография",
-      "2": "Консультация у врача",
-      "3": "Комплексное лечение травм в спине или конечностях",
-      "7": "Осмотр, диагностика, быстрое лечение"
-    },
+    "services": [
+      { "id": 1, "title": "Компьютерная томография", "link": "/ct" },
+      { "id": 2, "title": "Консультация у врача", "link": "/services/professor-consultation" },
+      { "id": 3, "title": "Комплексное лечение травм в спине или конечностях", "link": "/services/spine-treatment" },
+      { "id": 7, "title": "Осмотр, диагностика, быстрое лечение", "link": "/services/diagnostics-treatment" }
+    ],
     "specialCard": {
       "title": "Не нашли что искали?",
       "titleBold": "Запишитесь онлайн!"
@@ -207,8 +223,20 @@
     },
     "appointmentButton": "Записаться",
     "contacts": "Контакты",
+    "contactsList": {
+      "phones": ["+380 (96) 800 54 45", "+380 (95) 800 54 45"],
+      "email": "nzorin@i.ua"
+    },
     "address": "г.Подгородное, ул.Шоссейная 164В",
     "services": "Услуги",
+    "servicesLinks": [
+      { "href": "/services/ct", "key": "ct" },
+      { "href": "/services/consultation", "key": "consultation" },
+      { "href": "/services/vertebroplasty", "key": "vertebroplasty" },
+      { "href": "/services/treatment", "key": "treatment" },
+      { "href": "/oncology-support", "key": "oncology" },
+      { "href": "/services/diagnostics", "key": "diagnostics" }
+    ],
     "servicesList": {
       "ct": "Компьютерная томография",
       "consultation": "Консультация врача",
@@ -218,6 +246,10 @@
       "diagnostics": "Осмотр и диагностика"
     },
     "schedule": "Время работы",
+    "scheduleLinks": [
+      { "key": "weekdays" },
+      { "key": "weekend" }
+    ],
     "scheduleItems": {
       "weekdays": "Пн - Пт:",
       "weekdaysTime": "9:00 - 18:00",

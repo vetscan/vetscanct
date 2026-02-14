@@ -1,12 +1,21 @@
 {
   "header": {
+    "logoAlt": "Neyromed Logo",
     "logoSubtitle": "Центр сучасної діагностики",
     "address": {
       "line1": "м.Підгороднє",
       "line2": "вул.Шосейна 164В"
     },
+    "languageOptions": [
+      { "value": "uk", "label": "Українська" },
+      { "value": "ru", "label": "Русский" }
+    ],
     "phone": {
-      "label": "Телефон для запису"
+      "label": "Телефон для запису",
+      "number": "+380 (96) 800 54 45",
+      "tel": "+380968005445",
+      "number2": "+380 (95) 800 54 45",
+      "tel2": "+380958005445"
     }
   },
   "navigation": {
@@ -15,7 +24,14 @@
     "treatment": "Хирургия / Онкохирургия",
     "prices": "Вартість послуг",
     "contacts": "Контакти",
-    "appointment": "Записатись на прийом"
+    "appointment": "Записатись на прийом",
+    "items": [
+      { "href": "", "key": "home" },
+      { "href": "/ct", "key": "ct" },
+      { "href": "/treatment", "key": "treatment" },
+      { "href": "/prices", "key": "prices" },
+      { "href": "/contacts", "key": "contacts" }
+    ]
   },
   "hero": {
     "title": "Центр сучасної діагностики",
@@ -25,12 +41,12 @@
   },
   "servicesSearch": {
     "title": "Знайдіть свою послугу",
-    "services": {
-      "1": "Комп'ютерна томографія",
-      "2": "Консультація у лікаря",
-      "3": "Комплексне лікування травм в спині або кінцівках",
-      "7": "Огляд, діагностика, швидке лікування"
-    },
+    "services": [
+      { "id": 1, "title": "Комп'ютерна томографія", "link": "/ct" },
+      { "id": 2, "title": "Консультація у лікаря", "link": "/services/professor-consultation" },
+      { "id": 3, "title": "Комплексне лікування травм в спині або кінцівках", "link": "/services/spine-treatment" },
+      { "id": 7, "title": "Огляд, діагностика, швидке лікування", "link": "/services/diagnostics-treatment" }
+    ],
     "specialCard": {
       "title": "Не знайшли що шукали?",
       "titleBold": "Запишіться онлайн!"
@@ -207,8 +223,20 @@
     },
     "appointmentButton": "Записатись",
     "contacts": "Контакти",
+    "contactsList": {
+      "phones": ["+380 (96) 800 54 45", "+380 (95) 800 54 45"],
+      "email": "nzorin@i.ua"
+    },
     "address": "м.Підгороднє, вул.Шосейна 164В",
     "services": "Послуги",
+    "servicesLinks": [
+      { "href": "/services/ct", "key": "ct" },
+      { "href": "/services/consultation", "key": "consultation" },
+      { "href": "/services/vertebroplasty", "key": "vertebroplasty" },
+      { "href": "/services/treatment", "key": "treatment" },
+      { "href": "/oncology-support", "key": "oncology" },
+      { "href": "/services/diagnostics", "key": "diagnostics" }
+    ],
     "servicesList": {
       "ct": "Комп'ютерна томографія",
       "consultation": "Консультація лікаря",
@@ -218,6 +246,10 @@
       "diagnostics": "Огляд та діагностика"
     },
     "schedule": "Час роботи",
+    "scheduleLinks": [
+      { "key": "weekdays" },
+      { "key": "weekend" }
+    ],
     "scheduleItems": {
       "weekdays": "Пн - Пт:",
       "weekdaysTime": "9:00 - 18:00",
