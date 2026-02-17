@@ -32,7 +32,7 @@ export default function Home() {
       <div className={styles.watermarkTop}>
         <Image 
           src="/cat.png" 
-          alt="Watermark Cat" 
+          alt="Декоративный элемент - кот" 
           width={200} 
           height={200}
           priority
@@ -43,7 +43,7 @@ export default function Home() {
       <div className={styles.watermarkBottom}>
         <Image 
           src="/dog.png" 
-          alt="Watermark Dog" 
+          alt="Декоративный элемент - собака" 
           width={200} 
           height={200}
           priority

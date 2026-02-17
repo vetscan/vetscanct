@@ -23,17 +23,12 @@ export default function Hero() {
       
       const promise = video.play();
       if (promise !== undefined) {
-        promise
-          .then(() => {
-            console.log('✅ Видео запущено успешно');
-          })
-          .catch((error) => {
-            console.log('❌ Ошибка запуска видео:', error);
-            // Попробуем еще раз через секунду
-            setTimeout(() => {
-              video.play().catch(e => console.log('Повторная попытка не удалась:', e));
-            }, 1000);
-          });
+        promise.catch((error) => {
+          // Попробуем еще раз через секунду
+          setTimeout(() => {
+            video.play().catch(() => {});
+          }, 1000);
+        });
       }
     };
 

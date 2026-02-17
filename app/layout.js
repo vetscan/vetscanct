@@ -2,6 +2,7 @@ import "./globals.css";
 import { Manrope, Montserrat } from "next/font/google";
 import IOSOverscrollFix from "@/components/IOSOverscrollFix";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import StructuredData from "@/components/StructuredData/StructuredData";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -16,13 +17,72 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Neuroscan - Центр ендоскопічної нейрохірургії",
-  description: "Професійна медична допомога з використанням найсучасніших технологій",
+  metadataBase: new URL('https://vetscanct.vercel.app'),
+  title: {
+    default: 'Neuroscan - Центр сучасної діагностики | КТ та нейрохірургія',
+    template: '%s | Neuroscan'
+  },
+  description: 'Центр сучасної діагностики Neuroscan: комп\'ютерна томографія (КТ), нейрохірургія, лікування травм хребта. Професійна медична допомога в м.Підгороднє',
+  keywords: ['КТ', 'комп\'ютерна томографія', 'нейрохірургія', 'лікування травм', 'діагностика', 'Підгороднє', 'Neuroscan', 'медичний центр'],
+  authors: [{ name: 'Neuroscan Medical Center' }],
+  creator: 'Neuroscan',
+  publisher: 'Neuroscan',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'uk_UA',
+    alternateLocale: ['ru_RU'],
+    url: 'https://vetscanct.vercel.app',
+    siteName: 'Neuroscan',
+    title: 'Neuroscan - Центр сучасної діагностики',
+    description: 'Професійна медична допомога: КТ, нейрохірургія, лікування травм',
+    images: [
+      {
+        url: '/Logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Neuroscan Medical Center',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Neuroscan - Центр сучасної діагностики',
+    description: 'Професійна медична допомога: КТ, нейрохірургія, лікування травм',
+    images: ['/Logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Добавь сюда коды верификации Google Search Console и других сервисов
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
     title: 'Neuroscan'
-  }
+  },
+  alternates: {
+    canonical: 'https://vetscanct.vercel.app',
+    languages: {
+      'uk': 'https://vetscanct.vercel.app/uk',
+      'ru': 'https://vetscanct.vercel.app/ru',
+    },
+  },
 };
 
 export const viewport = {
@@ -63,6 +123,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${manrope.variable} ${montserrat.variable}`}>
         <LanguageProvider>
+          <StructuredData />
           <IOSOverscrollFix />
           {children}
         </LanguageProvider>
