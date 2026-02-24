@@ -1,12 +1,62 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { sendToTelegram } from '@/app/actions/telegram';
 import styles from './AppointmentModal.module.css';
 
 export default function AppointmentModal({ isOpen, onClose }) {
   const { t } = useLanguage();
+  
+  // Состояние формы
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    reason: ''
+  });
+  
+  // Состояние загрузки
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Обработчик изменения полей
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  
+  // Обработчик отправки формы
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Отправляем данные в Telegram через Server Action
+      const result = await sendToTelegram(formData);
+      
+      if (result.success) {
+        // Успешная отправка
+        alert(t('appointmentModal.successMessage') || 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+        
+        // Очищаем форму
+        setFormData({ name: '', phone: '', reason: '' });
+        
+        // Закрываем модалку
+        onClose();
+      } else {
+        // Ошибка отправки
+        alert(t('appointmentModal.errorMessage') || 'Ошибка отправки. Попробуйте позже или позвоните нам.');
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      alert(t('appointmentModal.errorMessage') || 'Ошибка отправки. Попробуйте позже.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   
   // Блокируем скролл при открытии модалки
   useEffect(() => {
@@ -47,16 +97,20 @@ export default function AppointmentModal({ isOpen, onClose }) {
         </p>
 
         {/* Форма */}
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.field}>
             <label className={styles.label}>
               {t('appointmentModal.fields.name.label')} <span className={styles.required}>*</span>
             </label>
             <input 
               type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               className={styles.input}
               placeholder={t('appointmentModal.fields.name.placeholder')}
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -66,9 +120,13 @@ export default function AppointmentModal({ isOpen, onClose }) {
             </label>
             <input 
               type="tel" 
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               className={styles.input}
               placeholder={t('appointmentModal.fields.phone.placeholder')}
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -77,15 +135,26 @@ export default function AppointmentModal({ isOpen, onClose }) {
               {t('appointmentModal.fields.reason.label')} <span className={styles.required}>*</span>
             </label>
             <textarea 
+              name="reason"
+              value={formData.reason}
+              onChange={handleChange}
               className={styles.textarea}
               placeholder={t('appointmentModal.fields.reason.placeholder')}
               rows={4}
               required
+              disabled={isSubmitting}
             />
           </div>
 
-          <button type="submit" className={styles.submitButton}>
-            {t('appointmentModal.submitButton')}
+          <button 
+            type="submit" 
+            className={styles.submitButton}
+            disabled={isSubmitting}
+          >
+            {isSubmitting 
+              ? (t('appointmentModal.sendingButton') || 'Отправка...') 
+              : t('appointmentModal.submitButton')
+            }
           </button>
         </form>
       </div>
