@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { sendToTelegram } from '@/app/actions/telegram';
+import Toast from '@/components/Toast/Toast';
 import styles from './AppointmentModal.module.css';
 
 export default function AppointmentModal({ isOpen, onClose }) {
@@ -18,6 +19,9 @@ export default function AppointmentModal({ isOpen, onClose }) {
   
   // Состояние загрузки
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Состояние тоста
+  const [toast, setToast] = useState(null);
   
   // Функция капитализации первой буквы каждого предложения
   const capitalizeText = (text) => {
@@ -68,21 +72,32 @@ export default function AppointmentModal({ isOpen, onClose }) {
       const result = await sendToTelegram(formData);
       
       if (result.success) {
-        // Успешная отправка
-        alert(t('appointmentModal.successMessage') || 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+        // Успешная отправка - показываем тост
+        setToast({
+          message: t('appointmentModal.successMessage') || 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.',
+          type: 'success'
+        });
         
         // Очищаем форму
         setFormData({ name: '', phone: '', reason: '' });
         
-        // Закрываем модалку
-        onClose();
+        // Закрываем модалку через 1 секунду (чтобы пользователь увидел тост)
+        setTimeout(() => {
+          onClose();
+        }, 1000);
       } else {
-        // Ошибка отправки
-        alert(t('appointmentModal.errorMessage') || 'Ошибка отправки. Попробуйте позже или позвоните нам.');
+        // Ошибка отправки - показываем тост
+        setToast({
+          message: t('appointmentModal.errorMessage') || 'Ошибка отправки. Попробуйте позже или позвоните нам.',
+          type: 'error'
+        });
       }
     } catch (error) {
       console.error('Ошибка:', error);
-      alert(t('appointmentModal.errorMessage') || 'Ошибка отправки. Попробуйте позже.');
+      setToast({
+        message: t('appointmentModal.errorMessage') || 'Ошибка отправки. Попробуйте позже.',
+        type: 'error'
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -111,6 +126,15 @@ export default function AppointmentModal({ isOpen, onClose }) {
 
   const modalContent = (
     <div className={styles.overlay} onClick={handleOverlayClick}>
+      {/* Toast уведомление */}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+      
       <div className={styles.modal}>
         {/* Кнопка закрытия */}
         <button className={styles.closeButton} onClick={onClose}>
