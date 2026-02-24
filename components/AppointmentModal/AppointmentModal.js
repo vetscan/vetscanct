@@ -19,12 +19,42 @@ export default function AppointmentModal({ isOpen, onClose }) {
   // Состояние загрузки
   const [isSubmitting, setIsSubmitting] = useState(false);
   
+  // Функция капитализации первой буквы каждого предложения
+  const capitalizeText = (text) => {
+    return text
+      .split('. ')
+      .map(sentence => {
+        if (!sentence) return sentence;
+        return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+      })
+      .join('. ');
+  };
+
+  // Функция форматирования телефона (только разрешенные символы)
+  const formatPhone = (value) => {
+    // Разрешаем только цифры, +, (, ), пробелы и дефисы
+    return value.replace(/[^\d+\-() ]/g, '');
+  };
+
   // Обработчик изменения полей
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
+    let processedValue = value;
+    
+    // Применяем капитализацию для имени и причины
+    if (name === 'name' || name === 'reason') {
+      processedValue = capitalizeText(value);
+    }
+    
+    // Применяем форматирование для телефона
+    if (name === 'phone') {
+      processedValue = formatPhone(value);
+    }
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: processedValue
     }));
   };
   
@@ -125,6 +155,8 @@ export default function AppointmentModal({ isOpen, onClose }) {
               onChange={handleChange}
               className={styles.input}
               placeholder={t('appointmentModal.fields.phone.placeholder')}
+              pattern="[\d+\-() ]+"
+              title="Используйте только цифры, +, (), - и пробелы"
               required
               disabled={isSubmitting}
             />
