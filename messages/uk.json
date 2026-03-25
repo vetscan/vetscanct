@@ -262,20 +262,16 @@
     "address": "м.Підгороднє, вул.Шосейна 164В",
     "services": "Послуги",
     "servicesLinks": [
-      { "href": "/services/ct", "key": "ct" },
-      { "href": "/services/consultation", "key": "consultation" },
-      { "href": "/services/vertebroplasty", "key": "vertebroplasty" },
-      { "href": "/services/treatment", "key": "treatment" },
-      { "href": "/oncology-support", "key": "oncology" },
-      { "href": "/services/diagnostics", "key": "diagnostics" }
+      { "href": "/ct", "key": "ct" },
+      { "href": "/treatment", "key": "treatment" },
+      { "href": "/services/traumatology", "key": "traumatology" },
+      { "href": "/services/neoplasms", "key": "neoplasms" }
     ],
     "servicesList": {
-      "ct": "Комп'ютерна томографія",
-      "consultation": "Консультація лікаря",
-      "vertebroplasty": "Вертебропластика",
-      "treatment": "Лікування травм спини та кінцівок",
-      "oncology": "Допомога при підозрі на онкологію",
-      "diagnostics": "Огляд та діагностика"
+      "ct": "КТ",
+      "treatment": "Хирургия / Онкохирургия",
+      "traumatology": "Травматологія",
+      "neoplasms": "Новоутворення"
     },
     "schedule": "Час роботи",
     "scheduleLinks": [

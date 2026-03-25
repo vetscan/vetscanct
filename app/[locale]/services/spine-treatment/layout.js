@@ -1,6 +1,6 @@
 // SEO metadata для страницы лечения позвоночника
 export async function generateMetadata({ params }) {
-  const locale = params.locale || 'uk';
+  const { locale = 'uk' } = await params;
   
   const translations = {
     uk: {

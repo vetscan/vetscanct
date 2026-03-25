@@ -1,6 +1,6 @@
 // SEO metadata для страницы вертебропластики
 export async function generateMetadata({ params }) {
-  const locale = params.locale || 'uk';
+  const { locale = 'uk' } = await params;
   
   const translations = {
     uk: {

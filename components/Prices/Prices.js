@@ -15,6 +15,7 @@ export default function Prices() {
   const pricesCards = t('prices.cards');
 
   useEffect(() => {
+    const titleElement = titleRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -27,13 +28,13 @@ export default function Prices() {
       { threshold: 0.1 }
     );
 
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
+    if (titleElement) {
+      observer.observe(titleElement);
     }
 
     return () => {
-      if (titleRef.current) {
-        observer.unobserve(titleRef.current);
+      if (titleElement) {
+        observer.unobserve(titleElement);
       }
     };
   }, []);

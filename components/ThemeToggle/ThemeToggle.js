@@ -19,13 +19,11 @@ function getInitialTheme() {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => getInitialTheme());
 
   useEffect(() => {
-    const initial = getInitialTheme();
-    setTheme(initial);
-    applyTheme(initial);
-  }, []);
+    applyTheme(theme);
+  }, [theme]);
 
   const setAndStore = (nextTheme) => {
     setTheme(nextTheme);

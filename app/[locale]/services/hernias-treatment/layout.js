@@ -1,0 +1,37 @@
+// SEO metadata для страницы лечения травм и грыж
+export async function generateMetadata({ params }) {
+  const { locale = 'uk' } = await params;
+
+  const translations = {
+    uk: {
+      title: 'Лікування травм та гриж - Neuroscan',
+      description: 'Комплексне лікування травм та гриж у Neuroscan: діагностика, консервативна терапія та сучасні хірургічні підходи.',
+      keywords: 'лікування травм, лікування гриж, хребет, нейрохірургія, Підгороднє, Neuroscan',
+    },
+    ru: {
+      title: 'Лечение травм и грыж - Neuroscan',
+      description: 'Комплексное лечение травм и грыж в Neuroscan: диагностика, консервативная терапия и современные хирургические подходы.',
+      keywords: 'лечение травм, лечение грыж, позвоночник, нейрохирургия, Подгородное, Neuroscan',
+    },
+  };
+
+  const t = translations[locale] || translations.uk;
+
+  return {
+    title: t.title,
+    description: t.description,
+    keywords: t.keywords,
+    alternates: {
+      canonical: `https://vetscanct.vercel.app/${locale}/services/hernias-treatment`,
+      languages: {
+        uk: 'https://vetscanct.vercel.app/uk/services/hernias-treatment',
+        ru: 'https://vetscanct.vercel.app/ru/services/hernias-treatment',
+      },
+    },
+  };
+}
+
+export default function ServicesHerniasTreatmentLayout({ children }) {
+  return <>{children}</>;
+}
+

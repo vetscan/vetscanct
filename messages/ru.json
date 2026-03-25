@@ -262,20 +262,16 @@
     "address": "г.Подгородное, ул.Шоссейная 164В",
     "services": "Услуги",
     "servicesLinks": [
-      { "href": "/services/ct", "key": "ct" },
-      { "href": "/services/consultation", "key": "consultation" },
-      { "href": "/services/vertebroplasty", "key": "vertebroplasty" },
-      { "href": "/services/treatment", "key": "treatment" },
-      { "href": "/oncology-support", "key": "oncology" },
-      { "href": "/services/diagnostics", "key": "diagnostics" }
+      { "href": "/ct", "key": "ct" },
+      { "href": "/treatment", "key": "treatment" },
+      { "href": "/services/traumatology", "key": "traumatology" },
+      { "href": "/services/neoplasms", "key": "neoplasms" }
     ],
     "servicesList": {
-      "ct": "Компьютерная томография",
-      "consultation": "Консультация врача",
-      "vertebroplasty": "Вертебропластика",
-      "treatment": "Лечение травм спины и конечностей",
-      "oncology": "Помощь при подозрении на онкологию",
-      "diagnostics": "Осмотр и диагностика"
+      "ct": "КТ",
+      "treatment": "Хирургия / Онкохирургия",
+      "traumatology": "Травматология",
+      "neoplasms": "Новообразования"
     },
     "schedule": "Время работы",
     "scheduleLinks": [

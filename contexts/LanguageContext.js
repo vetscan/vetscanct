@@ -1,53 +1,42 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useMemo, useState, useEffect } from 'react';
 import ukMessages from '@/messages/uk.json';
 import ruMessages from '@/messages/ru.json';
 
 const LanguageContext = createContext();
 
-// Объект с переводами
 const messagesMap = {
   uk: ukMessages,
-  ru: ruMessages
+  ru: ruMessages,
 };
 
-export function LanguageProvider({ children }) {
-  const [locale, setLocale] = useState('uk');
-  const [messages, setMessages] = useState(ukMessages); // Сразу загружаем украинский
+function normalizeLocale(locale) {
+  return locale === 'ru' ? 'ru' : 'uk';
+}
 
-  // Загружаем сохраненный язык при монтировании
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedLocale = localStorage.getItem('locale');
-      if (savedLocale && (savedLocale === 'uk' || savedLocale === 'ru')) {
-        setLocale(savedLocale);
-        setMessages(messagesMap[savedLocale]);
-      }
-    }
-  }, []);
+export function LanguageProvider({ children, initialLocale = 'uk' }) {
+  const [locale, setLocale] = useState(() => normalizeLocale(initialLocale));
 
-  // Обновляем переводы при изменении языка
   useEffect(() => {
-    setMessages(messagesMap[locale]);
-    
-    // Сохраняем выбранный язык в localStorage
     if (typeof window !== 'undefined') {
       localStorage.setItem('locale', locale);
     }
   }, [locale]);
 
+  const messages = useMemo(() => messagesMap[locale] || ukMessages, [locale]);
+
   const t = (key) => {
     if (!messages) return key;
-    
+
     const keys = key.split('.');
     let value = messages;
-    
+
     for (const k of keys) {
       value = value?.[k];
       if (value === undefined) return key;
     }
-    
+
     return value;
   };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -16,9 +16,12 @@ export default function ServicesSearch() {
   const cardsRef = useRef(null);
 
   // Проверяем что services это массив
-  const servicesArray = Array.isArray(services) ? services : [];
+  const servicesArray = useMemo(() => (
+    Array.isArray(services) ? services : []
+  ), [services]);
 
   useEffect(() => {
+    const titleElement = titleRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,19 +38,20 @@ export default function ServicesSearch() {
       }
     );
 
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
+    if (titleElement) {
+      observer.observe(titleElement);
     }
 
     return () => {
-      if (titleRef.current) {
-        observer.unobserve(titleRef.current);
+      if (titleElement) {
+        observer.unobserve(titleElement);
       }
     };
   }, []);
 
   // Анимация карточек
   useEffect(() => {
+    const cardsElement = cardsRef.current;
     const cardsObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -70,13 +74,13 @@ export default function ServicesSearch() {
       { threshold: 0.1 }
     );
 
-    if (cardsRef.current) {
-      cardsObserver.observe(cardsRef.current);
+    if (cardsElement) {
+      cardsObserver.observe(cardsElement);
     }
 
     return () => {
-      if (cardsRef.current) {
-        cardsObserver.unobserve(cardsRef.current);
+      if (cardsElement) {
+        cardsObserver.unobserve(cardsElement);
       }
     };
   }, [servicesArray]);

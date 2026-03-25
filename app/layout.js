@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Manrope, Montserrat } from "next/font/google";
 import IOSOverscrollFix from "@/components/IOSOverscrollFix";
-import { LanguageProvider } from "@/contexts/LanguageContext";
 import StructuredData from "@/components/StructuredData/StructuredData";
 
 const manrope = Manrope({
@@ -106,6 +105,11 @@ export default function RootLayout({ children }) {
             __html: `
             (function() {
               try {
+                var pathParts = window.location.pathname.split('/').filter(Boolean);
+                var localeFromPath = pathParts[0];
+                if (localeFromPath === 'uk' || localeFromPath === 'ru') {
+                  document.documentElement.lang = localeFromPath;
+                }
                 var stored = localStorage.getItem('theme');
                 document.documentElement.dataset.theme = 'light';
                 document.documentElement.style.colorScheme = 'light';
@@ -122,11 +126,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${manrope.variable} ${montserrat.variable}`}>
-        <LanguageProvider>
-          <StructuredData />
-          <IOSOverscrollFix />
-          {children}
-        </LanguageProvider>
+        <StructuredData />
+        <IOSOverscrollFix />
+        {children}
       </body>
     </html>
   );

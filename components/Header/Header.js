@@ -4,17 +4,42 @@ import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './Header.module.css';
-import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
+
+const ThemeToggle = dynamic(() => import('@/components/ThemeToggle/ThemeToggle'), {
+  ssr: false,
+});
+
+function buildPathWithLocale(pathname, nextLocale) {
+  const parts = (pathname || '/').split('/').filter(Boolean);
+
+  if (parts[0] === 'uk' || parts[0] === 'ru') {
+    parts[0] = nextLocale;
+  } else {
+    parts.unshift(nextLocale);
+  }
+
+  return `/${parts.join('/')}`;
+}
 
 export default function Header() {
-  const { locale, setLocale, t } = useLanguage();
+  const { locale, t } = useLanguage();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   const handleLanguageSelect = (newLocale) => {
-    setLocale(newLocale);
     setIsLanguageOpen(false);
+
+    if (newLocale === locale) {
+      return;
+    }
+
+    const nextPath = buildPathWithLocale(pathname, newLocale);
+    router.push(nextPath);
   };
 
   const languageOptions = t('header.languageOptions');
@@ -24,7 +49,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         {/* Логотип */}
-        <Link href="/" className={styles.logo}>
+        <Link href={`/${locale}`} className={styles.logo}>
           <div className={styles.logoImage}>
             <Image 
               src="/Logo.png" 

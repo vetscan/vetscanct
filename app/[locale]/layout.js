@@ -1,6 +1,8 @@
+import { LanguageProvider } from '@/contexts/LanguageContext';
+
 // Layout для локализованных страниц с SEO metadata
 export async function generateMetadata({ params }) {
-  const locale = params.locale || 'uk';
+  const { locale = 'uk' } = await params;
   
   const translations = {
     uk: {
@@ -28,6 +30,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function LocaleLayout({ children, params }) {
-  return <>{children}</>;
+export default async function LocaleLayout({ children, params }) {
+  const { locale = 'uk' } = await params;
+  return <LanguageProvider key={locale} initialLocale={locale}>{children}</LanguageProvider>;
 }

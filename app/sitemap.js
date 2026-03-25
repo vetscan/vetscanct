@@ -19,7 +19,10 @@ export default function sitemap() {
     '/services/hernias-treatment',
     '/services/laser',
     '/services/laser-vaporization',
+    '/services/neoplasms',
+    '/services/professor-consultation',
     '/services/spine-treatment',
+    '/services/traumatology',
     '/services/treatment',
     '/services/vertebroplasty',
   ];

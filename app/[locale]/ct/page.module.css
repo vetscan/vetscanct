@@ -225,23 +225,23 @@
 
 /* Зеленый кружочек внутри */
 .indicationItem::after {
-  content: '' !important;
-  position: absolute !important;
-  left: 14px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 10px !important;
-  height: 10px !important;
-  background: var(--accent, #14b8a6) !important;
-  border-radius: 50% !important;
-  z-index: 1 !important;
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--accent, #14b8a6);
+  border-radius: 50%;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
   .indicationItem::after {
-    left: 18.2px !important;
-    width: 18px !important;
-    height: 18px !important;
+    left: 18.2px;
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -340,8 +340,8 @@
   }
 
   .indicationsList:first-of-type .indicationItem::after {
-    left: auto !important;
-    right: 18.2px !important;
+    left: auto;
+    right: 18.2px;
   }
 
   .indicationsList:first-of-type .indicationItem:nth-child(1) {

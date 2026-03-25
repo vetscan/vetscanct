@@ -61,12 +61,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Neuroscan",
-    "url": "https://vetscanct.vercel.app",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://vetscanct.vercel.app/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "url": "https://vetscanct.vercel.app"
   };
 
   return (
