@@ -22,8 +22,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
   gap: 8px;
+  overflow-x: auto;
+  width: 100%;
+  padding: 4px 0;
+}
+
+/* Скрываем скроллбар но оставляем возможность прокрутки */
+.navItems::-webkit-scrollbar {
+  display: none;
+}
+
+.navItems {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .navItem {
@@ -31,10 +52,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
-  font-size: 12px;
+  padding: 8px 16px;
+  font-size: 11px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 20px;
   color: var(--color-gray-900, #0b1220);
   background: rgba(255, 255, 255, 0.15);
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -68,7 +89,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 16px;
+  padding: 12px 24px;
   background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: var(--color-white, #ffffff);
   border: none;
@@ -78,6 +99,8 @@
   line-height: 24px;
   cursor: pointer;
   transition: all 1s;
+  /* Кнопка всегда по центру */
+  align-self: center;
   /* Легкая пульсация */
   animation: pulse 1.8s ease-in-out infinite;
 }
@@ -120,16 +143,19 @@
 
   .container {
     padding: 0 32px;
-    justify-content: space-between;
+  }
+
+  .navItems {
+    gap: 12px;
   }
 
   .navItem {
-    padding: 12px 32px;
-    font-size: 14px;
+    padding: 10px 24px;
+    font-size: 13px;
   }
 
   .appointmentBtn {
-    padding: 14px 16px;
+    padding: 14px 32px;
     font-size: 16px;
   }
 }
@@ -145,29 +171,25 @@
     padding: 0 24px;
   }
 
+  .navItems {
+    gap: 8px;
+  }
+
   .navItem {
-    padding: 10px 24px;
-    font-size: 12.8px;
+    padding: 8px 16px;
+    font-size: 11.5px;
   }
 
   .appointmentBtn {
-    width: 100%;
-    justify-content: center;
-    margin-top: 8px;
+    padding: 12px 24px;
   }
 }
 
-/* Адаптив для екранів менше 1100px */
+/* Адаптив для екранів менше 1100px - убираем старые правила */
 @media (max-width: 1100px) {
-  .container {
-    justify-content: center;
-  }
-
-  .appointmentBtn {
-    width: 100%;
-    max-width: 320px;
-    justify-content: center;
-    margin-top: 24px;
+  .navItem {
+    font-size: 11px;
+    padding: 8px 14px;
   }
 }
 
@@ -178,8 +200,8 @@
   }
 
   .navItem {
-    padding: 14px 40px;
-    font-size: 16px;
+    padding: 12px 28px;
+    font-size: 14px;
   }
 
   .appointmentBtn {

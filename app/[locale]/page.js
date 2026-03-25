@@ -35,6 +35,7 @@ export default function Home() {
           alt="Декоративный элемент - кот" 
           width={200} 
           height={200}
+          quality={80}
           priority
         />
       </div>
@@ -46,6 +47,7 @@ export default function Home() {
           alt="Декоративный элемент - собака" 
           width={200} 
           height={200}
+          quality={80}
           priority
         />
       </div>

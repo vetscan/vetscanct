@@ -15,11 +15,13 @@ export default function Navigation() {
     <>
       <nav className={styles.nav}>
         <div className={styles.container}>
-          {Array.isArray(navigationItems) && navigationItems.map((item) => (
-            <Link key={item.href} href={`/${locale}${item.href}`} className={styles.navItem}>
-              {t(`navigation.${item.key}`)}
-            </Link>
-          ))}
+          <div className={styles.navItems}>
+            {Array.isArray(navigationItems) && navigationItems.map((item) => (
+              <Link key={item.href} href={`/${locale}${item.href}`} className={styles.navItem}>
+                {t(`navigation.${item.key}`)}
+              </Link>
+            ))}
+          </div>
 
           <button 
             className={styles.appointmentBtn}

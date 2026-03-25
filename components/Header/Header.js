@@ -31,6 +31,7 @@ export default function Header() {
               alt={t('header.logoAlt')} 
               width={120} 
               height={120}
+              quality={80}
               className={styles.logoImg}
             />
           </div>

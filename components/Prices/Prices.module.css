@@ -159,6 +159,16 @@
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
+/* Кликабельные карточки */
+.cardClickable {
+  cursor: pointer;
+}
+
+.cardClickable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(20, 184, 166, 0.2);
+}
+
 .cardHeader {
   display: flex;
   justify-content: space-between;
@@ -223,6 +233,24 @@
   color: var(--color-gray-500);
 }
 
+/* Выделенный пункт "Та інші послуги..." */
+.serviceItemHighlight {
+  font-weight: 600;
+  color: var(--accent, #14b8a6);
+  animation: pulseText 2s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
 @media (min-width: 768px) {
   .serviceItem {
     font-size: 14px;
@@ -270,9 +298,6 @@
 }
 
 .arrowCircle {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
   width: 38px;
   height: 38px;
   background: var(--color-gray-200, #e5e7eb);
@@ -290,6 +315,30 @@
   height: 42px;
   transition: all 0.3s;
   filter: grayscale(0);
+  animation: pulsePawPrice 2s ease-in-out infinite;
+}
+
+/* Анимация пульсации лапки */
+@keyframes pulsePawPrice {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes pulsePawPriceHover {
+  0%, 100% {
+    transform: scale(1.1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
 }
 
 .card:hover .arrowCircle {
@@ -299,6 +348,7 @@
 .card:hover .pawIcon {
   transform: scale(1.1);
   filter: brightness(0) invert(1);
+  animation: pulsePawPriceHover 1.5s ease-in-out infinite;
 }
 
 
@@ -318,4 +368,49 @@
   background: rgba(255, 255, 255, 0.25);
   border-color: rgba(148, 163, 184, 0.6);
   box-shadow: 0 8px 16px rgba(20, 184, 166, 0.15);
+}
+
+
+/* Контейнер для стрелки и иконки лапки */
+.arrowContainer {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Пульсирующая стрелка указатель */
+.pointerArrow {
+  color: var(--color-gray-400, #9ca3af);
+  animation: pulseArrowPrice 2s ease-in-out infinite;
+}
+
+.cardClickable:hover .pointerArrow {
+  color: var(--accent, #14b8a6);
+  animation: pulseArrowPriceHover 1.5s ease-in-out infinite;
+}
+
+/* Анимация пульсации стрелки */
+@keyframes pulseArrowPrice {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+}
+
+@keyframes pulseArrowPriceHover {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(6px) scale(1.1);
+  }
 }

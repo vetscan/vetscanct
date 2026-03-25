@@ -1,13 +1,7 @@
 'use client';
 
-import { useLanguage } from '@/contexts/LanguageContext';
-import PageShell from '@/components/PageShell/PageShell';
+import ServicePage from '@/components/ServicePage/ServicePage';
 
 export default function TreatmentPage() {
-  const { t } = useLanguage();
-  const treatmentData = t('pages.treatment');
-
-  return (
-    <PageShell title={treatmentData.title} subtitle={treatmentData.subtitle} />
-  );
+  return <ServicePage translationKey="pages.treatment" />;
 }

@@ -105,6 +105,21 @@
   transform: translateY(20px);
 }
 
+/* Сброс браузерных стилей для button — чтобы выглядел как link-карточка */
+button.card {
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid var(--border, #d9e2ec);
+  background: var(--surface-1, #ffffff);
+}
+
+:root[data-theme='light'] button.card {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 /* Анимация появления */
 .cardVisible {
   opacity: 1;
@@ -131,10 +146,62 @@
   box-shadow: var(--shadow-lg);
 }
 
-.arrow {
+/* Контейнер для стрелки и иконки лапки */
+.arrowContainer {
   position: absolute;
   bottom: 8px;
   right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Пульсирующая стрелка указатель */
+.pointerArrow {
+  color: var(--color-gray-400, #9ca3af);
+  animation: pulseArrow 2s ease-in-out infinite;
+}
+
+.card:hover .pointerArrow {
+  color: var(--accent, #14b8a6);
+  animation: pulseArrowHover 1.5s ease-in-out infinite;
+}
+
+/* Анимация пульсации стрелки */
+@keyframes pulseArrow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+}
+
+@keyframes pulseArrowHover {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(6px) scale(1.1);
+  }
+}
+
+/* Пульсирующая стрелка для специальной карточки */
+.pointerArrowWhite {
+  color: rgba(255, 255, 255, 0.6);
+  animation: pulseArrow 2s ease-in-out infinite;
+}
+
+.specialCard:hover .pointerArrowWhite {
+  color: rgba(255, 255, 255, 1);
+  animation: pulseArrowHover 1.5s ease-in-out infinite;
+}
+
+.arrow {
   width: 38.4px;
   height: 38.4px;
   border-radius: 50%;
@@ -163,11 +230,36 @@
   height: 41.6px;
   transition: all 0.3s;
   filter: grayscale(0);
+  animation: pulsePaw 2s ease-in-out infinite;
 }
 
 .card:hover .pawIcon {
   transform: scale(1.1);
   filter: brightness(0) invert(1);
+  animation: pulsePawHover 1.5s ease-in-out infinite;
+}
+
+/* Анимация пульсации лапки */
+@keyframes pulsePaw {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes pulsePawHover {
+  0%, 100% {
+    transform: scale(1.1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
 }
 
 .pawIconWhite {
@@ -175,11 +267,13 @@
   height: 41.6px;
   transition: all 0.3s;
   filter: brightness(0) invert(1);
+  animation: pulsePaw 2s ease-in-out infinite;
 }
 
 .specialCard:hover .pawIconWhite {
   transform: scale(1.1);
   filter: grayscale(0) brightness(1);
+  animation: pulsePawHover 1.5s ease-in-out infinite;
 }
 
 .arrowCircle {

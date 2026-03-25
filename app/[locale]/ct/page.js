@@ -182,6 +182,7 @@ export default function CtPage() {
                   alt={indications.imageAlt}
                   width={352}
                   height={352}
+                  quality={80}
                   className={styles.indicationsVideo}
                   priority
                 />
