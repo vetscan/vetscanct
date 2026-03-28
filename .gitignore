@@ -43,3 +43,7 @@ next-env.d.ts
 
 # session state (local only)
 _SESSION_STATE.md
+
+# IDE settings (local only)
+.kiro/
+.qoder/
