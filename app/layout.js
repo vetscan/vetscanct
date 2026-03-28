@@ -16,16 +16,16 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://vetscanct.vercel.app'),
+  metadataBase: new URL('https://vetscanct.com.ua'),
   title: {
-    default: 'Neuroscan - Центр сучасної діагностики | КТ та нейрохірургія',
-    template: '%s | Neuroscan'
+    default: 'VetScan CT - Центр сучасної ветеринарної діагностики',
+    template: '%s | VetScan CT '
   },
-  description: 'Центр сучасної діагностики Neuroscan: комп\'ютерна томографія (КТ), нейрохірургія, лікування травм хребта. Професійна медична допомога в м.Підгороднє',
-  keywords: ['КТ', 'комп\'ютерна томографія', 'нейрохірургія', 'лікування травм', 'діагностика', 'Підгороднє', 'Neuroscan', 'медичний центр'],
-  authors: [{ name: 'Neuroscan Medical Center' }],
-  creator: 'Neuroscan',
-  publisher: 'Neuroscan',
+  description: 'VetScan CT - Центр сучасної ветеринарної діагностики: комп\'ютерна томографія (КТ), нейрохірургія, лікування травм хребта. Професійна медична допомога в м.Підгороднє',
+  keywords: ['КТ', 'комп\'ютерна томографія', 'нейрохірургія', 'лікування травм', 'діагностика', 'Підгороднє', 'VetScan CT', 'медичний центр'],
+  authors: [{ name: 'VetScan CT' }],
+  creator: 'VetScan CT',
+  publisher: 'VetScan CT',
   formatDetection: {
     email: false,
     address: false,
@@ -35,23 +35,23 @@ export const metadata = {
     type: 'website',
     locale: 'uk_UA',
     alternateLocale: ['ru_RU'],
-    url: 'https://vetscanct.vercel.app',
-    siteName: 'Neuroscan',
-    title: 'Neuroscan - Центр сучасної діагностики',
-    description: 'Професійна медична допомога: КТ, нейрохірургія, лікування травм',
+    url: 'https://vetscanct.com.ua',
+    siteName: 'VetScan CT',
+    title: 'VetScan CT - Центр сучасної ветеринарної діагностики',
+    description: 'Професійна медична допомога для тварин: КТ, нейрохірургія, лікування травм',
     images: [
       {
         url: '/Logo.png',
         width: 1200,
         height: 630,
-        alt: 'Neuroscan Medical Center',
+        alt: 'VetScan CT',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Neuroscan - Центр сучасної діагностики',
-    description: 'Професійна медична допомога: КТ, нейрохірургія, лікування травм',
+    title: 'VetScan CT - Центр сучасної ветеринарної діагностики',
+    description: 'Професійна медична допомога для тварин: КТ, нейрохірургія, лікування травм',
     images: ['/Logo.png'],
   },
   robots: {
@@ -66,20 +66,18 @@ export const metadata = {
     },
   },
   verification: {
-    // Добавь сюда коды верификации Google Search Console и других сервисов
-    // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
+  
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Neuroscan'
+    title: 'VetScan CT'
   },
   alternates: {
-    canonical: 'https://vetscanct.vercel.app',
+    canonical: 'https://vetscanct.com.ua',
     languages: {
-      'uk': 'https://vetscanct.vercel.app/uk',
-      'ru': 'https://vetscanct.vercel.app/ru',
+      'uk': 'https://vetscanct.com.ua',
+      'ru': 'https://vetscanct.com.ua',
     },
   },
 };
