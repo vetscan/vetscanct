@@ -1,6 +1,6 @@
 // Динамический sitemap для Next.js
 export default function sitemap() {
-  const baseUrl = 'https://vetscanct.vercel.app';
+  const baseUrl = 'https://vetscanct.com.ua';
   
   // Основные страницы на обоих языках
   const routes = [

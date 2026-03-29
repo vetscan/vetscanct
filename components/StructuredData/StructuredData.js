@@ -4,11 +4,11 @@ export default function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
-    "name": "Neuroscan",
+    "name": "VetScan CT",
     "description": "Центр сучасної діагностики: КТ, нейрохірургія, лікування травм",
-    "url": "https://vetscanct.vercel.app",
-    "logo": "https://vetscanct.vercel.app/Logo.png",
-    "image": "https://vetscanct.vercel.app/Logo.png",
+    "url": "https://vetscanct.com.ua",
+    "logo": "https://vetscanct.com.ua/Logo.png",
+    "image": "https://vetscanct.com.ua/Logo.png",
     "telephone": "+380968005445",
     "address": {
       "@type": "PostalAddress",
@@ -60,8 +60,8 @@ export default function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Neuroscan",
-    "url": "https://vetscanct.vercel.app"
+    "name": "VetScan CT",
+    "url": "https://vetscanct.com.ua"
   };
 
   return (
