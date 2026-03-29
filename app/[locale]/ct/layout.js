@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t.title,
       description: t.description,
-      url: `https://vetscanct.vercel.app/${locale}/ct`,
+      url: `https://vetscanct.com.ua/${locale}/ct`,
       type: 'website',
       images: [
         {
@@ -36,10 +36,10 @@ export async function generateMetadata({ params }) {
       ],
     },
     alternates: {
-      canonical: `https://vetscanct.vercel.app/${locale}/ct`,
+      canonical: `https://vetscanct.com.ua/${locale}/ct`,
       languages: {
-        'uk': 'https://vetscanct.vercel.app/uk/ct',
-        'ru': 'https://vetscanct.vercel.app/ru/ct',
+        'uk': 'https://vetscanct.com.ua/uk/ct',
+        'ru': 'https://vetscanct.com.ua/ru/ct',
       },
     },
   };

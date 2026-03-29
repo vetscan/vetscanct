@@ -22,10 +22,10 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.vercel.app/${locale}/services/vertebroplasty`,
+      canonical: `https://vetscanct.com.ua/${locale}/services/vertebroplasty`,
       languages: {
-        'uk': 'https://vetscanct.vercel.app/uk/services/vertebroplasty',
-        'ru': 'https://vetscanct.vercel.app/ru/services/vertebroplasty',
+        'uk': 'https://vetscanct.com.ua/uk/services/vertebroplasty',
+        'ru': 'https://vetscanct.com.ua/ru/services/vertebroplasty',
       },
     },
   };

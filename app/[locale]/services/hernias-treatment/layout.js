@@ -22,10 +22,10 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.vercel.app/${locale}/services/hernias-treatment`,
+      canonical: `https://vetscanct.com.ua/${locale}/services/hernias-treatment`,
       languages: {
-        uk: 'https://vetscanct.vercel.app/uk/services/hernias-treatment',
-        ru: 'https://vetscanct.vercel.app/ru/services/hernias-treatment',
+        uk: 'https://vetscanct.com.ua/uk/services/hernias-treatment',
+        ru: 'https://vetscanct.com.ua/ru/services/hernias-treatment',
       },
     },
   };

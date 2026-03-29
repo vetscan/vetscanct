@@ -24,14 +24,14 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t.title,
       description: t.description,
-      url: `https://vetscanct.vercel.app/${locale}/prices`,
+      url: `https://vetscanct.com.ua/${locale}/prices`,
       type: 'website',
     },
     alternates: {
-      canonical: `https://vetscanct.vercel.app/${locale}/prices`,
+      canonical: `https://vetscanct.com.ua/${locale}/prices`,
       languages: {
-        'uk': 'https://vetscanct.vercel.app/uk/prices',
-        'ru': 'https://vetscanct.vercel.app/ru/prices',
+        'uk': 'https://vetscanct.com.ua/uk/prices',
+        'ru': 'https://vetscanct.com.ua/ru/prices',
       },
     },
   };

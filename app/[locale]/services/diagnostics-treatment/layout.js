@@ -22,10 +22,10 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.vercel.app/${locale}/services/diagnostics-treatment`,
+      canonical: `https://vetscanct.com.ua/${locale}/services/diagnostics-treatment`,
       languages: {
-        'uk': 'https://vetscanct.vercel.app/uk/services/diagnostics-treatment',
-        'ru': 'https://vetscanct.vercel.app/ru/services/diagnostics-treatment',
+        'uk': 'https://vetscanct.com.ua/uk/services/diagnostics-treatment',
+        'ru': 'https://vetscanct.com.ua/ru/services/diagnostics-treatment',
       },
     },
   };

@@ -22,10 +22,10 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.vercel.app/${locale}/services/laser`,
+      canonical: `https://vetscanct.com.ua/${locale}/services/laser`,
       languages: {
-        uk: 'https://vetscanct.vercel.app/uk/services/laser',
-        ru: 'https://vetscanct.vercel.app/ru/services/laser',
+        uk: 'https://vetscanct.com.ua/uk/services/laser',
+        ru: 'https://vetscanct.com.ua/ru/services/laser',
       },
     },
   };
