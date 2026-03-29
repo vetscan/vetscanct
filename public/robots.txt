@@ -1,9 +1,9 @@
-# robots.txt для Neuroscan
+# robots.txt Vetscanct
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://vetscanct.vercel.app/sitemap.xml
+Sitemap: https://vetscanct.com.ua/sitemap.xml
 
 # Запрет на индексацию служебных файлов
 Disallow: /api/
