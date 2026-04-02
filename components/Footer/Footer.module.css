@@ -316,6 +316,24 @@
   margin-top: 2px;
 }
 
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-white, #ffffff);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.socialLink:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.socialLink:hover .contactIcon {
+  transform: scale(1.1);
+}
+
 /* Послуги */
 .servicesToggle {
   display: none;
