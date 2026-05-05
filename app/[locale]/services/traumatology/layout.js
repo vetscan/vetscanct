@@ -1,6 +1,10 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы травматологии
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
+  const path = '/services/traumatology';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
 
   const translations = {
     uk: {
@@ -22,10 +26,11 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/services/traumatology`,
+      canonical,
       languages: {
-        uk: 'https://vetscanct.com.ua/uk/services/traumatology',
-        ru: 'https://vetscanct.com.ua/ru/services/traumatology',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

@@ -1,7 +1,11 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы лазерной вапоризации
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+  const path = '/services/laser-vaporization';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
+
   const translations = {
     uk: {
       title: 'Лазерна вапоризація - VetScan CT',
@@ -22,10 +26,11 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/services/laser-vaporization`,
+      canonical,
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk/services/laser-vaporization',
-        'ru': 'https://vetscanct.com.ua/ru/services/laser-vaporization',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

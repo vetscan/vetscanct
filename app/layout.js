@@ -108,10 +108,13 @@ export default function RootLayout({ children }) {
             __html: `
             (function() {
               try {
+                // Определяем локаль: /ru/... → ru, всё остальное → uk
                 var pathParts = window.location.pathname.split('/').filter(Boolean);
                 var localeFromPath = pathParts[0];
-                if (localeFromPath === 'uk' || localeFromPath === 'ru') {
-                  document.documentElement.lang = localeFromPath;
+                if (localeFromPath === 'ru') {
+                  document.documentElement.lang = 'ru';
+                } else {
+                  document.documentElement.lang = 'uk';
                 }
                 var stored = localStorage.getItem('theme');
                 document.documentElement.dataset.theme = 'light';

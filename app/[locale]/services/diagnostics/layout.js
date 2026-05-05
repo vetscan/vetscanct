@@ -1,6 +1,10 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы диагностики
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
+  const path = '/services/diagnostics';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
 
   const translations = {
     uk: {
@@ -22,10 +26,11 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/services/diagnostics`,
+      canonical,
       languages: {
-        uk: 'https://vetscanct.com.ua/uk/services/diagnostics',
-        ru: 'https://vetscanct.com.ua/ru/services/diagnostics',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

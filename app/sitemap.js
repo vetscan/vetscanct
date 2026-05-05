@@ -34,8 +34,13 @@ export default function sitemap() {
   // Добавляем все страницы для каждой локали
   locales.forEach(locale => {
     routes.forEach(route => {
+      // uk — без префикса (главная версия), ru — с /ru
+      const url = locale === 'uk'
+        ? `${baseUrl}${route || '/'}`
+        : `${baseUrl}/${locale}${route}`;
+
       urls.push({
-        url: `${baseUrl}/${locale}${route}`,
+        url,
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: route === '' ? 1.0 : 0.8,

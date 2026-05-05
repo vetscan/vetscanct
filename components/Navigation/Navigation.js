@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
@@ -8,22 +8,40 @@ import styles from './Navigation.module.css';
 
 export default function Navigation() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(false);
   const { t, locale } = useLanguage();
   const navigationItems = t('navigation.items');
+
+  useEffect(() => {
+    // window.location.pathname — реальный URL в браузере, не зависит от rewrite
+    const path = window.location.pathname;
+    const isHome = path === '/' || path === '/ru' || path === '/ru/';
+    console.log('Navigation: pathname =', path, ', isHomePage =', isHome);
+    setIsHomePage(isHome);
+  }, []);
 
   return (
     <>
       <nav className={styles.nav}>
         <div className={styles.container}>
           <div className={styles.navItems}>
-            {Array.isArray(navigationItems) && navigationItems.map((item) => (
-              <Link key={item.href} href={`/${locale}${item.href}`} className={styles.navItem}>
-                {t(`navigation.${item.key}`)}
-              </Link>
-            ))}
+            {Array.isArray(navigationItems) && navigationItems.map((item) => {
+              // Скрываем кнопку "Главная" на десктопе только на главной странице
+              console.log('Navigation item:', item.key, ', isHomePage:', isHomePage);
+              if (item.key === 'home' && isHomePage) {
+                console.log('Hiding home button');
+                return null;
+              }
+
+              return (
+                <Link key={item.href} href={locale === 'uk' ? (item.href || '/') : `/${locale}${item.href}`} className={styles.navItem}>
+                  {t(`navigation.${item.key}`)}
+                </Link>
+              );
+            })}
           </div>
 
-          <button 
+          <button
             className={styles.appointmentBtn}
             onClick={() => setIsModalOpen(true)}
           >
@@ -40,9 +58,9 @@ export default function Navigation() {
         </div>
       </nav>
 
-      <AppointmentModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <AppointmentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
       />
     </>
   );

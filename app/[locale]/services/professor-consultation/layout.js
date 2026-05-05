@@ -1,7 +1,11 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы консультации профессора
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+  const path = '/services/professor-consultation';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
+
   const translations = {
     uk: {
       title: 'Консультація професора - VetScan CT',
@@ -22,10 +26,11 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/services/professor-consultation`,
+      canonical,
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk/services/professor-consultation',
-        'ru': 'https://vetscanct.com.ua/ru/services/professor-consultation',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

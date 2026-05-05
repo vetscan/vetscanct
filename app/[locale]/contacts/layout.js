@@ -1,7 +1,12 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы контактов
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+  const path = '/contacts';
+  // uk — без префикса, ru — с /ru
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
+
   const translations = {
     uk: {
       title: 'Контакти - Як нас знайти | VetScan CT Підгороднє',
@@ -24,14 +29,15 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t.title,
       description: t.description,
-      url: `https://vetscanct.com.ua/${locale}/contacts`,
+      url: canonical,
       type: 'website',
     },
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/contacts`,
+      canonical,
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk/contacts',
-        'ru': 'https://vetscanct.com.ua/ru/contacts',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

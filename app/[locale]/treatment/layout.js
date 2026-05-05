@@ -1,7 +1,11 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы лечения
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+  const path = '/treatment';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
+
   const translations = {
     uk: {
       title: 'Хірургія та Онкохірургія - VetScan CT',
@@ -24,14 +28,15 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t.title,
       description: t.description,
-      url: `https://vetscanct.com.ua/${locale}/treatment`,
+      url: canonical,
       type: 'website',
     },
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/treatment`,
+      canonical,
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk/treatment',
-        'ru': 'https://vetscanct.com.ua/ru/treatment',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

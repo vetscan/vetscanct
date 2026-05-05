@@ -1,9 +1,18 @@
 import { LanguageProvider } from '@/contexts/LanguageContext';
 
-// Layout для локализованных страниц с SEO metadata
+const BASE_URL = 'https://vetscanct.com.ua';
+
+// Возвращает публичный URL страницы без /uk префикса
+function getPublicUrl(locale, path = '') {
+  if (locale === 'uk') {
+    return `${BASE_URL}${path || '/'}`;
+  }
+  return `${BASE_URL}/${locale}${path || ''}`;
+}
+
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+
   const translations = {
     uk: {
       title: 'VetScan CT - Центр сучасної діагностики',
@@ -21,10 +30,12 @@ export async function generateMetadata({ params }) {
     title: t.title,
     description: t.description,
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}`,
+      // canonical всегда без /uk
+      canonical: getPublicUrl(locale),
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk',
-        'ru': 'https://vetscanct.com.ua/ru',
+        'uk': BASE_URL,
+        'ru': `${BASE_URL}/ru`,
+        'x-default': BASE_URL,
       },
     },
   };
@@ -32,5 +43,9 @@ export async function generateMetadata({ params }) {
 
 export default async function LocaleLayout({ children, params }) {
   const { locale = 'uk' } = await params;
-  return <LanguageProvider key={locale} initialLocale={locale}>{children}</LanguageProvider>;
+  return (
+    <LanguageProvider key={locale} initialLocale={locale}>
+      {children}
+    </LanguageProvider>
+  );
 }

@@ -1,7 +1,11 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы КТ
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+  const path = '/ct';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
+
   const translations = {
     uk: {
       title: 'Комп\'ютерна томографія (КТ) - VetScan CT',
@@ -24,7 +28,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t.title,
       description: t.description,
-      url: `https://vetscanct.com.ua/${locale}/ct`,
+      url: canonical,
       type: 'website',
       images: [
         {
@@ -36,10 +40,11 @@ export async function generateMetadata({ params }) {
       ],
     },
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/ct`,
+      canonical,
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk/ct',
-        'ru': 'https://vetscanct.com.ua/ru/ct',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

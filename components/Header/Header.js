@@ -15,13 +15,17 @@ const ThemeToggle = dynamic(() => import('@/components/ThemeToggle/ThemeToggle')
 function buildPathWithLocale(pathname, nextLocale) {
   const parts = (pathname || '/').split('/').filter(Boolean);
 
+  // Убираем текущий префикс локали если есть
   if (parts[0] === 'uk' || parts[0] === 'ru') {
-    parts[0] = nextLocale;
-  } else {
-    parts.unshift(nextLocale);
+    parts.shift();
   }
 
-  return `/${parts.join('/')}`;
+  // Для украинского — путь без префикса, для русского — с /ru
+  if (nextLocale === 'uk') {
+    return parts.length > 0 ? `/${parts.join('/')}` : '/';
+  }
+
+  return `/${nextLocale}${parts.length > 0 ? '/' + parts.join('/') : ''}`;
 }
 
 export default function Header() {
@@ -49,7 +53,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         {/* Логотип */}
-        <Link href={`/${locale}`} className={styles.logo}>
+        <Link href={locale === 'uk' ? '/' : `/${locale}`} className={styles.logo}>
           <div className={styles.logoImage}>
             <Image 
               src="/Logo.png" 
@@ -186,7 +190,7 @@ export default function Header() {
             {t('navigation.items').map((item) => (
               <Link 
                 key={item.href} 
-                href={`/${locale}${item.href}`}
+                href={locale === 'uk' ? item.href : `/${locale}${item.href}`}
                 className={styles.mobileNavLink}
                 onClick={() => setIsMobileMenuOpen(false)}
               >

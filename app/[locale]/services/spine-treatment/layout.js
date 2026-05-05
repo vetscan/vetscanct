@@ -1,7 +1,11 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы лечения позвоночника
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+  const path = '/services/spine-treatment';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
+
   const translations = {
     uk: {
       title: 'Лікування хребта та кінцівок - VetScan CT',
@@ -22,10 +26,11 @@ export async function generateMetadata({ params }) {
     description: t.description,
     keywords: t.keywords,
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/services/spine-treatment`,
+      canonical,
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk/services/spine-treatment',
-        'ru': 'https://vetscanct.com.ua/ru/services/spine-treatment',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };

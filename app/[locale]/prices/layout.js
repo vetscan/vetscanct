@@ -1,7 +1,11 @@
+const BASE_URL = 'https://vetscanct.com.ua';
+
 // SEO metadata для страницы цен
 export async function generateMetadata({ params }) {
   const { locale = 'uk' } = await params;
-  
+  const path = '/prices';
+  const canonical = locale === 'uk' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
+
   const translations = {
     uk: {
       title: 'Вартість послуг - Ціни на КТ та лікування | VetScan CT',
@@ -24,14 +28,15 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t.title,
       description: t.description,
-      url: `https://vetscanct.com.ua/${locale}/prices`,
+      url: canonical,
       type: 'website',
     },
     alternates: {
-      canonical: `https://vetscanct.com.ua/${locale}/prices`,
+      canonical,
       languages: {
-        'uk': 'https://vetscanct.com.ua/uk/prices',
-        'ru': 'https://vetscanct.com.ua/ru/prices',
+        'uk': `${BASE_URL}${path}`,
+        'ru': `${BASE_URL}/ru${path}`,
+        'x-default': `${BASE_URL}${path}`,
       },
     },
   };
