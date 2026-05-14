@@ -3,5 +3,5 @@
 import ServicePage from '@/components/ServicePage/ServicePage';
 
 export default function TreatmentPage() {
-  return <ServicePage translationKey="pages.treatment" />;
+  return <ServicePage translationKey="pages.treatment" showSeo={true} />;
 }

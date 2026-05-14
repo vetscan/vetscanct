@@ -1,6 +1,6 @@
 .section {
   padding: 32px 0;
-  background: var(--color-gray-50, #f1f5fa);
+  background: transparent;
 }
 
 @media (max-width: 768px) {

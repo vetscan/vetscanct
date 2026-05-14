@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './ContactForm.module.css';
 
-export default function ContactForm() {
+export default function ContactForm({ hideSeo = false }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const { t, locale } = useLanguage();
@@ -14,7 +14,9 @@ export default function ContactForm() {
 
   // Определяем, какой SEO текст показывать
   let seoTextKey = 'contactForm.seoText';
-  if (pathname.includes('/traumatology')) {
+  if (pathname.includes('/ct')) {
+    seoTextKey = 'contactForm.ctSeoText';
+  } else if (pathname.includes('/traumatology')) {
     seoTextKey = 'contactForm.traumatologySeoText';
   } else if (pathname.includes('/prices')) {
     seoTextKey = 'contactForm.pricesSeoText';
@@ -72,35 +74,37 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* SEO Блок */}
-          <div className={styles.seoContainer}>
-            <div className={styles.seoContent}>
-              {Array.isArray(seoData) && seoData.map((item, index) => {
-                if (!isExpanded && index >= 2) return null;
-                
-                return (
-                  <div key={index} className={styles.seoItem}>
-                    {item.type === 'p' && <p>{item.text}</p>}
-                    {item.type === 'h3' && <h3>{item.text}</h3>}
-                    {item.type === 'ul' && (
-                      <ul>
-                        {item.items.map((li, i) => (
-                          <li key={i}>{li}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                );
-              })}
+          {/* SEO Блок - показуємо тільки якщо hideSeo = false */}
+          {!hideSeo && (
+            <div className={styles.seoContainer}>
+              <div className={styles.seoContent}>
+                {Array.isArray(seoData) && seoData.map((item, index) => {
+                  if (!isExpanded && index >= 2) return null;
+                  
+                  return (
+                    <div key={index} className={styles.seoItem}>
+                      {item.type === 'p' && <p>{item.text}</p>}
+                      {item.type === 'h3' && <h3>{item.text}</h3>}
+                      {item.type === 'ul' && (
+                        <ul>
+                          {item.items.map((li, i) => (
+                            <li key={i}>{li}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              
+              <button 
+                className={styles.readMoreBtn}
+                onClick={() => setIsExpanded(!isExpanded)}
+              >
+                {isExpanded ? t('contactForm.readLess') : t('contactForm.readMore')}
+              </button>
             </div>
-            
-            <button 
-              className={styles.readMoreBtn}
-              onClick={() => setIsExpanded(!isExpanded)}
-            >
-              {isExpanded ? t('contactForm.readLess') : t('contactForm.readMore')}
-            </button>
-          </div>
+          )}
         </div>
       </section>
 

@@ -3,5 +3,5 @@
 import ServicePage from '@/components/ServicePage/ServicePage';
 
 export default function NeoplasmsPage() {
-  return <ServicePage translationKey="pages.services.neoplasms" />;
+  return <ServicePage translationKey="pages.services.neoplasms" showSeo={true} />;
 }

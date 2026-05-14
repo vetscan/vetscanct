@@ -3,7 +3,7 @@ import Navigation from '@/components/Navigation/Navigation';
 import Footer from '@/components/Footer/Footer';
 import styles from './PageShell.module.css';
 
-export default function PageShell({ title, subtitle, children }) {
+export default function PageShell({ title, subtitle, children, footer }) {
   return (
     <>
       <Header />
@@ -22,6 +22,7 @@ export default function PageShell({ title, subtitle, children }) {
             </div>
           </section>
         )}
+        {footer}
       </main>
       <Footer />
     </>

@@ -10,19 +10,68 @@ import styles from './ServicePage.module.css';
 /**
  * Универсальный компонент для страниц услуг.
  * @param {string} translationKey - ключ в messages, напр. 'pages.services.spineTreatment'
+ * @param {boolean} showSeo - показывать ли SEO-блок перед ContactForm
  * Ожидаемая структура перевода:
  *   { title, subtitle, sectionTitle?, services?: string[], appointmentButton? }
  */
-export default function ServicePage({ translationKey }) {
+export default function ServicePage({ translationKey, showSeo = false }) {
   const { t } = useLanguage();
   const pageData = t(translationKey);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const seoData = t('contactForm.seoText');
 
   const hasServicesList = Array.isArray(pageData?.services) && pageData.services.length > 0;
 
   return (
     <>
-      <PageShell title={pageData?.title} subtitle={pageData?.subtitle}>
+      <PageShell 
+        title={pageData?.title} 
+        subtitle={pageData?.subtitle}
+        footer={
+          showSeo ? (
+            <>
+              {/* SEO Блок перед формою */}
+              <section className={styles.seoSection}>
+                <div className={styles.seoContainer}>
+                  {/* Розгорнутий SEO контент */}
+                  <div className={styles.seoContent}>
+                    {Array.isArray(seoData) && seoData.map((item, index) => {
+                      if (!isExpanded && index >= 2) return null;
+                      
+                      return (
+                        <div key={index} className={styles.seoItem}>
+                          {item.type === 'p' && <p>{item.text}</p>}
+                          {item.type === 'h3' && <h3>{item.text}</h3>}
+                          {item.type === 'ul' && (
+                            <ul>
+                              {item.items.map((li, i) => (
+                                <li key={i}>{li}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  <button 
+                    className={styles.readMoreBtn}
+                    onClick={() => setIsExpanded(!isExpanded)}
+                  >
+                    {isExpanded ? t('contactForm.readLess') : t('contactForm.readMore')}
+                  </button>
+                </div>
+              </section>
+
+              {/* Форма контакту */}
+              <ContactForm hideSeo={true} />
+            </>
+          ) : (
+            <ContactForm />
+          )
+        }
+      >
         <div className={styles.container}>
           {hasServicesList && (
             <div className={styles.content}>
@@ -62,7 +111,6 @@ export default function ServicePage({ translationKey }) {
             </div>
           )}
         </div>
-        <ContactForm />
       </PageShell>
 
       <AppointmentModal

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PageShell from '@/components/PageShell/PageShell';
+import ContactForm from '@/components/ContactForm/ContactForm';
 import Image from 'next/image';
 import styles from './page.module.css';
 
@@ -12,6 +13,7 @@ export default function CtPage() {
   const [isTitleVisible, setIsTitleVisible] = useState(false);
   const [visibleCards, setVisibleCards] = useState([]);
   const [visibleIndicationItems, setVisibleIndicationItems] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false);
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
   const indicationsRef = useRef(null);
@@ -20,6 +22,7 @@ export default function CtPage() {
   const ctData = t('pages.ct');
   const types = t('pages.ct.types');
   const indications = t('pages.ct.indications');
+  const seoData = t('contactForm.ctSeoText');
 
   useEffect(() => {
     // Определяем iOS устройство
@@ -139,8 +142,50 @@ export default function CtPage() {
   }, [indications]);
 
   return (
-    <PageShell title={ctData.title} subtitle={ctData.subtitle}>
-      <div className={styles.content}>
+    <PageShell 
+      title={ctData.title} 
+      subtitle={ctData.subtitle} 
+      footer={
+        <>
+          {/* SEO Блок перед формою */}
+          <section className={styles.seoSection}>
+            <div className={styles.seoContainer}>
+              {/* Розгорнутий SEO контент */}
+              <div className={styles.seoContent}>
+                {Array.isArray(seoData) && seoData.map((item, index) => {
+                  if (!isExpanded && index >= 2) return null;
+                  
+                  return (
+                    <div key={index} className={styles.seoItem}>
+                      {item.type === 'p' && <p>{item.text}</p>}
+                      {item.type === 'h3' && <h3>{item.text}</h3>}
+                      {item.type === 'ul' && (
+                        <ul>
+                          {item.items.map((li, i) => (
+                            <li key={i}>{li}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              
+              <button 
+                className={styles.readMoreBtn}
+                onClick={() => setIsExpanded(!isExpanded)}
+              >
+                {isExpanded ? t('contactForm.readLess') : t('contactForm.readMore')}
+              </button>
+            </div>
+          </section>
+
+          {/* Форма контакту */}
+          <ContactForm hideSeo={true} />
+        </>
+      }
+    >
+        <div className={styles.content}>
         <h2 
           ref={titleRef}
           className={`${styles.sectionTitle} ${isTitleVisible ? styles.titleVisible : ''}`}
