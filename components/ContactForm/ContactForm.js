@@ -2,12 +2,25 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { usePathname } from 'next/navigation';
 import AppointmentModal from '@/components/AppointmentModal/AppointmentModal';
 import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { t } = useLanguage();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const { t, locale } = useLanguage();
+  const pathname = usePathname();
+
+  // Определяем, какой SEO текст показывать
+  let seoTextKey = 'contactForm.seoText';
+  if (pathname.includes('/traumatology')) {
+    seoTextKey = 'contactForm.traumatologySeoText';
+  } else if (pathname.includes('/prices')) {
+    seoTextKey = 'contactForm.pricesSeoText';
+  }
+
+  const seoData = t(seoTextKey);
 
   return (
     <>
@@ -57,6 +70,36 @@ export default function ContactForm() {
                 {t('contactForm.appointmentButton')}
               </button>
             </div>
+          </div>
+
+          {/* SEO Блок */}
+          <div className={styles.seoContainer}>
+            <div className={styles.seoContent}>
+              {Array.isArray(seoData) && seoData.map((item, index) => {
+                if (!isExpanded && index >= 2) return null;
+                
+                return (
+                  <div key={index} className={styles.seoItem}>
+                    {item.type === 'p' && <p>{item.text}</p>}
+                    {item.type === 'h3' && <h3>{item.text}</h3>}
+                    {item.type === 'ul' && (
+                      <ul>
+                        {item.items.map((li, i) => (
+                          <li key={i}>{li}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            
+            <button 
+              className={styles.readMoreBtn}
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? t('contactForm.readLess') : t('contactForm.readMore')}
+            </button>
           </div>
         </div>
       </section>

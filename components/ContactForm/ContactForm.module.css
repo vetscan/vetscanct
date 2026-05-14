@@ -1,4 +1,4 @@
-﻿.section {
+.section {
   padding: 32px 0;
   background: var(--color-gray-50, #f1f5fa);
 }
@@ -271,5 +271,75 @@
 .button svg {
   width: 20px;
   height: 20px;
+}
+
+.seoContainer {
+  margin-top: 48px;
+  max-width: 100%;
+  border-top: 1px solid var(--color-gray-200, #e5e7eb);
+  padding-top: 32px;
+}
+
+.seoContent {
+  color: var(--color-gray-600, #4b5563);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .seoContent {
+    font-size: 16px;
+  }
+}
+
+.seoItem {
+  margin-bottom: 16px;
+}
+
+.seoItem p {
+  margin-bottom: 12px;
+}
+
+.seoItem h3 {
+  color: var(--color-gray-800, #1f2937);
+  margin: 24px 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .seoItem h3 {
+    font-size: 22px;
+  }
+}
+
+.seoItem ul {
+  padding-left: 20px;
+  list-style-type: disc;
+  margin-bottom: 16px;
+}
+
+.seoItem li {
+  margin-bottom: 8px;
+}
+
+.readMoreBtn {
+  margin-top: 8px;
+  background: none;
+  border: none;
+  color: #14b8a6;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  font-size: 16px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.readMoreBtn:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
