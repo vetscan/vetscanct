@@ -29,6 +29,9 @@ export async function generateMetadata({ params }) {
   return {
     title: t.title,
     description: t.description,
+    verification: {
+      google: '7eR3Ykq_UCQ2v7n7y2yrBtgJz6J-zmLGYhQV2zEc5AE',
+    },
     alternates: {
       // canonical всегда без /uk
       canonical: getPublicUrl(locale),
