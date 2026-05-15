@@ -12,7 +12,6 @@ import Prices from '@/components/Prices/Prices';
 import Testimonials from '@/components/Testimonials/Testimonials';
 import ContactForm from '@/components/ContactForm/ContactForm';
 import Footer from '@/components/Footer/Footer';
-import Image from 'next/image';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -68,31 +67,6 @@ export default function Home() {
         <ContactForm hideSeo={true} />
       </main>
       <Footer />
-      
-      {/* Водяные знаки */}
-      {/* Кот - справа сверху */}
-      <div className={styles.watermarkTop}>
-        <Image 
-          src="/cat.png" 
-          alt="Декоративный элемент - кот" 
-          width={200} 
-          height={200}
-          quality={80}
-          priority
-        />
-      </div>
-      
-      {/* Собака - справа снизу */}
-      <div className={styles.watermarkBottom}>
-        <Image 
-          src="/dog.png" 
-          alt="Декоративный элемент - собака" 
-          width={200} 
-          height={200}
-          quality={80}
-          priority
-        />
-      </div>
     </>
   );
 }

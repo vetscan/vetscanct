@@ -1,4 +1,5 @@
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import Watermarks from '@/components/Watermarks/Watermarks';
 
 const BASE_URL = 'https://vetscanct.com.ua';
 
@@ -48,6 +49,7 @@ export default async function LocaleLayout({ children, params }) {
   const { locale = 'uk' } = await params;
   return (
     <LanguageProvider key={locale} initialLocale={locale}>
+      <Watermarks />
       {children}
     </LanguageProvider>
   );

@@ -1,0 +1,108 @@
+/* Водяные знаки */
+/* Кот - слева сверху */
+.watermarkTop {
+  position: fixed;
+  left: 4px;
+  top: 160px;
+  z-index: 100;
+  opacity: 0.18; /* Немного увеличил с 0.14 */
+  pointer-events: none;
+  width: 450px;
+  height: 450px;
+}
+
+/* Темная тема - меньше прозрачности */
+:root[data-theme='dark'] .watermarkTop {
+  opacity: 0.08; /* Немного увеличил с 0.05 */
+}
+
+.watermarkTop img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  mask-image: radial-gradient(ellipse 40% 85% at center, black 20%, transparent 60%);
+  -webkit-mask-image: radial-gradient(ellipse 40% 85% at center, black 20%, transparent 60%);
+  position: relative;
+  z-index: 10;
+}
+
+/* Собака - справа снизу */
+.watermarkBottom {
+  position: fixed;
+  right: 4px;
+  bottom: 32px;
+  z-index: 100;
+  opacity: 0.18; /* Немного увеличил с 0.15 */
+  pointer-events: none;
+  width: 500px;
+  height: 500px;
+}
+
+/* Темная тема - меньше прозрачности */
+:root[data-theme='dark'] .watermarkBottom {
+  opacity: 0.08; /* Немного увеличил с 0.05 */
+}
+
+.watermarkBottom img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  mask-image: radial-gradient(ellipse 50% 85% at center, black 15%, transparent 55%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 85% at center, black 15%, transparent 55%);
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .watermarkTop,
+  .watermarkBottom {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .watermarkTop {
+    left: 8px;
+    top: 80px;
+  }
+  
+  .watermarkBottom {
+    right: 8px;
+    bottom: 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .watermarkTop,
+  .watermarkBottom {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .watermarkTop {
+    left: 3px;
+    top: 128px;
+  }
+  
+  .watermarkBottom {
+    right: 3px;
+    bottom: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .watermarkTop {
+    width: 500px;
+    height: 500px;
+    left: min(4px, calc(50% - 1200px));
+    top: 192px;
+  }
+  
+  .watermarkBottom {
+    width: 550px;
+    height: 550px;
+    right: min(4px, calc(50% - 1200px));
+    bottom: 48px;
+  }
+}
