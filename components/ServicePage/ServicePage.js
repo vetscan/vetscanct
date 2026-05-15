@@ -14,12 +14,12 @@ import styles from './ServicePage.module.css';
  * Ожидаемая структура перевода:
  *   { title, subtitle, sectionTitle?, services?: string[], appointmentButton? }
  */
-export default function ServicePage({ translationKey, showSeo = false }) {
+export default function ServicePage({ translationKey, showSeo = false, seoKey = 'contactForm.seoText' }) {
   const { t } = useLanguage();
   const pageData = t(translationKey);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const seoData = t('contactForm.seoText');
+  const seoData = t(seoKey);
 
   const hasServicesList = Array.isArray(pageData?.services) && pageData.services.length > 0;
 

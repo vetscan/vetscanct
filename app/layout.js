@@ -66,7 +66,7 @@ export const metadata = {
     },
   },
   verification: {
-  
+    google: 'I91j-p0-g1USBwQ0E64YzcM79eku4n1JAbzXz1FdTfw',
   },
   icons: {
     icon: '/Logo.ico',

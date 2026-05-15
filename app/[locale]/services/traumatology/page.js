@@ -3,5 +3,5 @@
 import ServicePage from '@/components/ServicePage/ServicePage';
 
 export default function TraumatologyPage() {
-  return <ServicePage translationKey="pages.services.traumatology" showSeo={true} />;
+  return <ServicePage translationKey="pages.services.traumatology" showSeo={true} seoKey="contactForm.traumatologySeoText" />;
 }
