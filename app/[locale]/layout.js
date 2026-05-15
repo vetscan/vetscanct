@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
     title: t.title,
     description: t.description,
     verification: {
-      google: '7eR3Ykq_UCQ2v7n7y2yrBtgJz6J-zmLGYhQV2zEc5AE',
+      google: 'I91j-p0-g1USBwQ0E64YzcM79eku4n1JAbzXz1FdTfw',
     },
     alternates: {
       // canonical всегда без /uk
