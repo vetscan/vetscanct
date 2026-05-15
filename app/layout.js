@@ -19,7 +19,7 @@ export const metadata = {
   metadataBase: new URL('https://vetscanct.com.ua'),
   title: {
     default: 'VetScan CT - Центр сучасної ветеринарної діагностики',
-    template: '%s | VetScan CT '
+    
   },
   description: 'VetScan CT - Центр сучасної ветеринарної діагностики: комп\'ютерна томографія (КТ),лікування травм. Професійна медична допомога в м.Підгороднє',
   keywords: ['КТ', 'комп\'ютерна томографія','лікування травм', 'діагностика', 'Підгороднє', 'VetScan CT', 'медичний центр'],
