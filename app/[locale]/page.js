@@ -37,7 +37,7 @@ export default function Home() {
             {/* Розгорнутий SEO контент */}
             <div className={styles.seoContent}
     style={{
-    maxHeight: isExpanded ? 'none' : '180px',
+    maxHeight: isExpanded ? 'none' : '170px',
     overflow: 'hidden'
   }}
 >
