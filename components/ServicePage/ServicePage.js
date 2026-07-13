@@ -35,10 +35,14 @@ export default function ServicePage({ translationKey, showSeo = false, seoKey = 
               <section className={styles.seoSection}>
                 <div className={styles.seoContainer}>
                   {/* Розгорнутий SEO контент */}
-                  <div className={styles.seoContent}>
+                  <div className={styles.seoContent}
+          style={{
+    maxHeight: isExpanded ? 'none' : '210px',
+    overflow: 'hidden'
+  }}
+>
                     {Array.isArray(seoData) && seoData.map((item, index) => {
-                      if (!isExpanded && index >= 2) return null;
-                      
+                                            
                       return (
                         <div key={index} className={styles.seoItem}>
                           {item.type === 'p' && <p>{item.text}</p>}
