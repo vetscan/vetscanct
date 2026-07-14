@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
 
   const translations = {
     uk: {
-      title: 'Ветеринарна КТ та хірургія тварин у Дніпрі',
+      title: 'VETSCAN CT: КТ та травматологія тварин у Дніпрі',
       description: 'Комп\'ютерна томографія, хірургія, травматологія та онкологія тварин. Сучасна діагностика собак та котів. Запис на обстеження у VetScan CT.',
     },
     ru: {
