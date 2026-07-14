@@ -157,6 +157,19 @@
   }
 }
 
+.seoItem h2 {
+  color: var(--color-gray-800, #1f2937);
+  margin: 32px 0 16px 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .seoItem h2 {
+    font-size: 30px;
+  }
+}
+
 .seoItem ul {
   padding-left: 20px;
   list-style-type: disc;
