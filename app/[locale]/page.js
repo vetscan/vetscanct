@@ -46,6 +46,7 @@ export default function Home() {
                 return (
                   <div key={index} className={styles.seoItem}>
                     {item.type === 'p' && <p>{item.text}</p>}
+                    {item.type === 'h2' && <h2>{item.text}</h2>}                                 
                     {item.type === 'h3' && <h3>{item.text}</h3>}
                     {item.type === 'ul' && (
                       <ul>
