@@ -188,7 +188,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
 
           <div className={styles.field}>
             <label className={styles.label}>
-              {t('appointmentModal.fields.reason.label')} <span className={styles.required}>*</span>
+              {t('appointmentModal.fields.reason.label')} 
             </label>
             <textarea 
               name="reason"
@@ -197,7 +197,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
               className={styles.textarea}
               placeholder={t('appointmentModal.fields.reason.placeholder')}
               rows={4}
-              required
+              
               disabled={isSubmitting}
             />
           </div>
